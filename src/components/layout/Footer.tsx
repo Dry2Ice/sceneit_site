@@ -1,25 +1,28 @@
+import { Logo } from "@/components/ui/Logo";
+
 export function Footer() {
   return (
-    <footer className="bg-neutral-950 border-t border-neutral-800/50 py-12">
+    <footer className="relative bg-[#050507] border-t border-neutral-800/30 py-16">
       <div className="max-w-6xl mx-auto px-6">
-        <div className="flex flex-col md:flex-row items-center justify-between gap-6">
-          <div>
-            <span className="text-xl font-bold text-white tracking-tight">
-              Кино<span className="text-amber-500">Мир</span>
-            </span>
-            <p className="text-neutral-500 text-sm mt-1">
-              Сообщество настоящих ценителей кино
-            </p>
+        <div className="flex flex-col items-center text-center gap-8">
+          <Logo className="w-32 h-auto text-neutral-700" />
+
+          <div className="flex items-center gap-8">
+            <a href="#sections" className="text-xs tracking-widest uppercase text-neutral-600 hover:text-neutral-400 transition-colors">
+              Sections
+            </a>
+            <a href="#founders" className="text-xs tracking-widest uppercase text-neutral-600 hover:text-neutral-400 transition-colors">
+              Team
+            </a>
+            <a href="#register" className="text-xs tracking-widest uppercase text-neutral-600 hover:text-neutral-400 transition-colors">
+              Join
+            </a>
           </div>
 
-          <div className="flex items-center gap-6 text-sm text-neutral-500">
-            <a href="#sections" className="hover:text-white transition-colors">Разделы</a>
-            <a href="#founders" className="hover:text-white transition-colors">О нас</a>
-            <a href="#register" className="hover:text-white transition-colors">Регистрация</a>
-          </div>
+          <div className="w-16 h-px bg-neutral-800/50" />
 
-          <p className="text-neutral-600 text-xs">
-            &copy; 2026 КиноМир. Все права защищены.
+          <p className="text-neutral-700 text-xs">
+            &copy; 2026 SceneIt. All rights reserved.
           </p>
         </div>
       </div>

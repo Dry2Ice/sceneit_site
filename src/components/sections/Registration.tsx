@@ -1,6 +1,7 @@
 "use client";
 
 import { useState } from "react";
+import { AnimatedSection } from "@/components/ui/AnimatedSection";
 
 export function Registration() {
   const [email, setEmail] = useState("");
@@ -13,98 +14,113 @@ export function Registration() {
   };
 
   return (
-    <section id="register" className="py-24 bg-neutral-950 relative overflow-hidden">
-      <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_bottom,_rgba(234,179,8,0.06)_0%,_transparent_60%)]" />
+    <section id="register" className="relative py-24 sm:py-32 overflow-hidden">
+      {/* Background */}
+      <div className="absolute inset-0 bg-[#07070a]" />
+      <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_center,_rgba(212,168,83,0.06)_0%,_transparent_50%)]" />
 
-      <div className="relative z-10 max-w-2xl mx-auto px-6">
-        <div className="text-center mb-12">
-          <span className="text-amber-500/80 text-sm tracking-[0.2em] uppercase font-medium">
-            Присоединяйся
-          </span>
-          <h2 className="text-3xl sm:text-4xl font-bold text-white mt-3 mb-4">
-            Стань частью КиноМира
-          </h2>
-          <p className="text-neutral-400 max-w-md mx-auto">
-            Зарегистрируйтесь, чтобы участвовать в обсуждениях, голосованиях, квизах
-            и получать персональные рекомендации
-          </p>
-        </div>
+      {/* Decorative elements */}
+      <div className="absolute top-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-amber-500/20 to-transparent" />
 
-        {submitted ? (
-          <div className="text-center py-12 bg-neutral-900/50 rounded-2xl border border-amber-500/20">
-            <div className="w-16 h-16 rounded-full bg-amber-500/20 flex items-center justify-center mx-auto mb-4">
-              <svg className="w-8 h-8 text-amber-500" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" />
-              </svg>
+      <div className="relative z-10 max-w-xl mx-auto px-6">
+        <AnimatedSection>
+          <div className="text-center mb-12">
+            <div className="flex items-center justify-center gap-3 mb-6">
+              <div className="w-8 h-px bg-amber-500/30" />
+              <span className="text-[10px] tracking-[0.4em] uppercase text-amber-500/60">Join</span>
+              <div className="w-8 h-px bg-amber-500/30" />
             </div>
-            <h3 className="text-xl font-bold text-white mb-2">Добро пожаловать!</h3>
-            <p className="text-neutral-400">
-              Проверьте почту — мы отправили ссылку для подтверждения на <span className="text-amber-500">{email}</span>
+            <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold text-white mb-4 tracking-tight">
+              Be Among the First
+            </h2>
+            <p className="text-neutral-500 text-sm sm:text-base max-w-md mx-auto">
+              Early members get exclusive access to beta features, founding member badges,
+              and a permanent place in SceneIt history.
             </p>
           </div>
-        ) : (
-          <form
-            onSubmit={handleSubmit}
-            className="bg-neutral-900/50 rounded-2xl p-8 sm:p-10 border border-neutral-800 space-y-6"
-          >
-            <div>
-              <label htmlFor="name" className="block text-sm font-medium text-neutral-300 mb-2">
-                Имя
-              </label>
-              <input
-                id="name"
-                type="text"
-                required
-                value={name}
-                onChange={(e) => setName(e.target.value)}
-                placeholder="Как вас зовут?"
-                className="w-full px-4 py-3 bg-neutral-800 border border-neutral-700 rounded-lg text-white placeholder-neutral-500 focus:outline-none focus:border-amber-500/50 focus:ring-1 focus:ring-amber-500/30 transition-colors"
-              />
-            </div>
+        </AnimatedSection>
 
-            <div>
-              <label htmlFor="email" className="block text-sm font-medium text-neutral-300 mb-2">
-                Email
-              </label>
-              <input
-                id="email"
-                type="email"
-                required
-                value={email}
-                onChange={(e) => setEmail(e.target.value)}
-                placeholder="your@email.com"
-                className="w-full px-4 py-3 bg-neutral-800 border border-neutral-700 rounded-lg text-white placeholder-neutral-500 focus:outline-none focus:border-amber-500/50 focus:ring-1 focus:ring-amber-500/30 transition-colors"
-              />
+        <AnimatedSection delay={200}>
+          {submitted ? (
+            <div className="text-center py-16 bg-white/[0.02] rounded-2xl border border-amber-500/20">
+              <div className="w-16 h-16 rounded-full bg-amber-500/10 flex items-center justify-center mx-auto mb-6 ring-1 ring-amber-500/20">
+                <svg className="w-8 h-8 text-amber-500" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={1.5}>
+                  <path strokeLinecap="round" strokeLinejoin="round" d="M4.5 12.75l6 6 9-13.5" />
+                </svg>
+              </div>
+              <h3 className="text-2xl font-bold text-white mb-2">Welcome to the Scene</h3>
+              <p className="text-neutral-400 text-sm">
+                Check your inbox — confirmation sent to{" "}
+                <span className="text-amber-400">{email}</span>
+              </p>
             </div>
-
-            <div>
-              <label htmlFor="password" className="block text-sm font-medium text-neutral-300 mb-2">
-                Пароль
-              </label>
-              <input
-                id="password"
-                type="password"
-                required
-                placeholder="Минимум 8 символов"
-                className="w-full px-4 py-3 bg-neutral-800 border border-neutral-700 rounded-lg text-white placeholder-neutral-500 focus:outline-none focus:border-amber-500/50 focus:ring-1 focus:ring-amber-500/30 transition-colors"
-              />
-            </div>
-
-            <button
-              type="submit"
-              className="w-full py-3.5 bg-amber-500 hover:bg-amber-400 text-neutral-900 font-semibold rounded-lg transition-all duration-300 hover:shadow-[0_0_30px_rgba(234,179,8,0.3)]"
+          ) : (
+            <form
+              onSubmit={handleSubmit}
+              className="bg-white/[0.02] rounded-2xl p-8 sm:p-10 border border-neutral-800/50 backdrop-blur-sm"
             >
-              Зарегистрироваться
-            </button>
+              <div className="space-y-5">
+                <div>
+                  <label htmlFor="name" className="block text-xs font-medium text-neutral-400 mb-2 tracking-wider uppercase">
+                    Name
+                  </label>
+                  <input
+                    id="name"
+                    type="text"
+                    required
+                    value={name}
+                    onChange={(e) => setName(e.target.value)}
+                    placeholder="Your name"
+                    className="w-full px-4 py-3 bg-white/[0.03] border border-neutral-800 rounded-xl text-white placeholder-neutral-600 text-sm focus:outline-none focus:border-amber-500/40 focus:ring-1 focus:ring-amber-500/20 transition-all duration-300"
+                  />
+                </div>
 
-            <p className="text-center text-neutral-500 text-xs">
-              Регистрируясь, вы соглашаетесь с{" "}
-              <a href="#" className="text-amber-500/70 hover:text-amber-400">условиями использования</a>
-              {" "}и{" "}
-              <a href="#" className="text-amber-500/70 hover:text-amber-400">политикой конфиденциальности</a>
-            </p>
-          </form>
-        )}
+                <div>
+                  <label htmlFor="email" className="block text-xs font-medium text-neutral-400 mb-2 tracking-wider uppercase">
+                    Email
+                  </label>
+                  <input
+                    id="email"
+                    type="email"
+                    required
+                    value={email}
+                    onChange={(e) => setEmail(e.target.value)}
+                    placeholder="your@email.com"
+                    className="w-full px-4 py-3 bg-white/[0.03] border border-neutral-800 rounded-xl text-white placeholder-neutral-600 text-sm focus:outline-none focus:border-amber-500/40 focus:ring-1 focus:ring-amber-500/20 transition-all duration-300"
+                  />
+                </div>
+
+                <div>
+                  <label htmlFor="password" className="block text-xs font-medium text-neutral-400 mb-2 tracking-wider uppercase">
+                    Password
+                  </label>
+                  <input
+                    id="password"
+                    type="password"
+                    required
+                    placeholder="Min. 8 characters"
+                    className="w-full px-4 py-3 bg-white/[0.03] border border-neutral-800 rounded-xl text-white placeholder-neutral-600 text-sm focus:outline-none focus:border-amber-500/40 focus:ring-1 focus:ring-amber-500/20 transition-all duration-300"
+                  />
+                </div>
+              </div>
+
+              <button
+                type="submit"
+                className="group relative w-full mt-8 py-3.5 bg-gradient-to-r from-amber-500 to-yellow-500 text-neutral-950 font-semibold rounded-xl overflow-hidden transition-all duration-500 hover:shadow-[0_0_50px_rgba(212,168,83,0.3)] hover:scale-[1.02]"
+              >
+                <span className="relative z-10 text-sm tracking-wide">Create Account</span>
+                <div className="absolute inset-0 bg-gradient-to-r from-yellow-400 to-amber-400 opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
+              </button>
+
+              <p className="text-center text-neutral-600 text-xs mt-5">
+                By signing up, you agree to our{" "}
+                <a href="#" className="text-amber-500/60 hover:text-amber-400 transition-colors">Terms</a>
+                {" "}&{" "}
+                <a href="#" className="text-amber-500/60 hover:text-amber-400 transition-colors">Privacy</a>
+              </p>
+            </form>
+          )}
+        </AnimatedSection>
       </div>
     </section>
   );

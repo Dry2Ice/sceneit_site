@@ -3,13 +3,70 @@
 @theme {
   --font-sans: var(--font-geist-sans), system-ui, sans-serif;
   --font-mono: var(--font-geist-mono), ui-monospace, monospace;
+  --color-background: #07070a;
 }
 
 html {
   scroll-behavior: smooth;
 }
 
+body {
+  background-color: #07070a;
+}
+
 ::selection {
-  background-color: rgba(234, 179, 8, 0.3);
+  background-color: rgba(212, 168, 83, 0.3);
   color: white;
+}
+
+::-webkit-scrollbar {
+  width: 6px;
+}
+
+::-webkit-scrollbar-track {
+  background: #07070a;
+}
+
+::-webkit-scrollbar-thumb {
+  background: rgba(212, 168, 83, 0.2);
+  border-radius: 3px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: rgba(212, 168, 83, 0.4);
+}
+
+@keyframes flicker {
+  0%, 100% { opacity: 0.03; }
+  50% { opacity: 0.05; }
+}
+
+@keyframes heroEntrance {
+  from {
+    opacity: 0;
+    transform: translateY(24px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes heroEntranceScale {
+  from {
+    opacity: 0;
+    transform: scaleX(0);
+  }
+  to {
+    opacity: 1;
+    transform: scaleX(1);
+  }
+}
+
+.hero-entrance {
+  animation: heroEntrance 1s ease-out forwards;
+}
+
+.hero-entrance-scale {
+  animation: heroEntranceScale 1s ease-out forwards;
 }

@@ -5,7 +5,7 @@ import { Registration } from "@/components/sections/Registration";
 
 export default function Home() {
   return (
-    <main className="min-h-screen bg-neutral-950">
+    <main className="bg-[#07070a] text-white">
       <Hero />
       <Sections />
       <Founders />

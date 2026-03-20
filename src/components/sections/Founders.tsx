@@ -1,60 +1,86 @@
+import { AnimatedSection } from "@/components/ui/AnimatedSection";
+
 const founders = [
   {
-    name: "Алексей Петров",
-    role: "Основатель & Главный редактор",
-    bio: "Киновед с 15-летним стажем. Выпускник ВГИКа, автор статей в «Искусстве кино» и «Сеансе». Верит, что кино — это зеркало человеческой души.",
-    initials: "АП",
-    color: "from-amber-500 to-yellow-600",
+    name: "Alexei Petrov",
+    role: "Founder & Creative Director",
+    bio: "Film scholar with 15 years in the industry. VGIK graduate and contributor to Sight & Sound. Believes cinema is the mirror of the human soul.",
+    gradient: "from-amber-500 to-yellow-600",
+    accent: "#f59e0b",
   },
   {
-    name: "Мария Соколова",
-    role: "Сооснователь & Куратор контента",
-    bio: "Кинокритик и организатор кинофестивалей. Окончила СПбГИКиТ. Специализируется на авторском и независимом кино. Лауреат премии «Белый слон».",
-    initials: "МС",
-    color: "from-rose-500 to-red-600",
+    name: "Maria Sokolova",
+    role: "Co-Founder & Head of Content",
+    bio: "Award-winning critic and festival curator. Specializes in arthouse and independent cinema. Winner of the White Elephant Award for criticism.",
+    gradient: "from-rose-500 to-pink-600",
+    accent: "#f43f5e",
   },
   {
-    name: "Дмитрий Волков",
-    role: "Сооснователь & Технический директор",
-    bio: "Разработчик и киноман. Бывший инженер Яндекса. Создаёт технологическую платформу для сообщества. Считает, что технология и искусство неразделимы.",
-    initials: "ДВ",
-    color: "from-indigo-500 to-blue-600",
+    name: "Dmitri Volkov",
+    role: "Co-Founder & CTO",
+    bio: "Full-stack engineer and lifelong cinephile. Former Yandex engineer building the platform that brings this community to life.",
+    gradient: "from-violet-500 to-indigo-600",
+    accent: "#8b5cf6",
   },
 ];
 
 export function Founders() {
   return (
-    <section id="founders" className="py-24 bg-neutral-900">
-      <div className="max-w-6xl mx-auto px-6">
-        <div className="text-center mb-16">
-          <span className="text-amber-500/80 text-sm tracking-[0.2em] uppercase font-medium">
-            Команда
-          </span>
-          <h2 className="text-3xl sm:text-4xl font-bold text-white mt-3 mb-4">
-            Основатели проекта
-          </h2>
-          <p className="text-neutral-400 max-w-xl mx-auto">
-            Люди, которые объединили страсть к кино и стремление создать пространство
-            для настоящих ценителей киноискусства
-          </p>
-        </div>
+    <section id="founders" className="relative py-24 sm:py-32 overflow-hidden">
+      {/* Background */}
+      <div className="absolute inset-0 bg-[#0a0a0f]" />
+      <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_top,_rgba(212,168,83,0.04)_0%,_transparent_50%)]" />
 
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-          {founders.map((founder, index) => (
-            <div
-              key={index}
-              className="group relative bg-neutral-800/50 rounded-2xl p-8 border border-neutral-700/50 hover:border-amber-500/30 transition-all duration-500 hover:-translate-y-1"
-            >
-              <div className="absolute top-0 left-0 right-0 h-1 rounded-t-2xl bg-gradient-to-r opacity-0 group-hover:opacity-100 transition-opacity duration-500 from-amber-500 to-yellow-600" />
-
-              <div className={`w-20 h-20 rounded-2xl bg-gradient-to-br ${founder.color} flex items-center justify-center text-white text-xl font-bold mb-6 shadow-lg`}>
-                {founder.initials}
-              </div>
-
-              <h3 className="text-xl font-bold text-white mb-1">{founder.name}</h3>
-              <p className="text-amber-500/80 text-sm font-medium mb-4">{founder.role}</p>
-              <p className="text-neutral-400 text-sm leading-relaxed">{founder.bio}</p>
+      <div className="relative z-10 max-w-6xl mx-auto px-6">
+        {/* Section header */}
+        <AnimatedSection>
+          <div className="text-center mb-20">
+            <div className="flex items-center justify-center gap-3 mb-6">
+              <div className="w-8 h-px bg-amber-500/30" />
+              <span className="text-[10px] tracking-[0.4em] uppercase text-amber-500/60">The Team</span>
+              <div className="w-8 h-px bg-amber-500/30" />
             </div>
+            <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold text-white mb-4 tracking-tight">
+              Built by Cinephiles
+            </h2>
+            <p className="text-neutral-500 max-w-lg mx-auto text-sm sm:text-base">
+              Three passionate minds united by a shared obsession — creating the definitive
+              home for cinema lovers worldwide.
+            </p>
+          </div>
+        </AnimatedSection>
+
+        {/* Founder cards */}
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+          {founders.map((founder, index) => (
+            <AnimatedSection key={index} delay={index * 200}>
+              <div className="group relative h-full">
+                {/* Card */}
+                <div className="relative h-full bg-white/[0.02] rounded-2xl border border-neutral-800/50 p-8 overflow-hidden transition-all duration-700 hover:border-neutral-700/50 hover:bg-white/[0.04]">
+                  {/* Top accent line */}
+                  <div
+                    className="absolute top-0 left-0 right-0 h-px opacity-0 group-hover:opacity-100 transition-opacity duration-700"
+                    style={{
+                      background: `linear-gradient(90deg, transparent, ${founder.accent}60, transparent)`,
+                    }}
+                  />
+
+                  {/* Avatar */}
+                  <div className={`w-16 h-16 rounded-2xl bg-gradient-to-br ${founder.gradient} mb-6 flex items-center justify-center shadow-lg transition-transform duration-500 group-hover:scale-110 group-hover:rotate-3`}>
+                    <svg className="w-7 h-7 text-white/90" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={1.5}>
+                      <path strokeLinecap="round" strokeLinejoin="round" d="M15.75 6a3.75 3.75 0 11-7.5 0 3.75 3.75 0 017.5 0zM4.501 20.118a7.5 7.5 0 0114.998 0A17.933 17.933 0 0112 21.75c-2.676 0-5.216-.584-7.499-1.632z" />
+                    </svg>
+                  </div>
+
+                  {/* Info */}
+                  <h3 className="text-lg font-bold text-white mb-1">{founder.name}</h3>
+                  <p className="text-xs tracking-wider uppercase mb-4" style={{ color: founder.accent, opacity: 0.8 }}>
+                    {founder.role}
+                  </p>
+                  <p className="text-neutral-500 text-sm leading-relaxed">{founder.bio}</p>
+                </div>
+              </div>
+            </AnimatedSection>
           ))}
         </div>
       </div>
