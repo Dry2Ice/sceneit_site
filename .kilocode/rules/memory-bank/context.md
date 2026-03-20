@@ -1,10 +1,10 @@
-# Active Context: КиноМир
+# Active Context: SceneIt
 
 ## Current State
 
-**Project Status**: Main page built — hero, sections, founders, and registration complete
+**Project Status**: AAA-quality cinematic presentation page complete
 
-КиноМир is a cinema community website built on the Next.js 16 starter template. The site is divided into three main areas: Forum & Voting, Reviews & News, and Quizzes & Tests.
+SceneIt (wordplay on "scene" + "seen it") is a cinema community platform with three main sections: Riot Reel (forum & voting), Flick Feed (reviews & news), and Binge Buddy (quizzes & tests). The main page serves as a cinematic presentation/landing page with registration.
 
 ## Recently Completed
 
@@ -12,48 +12,57 @@
 - [x] TypeScript configuration with strict mode
 - [x] Tailwind CSS 4 integration
 - [x] ESLint configuration
-- [x] Memory bank documentation
-- [x] Recipe system for common features
-- [x] Hero section with site presentation
-- [x] Three horizontal section strips (Forum & Voting, Reviews & News, Quizzes & Tests)
-- [x] Founders section with team cards
-- [x] Registration form (client component with validation)
-- [x] Header with responsive navigation
-- [x] Footer
+- [x] Full redesign to cinematic AAA presentation quality
+- [x] SceneIt SVG logo as React component
+- [x] Hero section with parallax mouse-tracking orbs, film strip borders, scan lines, staggered CSS animations
+- [x] Three section strips (Riot Reel / Flick Feed / Binge Buddy) with unique gradients, accent colors, dot-grid patterns
+- [x] AnimatedSection utility (Intersection Observer for scroll-triggered reveals)
+- [x] Founders section with hover-enhanced cards
+- [x] Registration form with success state
+- [x] Header with scroll-aware blur backdrop
+- [x] Custom scrollbar, selection color, smooth scrolling
+- [x] Memory bank updated
 
 ## Current Structure
 
 | File/Directory | Purpose | Status |
 |----------------|---------|--------|
 | `src/app/page.tsx` | Home page — assembles all sections | ✅ Ready |
-| `src/app/layout.tsx` | Root layout with Header + Footer, metadata | ✅ Ready |
-| `src/app/globals.css` | Global styles, smooth scroll, selection color | ✅ Ready |
-| `src/components/sections/Hero.tsx` | Hero/presentation section | ✅ Ready |
-| `src/components/sections/Sections.tsx` | Three colored section strips | ✅ Ready |
+| `src/app/layout.tsx` | Root layout + Header + Footer | ✅ Ready |
+| `src/app/globals.css` | Tailwind, custom scrollbar, keyframe animations | ✅ Ready |
+| `src/components/ui/Logo.tsx` | SceneIt SVG logo | ✅ Ready |
+| `src/components/ui/AnimatedSection.tsx` | Intersection Observer scroll animation wrapper | ✅ Ready |
+| `src/components/sections/Hero.tsx` | Cinematic hero with parallax + staggered animations | ✅ Ready |
+| `src/components/sections/Sections.tsx` | Three colored section strips (Riot Reel, Flick Feed, Binge Buddy) | ✅ Ready |
 | `src/components/sections/Founders.tsx` | Founders team cards | ✅ Ready |
 | `src/components/sections/Registration.tsx` | Registration form (client component) | ✅ Ready |
-| `src/components/layout/Header.tsx` | Fixed header with mobile menu | ✅ Ready |
-| `src/components/layout/Footer.tsx` | Site footer | ✅ Ready |
-| `.kilocode/` | AI context & recipes | ✅ Ready |
+| `src/components/layout/Header.tsx` | Fixed header with scroll-aware glass effect | ✅ Ready |
+| `src/components/layout/Footer.tsx` | Minimal site footer | ✅ Ready |
 
-## Design Theme
+## Design System
 
-- **Color palette**: Dark neutral (950/900) background, amber-500 accents, section-specific colors (indigo, red, amber)
-- **Typography**: Geist Sans, Russian language
-- **Style**: Cinematic, modern, dark mode native
+- **Base**: #07070a (near-black)
+- **Accent**: amber-500 (#d4a853) / gold tones
+- **Riot Reel**: violet/indigo gradients (#2d1b69)
+- **Flick Feed**: rose/deep red gradients (#4a1528)
+- **Binge Buddy**: amber/orange gradients (#451a03)
+- **Typography**: Geist Sans
+- **Animations**: CSS keyframes (heroEntrance), Intersection Observer (AnimatedSection), mouse parallax (Hero orbs)
+- **Patterns**: Film strip borders, scan lines, dot-grid overlays, gradient orbs
 
 ## Current Focus
 
-Main page is complete. Possible next steps:
-1. Build individual section pages (forum, reviews, quizzes)
-2. Add database for user registration persistence
-3. Add authentication
-4. Build out forum/discussion features
-5. Create quiz/test functionality
+Presentation landing page is complete. Next steps:
+1. Build individual section pages (Riot Reel, Flick Feed, Binge Buddy)
+2. Add database for user persistence
+3. Add authentication system
+4. Build forum/discussion features
+5. Create quiz engine
 
 ## Session History
 
 | Date | Changes |
 |------|---------|
 | Initial | Template created with base setup |
-| 2026-03-20 | Built КиноМир main page — hero, 3 section strips, founders, registration form, header/footer |
+| 2026-03-20 | Built КиноМир main page — hero, sections, founders, registration |
+| 2026-03-20 | Full redesign to SceneIt — AAA cinematic presentation, SVG logos, animations, new branding |

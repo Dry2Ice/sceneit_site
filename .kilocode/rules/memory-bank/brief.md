@@ -1,12 +1,12 @@
-# Project Brief: КиноМир
+# Project Brief: SceneIt
 
 ## Purpose
 
-КиноМир (CineWorld) is a Russian-language cinema community website with three main pillars: Forum & Voting, Reviews & News, and Quizzes & Tests.
+SceneIt is a cinema community website with three main pillars: Riot Reel (Forum & Voting), Flick Feed (Reviews & News), and Binge Buddy (Quizzes & Tests). The main page is a cinematic presentation/landing page designed to look like a AAA game or Hollywood blockbuster marketing site.
 
 ## Target Users
 
-- Russian-speaking cinema enthusiasts
+- Cinema enthusiasts worldwide
 - Film critics and reviewers
 - Casual movie fans looking for recommendations
 - Cinema students and professionals
@@ -14,9 +14,9 @@
 ## Core Use Case
 
 A community platform where users can:
-1. Discuss films in forums and participate in community votes
-2. Read expert reviews and stay up-to-date with cinema news
-3. Test their film knowledge through interactive quizzes
+1. Debate films in forums and participate in community polls (Riot Reel)
+2. Read expert reviews and stay up-to-date with cinema news (Flick Feed)
+3. Test their film knowledge through interactive quizzes (Binge Buddy)
 
 ## Key Requirements
 
@@ -26,11 +26,13 @@ A community platform where users can:
 - TypeScript for type safety
 - Tailwind CSS 4 for styling
 - ESLint for code quality
-- Russian language interface
-- Cinematic dark theme with amber/gold accents
+- AAA-quality cinematic presentation design
+- English language interface
+- Dark theme with amber/gold accents
 - Responsive design (mobile-first)
-- Three distinct content sections
+- Three distinct content sections with unique visual identity
 - User registration
+- Smooth animations and transitions
 
 ### Nice to Have
 
@@ -43,15 +45,21 @@ A community platform where users can:
 
 ## Design Direction
 
-- Dark color palette (neutral-950/900 base)
-- Amber/gold accent color (amber-500)
-- Section-specific colors: indigo (forum), red (reviews), amber (quizzes)
+- Near-black base (#07070a) — deeper than typical dark themes
+- Amber/gold accent color (#d4a853)
+- Section-specific colors: violet (Riot Reel), rose (Flick Feed), amber (Binge Buddy)
 - Geist Sans typography
-- Smooth scrolling, subtle animations
+- Film strip borders, scan lines, dot-grid overlays
+- Parallax mouse-tracking gradient orbs
+- CSS keyframe staggered entrance animations
+- Intersection Observer scroll-triggered reveals
+- Custom scrollbar with amber tint
+- Glass-effect header on scroll
 
 ## Constraints
 
 - Framework: Next.js 16 + React 19 + Tailwind CSS 4
 - Package manager: Bun
-- Language: Russian (ru)
+- Language: English
 - No external UI libraries — custom components only
+- No external animation libraries — CSS + Intersection Observer only
