@@ -1,20 +1,28 @@
 "use client";
 
-import { useEffect, useState } from "react";
+import { useEffect, useState, useRef } from "react";
 import { Logo } from "@/components/ui/Logo";
 
 export function Hero() {
   const [mousePos, setMousePos] = useState({ x: 0, y: 0 });
-  const [scrollY, setScrollY] = useState(0);
+  const [heroFade, setHeroFade] = useState(1);
+  const vhRef = useRef(0);
 
   useEffect(() => {
+    vhRef.current = window.innerHeight;
+
     const handleMouse = (e: MouseEvent) => {
       setMousePos({
         x: (e.clientX / window.innerWidth - 0.5) * 20,
         y: (e.clientY / window.innerHeight - 0.5) * 20,
       });
     };
-    const handleScroll = () => setScrollY(window.scrollY);
+
+    const handleScroll = () => {
+      const fade = Math.max(0, 1 - window.scrollY / (vhRef.current * 0.2));
+      setHeroFade(fade);
+    };
+
     window.addEventListener("mousemove", handleMouse);
     window.addEventListener("scroll", handleScroll, { passive: true });
     return () => {
@@ -22,8 +30,6 @@ export function Hero() {
       window.removeEventListener("scroll", handleScroll);
     };
   }, []);
-
-  const heroFade = Math.max(0, 1 - scrollY / (window.innerHeight * 0.2));
 
   return (
     <section id="hero" className="relative min-h-screen flex items-center justify-center overflow-hidden">
@@ -100,27 +106,28 @@ export function Hero() {
           </span>
         </div>
 
-        {/* Large Logo — fades out as Header logo takes over */}
-        <div className="hero-entrance mb-8 opacity-0" style={{ animationDelay: "0.5s" }}>
-          <div style={{ opacity: heroFade, transition: "opacity 0.1s linear" }}>
-            <Logo className="w-64 sm:w-80 md:w-[420px] h-auto mx-auto text-white drop-shadow-[0_0_60px_rgba(212,168,83,0.25)]" />
+        {/* Large centered logo */}
+        <div className="hero-entrance opacity-0" style={{ animationDelay: "0.5s" }}>
+          <div style={{ opacity: heroFade, transition: "opacity 0.15s linear" }}>
+            <Logo className="w-72 sm:w-96 md:w-[480px] h-auto mx-auto text-white drop-shadow-[0_0_80px_rgba(212,168,83,0.2)]" />
           </div>
         </div>
 
         {/* Divider */}
-        <div className="hero-entrance-scale flex items-center justify-center gap-4 mb-10 opacity-0" style={{ animationDelay: "0.8s" }}>
+        <div className="hero-entrance-scale flex items-center justify-center gap-4 my-10 opacity-0" style={{ animationDelay: "0.8s" }}>
           <div className="h-px w-20 sm:w-32 bg-gradient-to-r from-transparent to-amber-500/30" />
           <div className="w-1.5 h-1.5 rotate-45 border border-amber-500/30" />
           <div className="h-px w-20 sm:w-32 bg-gradient-to-l from-transparent to-amber-500/30" />
         </div>
 
-        {/* Description */}
+        {/* Tagline */}
         <div className="hero-entrance mb-5 opacity-0" style={{ animationDelay: "1s" }}>
           <h2 className="text-lg sm:text-xl md:text-2xl text-neutral-300 font-light tracking-wide max-w-2xl mx-auto">
             Every Frame Tells a Story
           </h2>
         </div>
 
+        {/* Description */}
         <div className="hero-entrance mb-4 opacity-0" style={{ animationDelay: "1.15s" }}>
           <p className="text-sm sm:text-base text-neutral-400 max-w-xl mx-auto leading-relaxed">
             A community-driven platform built for true cinephiles. Dive into three immersive worlds:
