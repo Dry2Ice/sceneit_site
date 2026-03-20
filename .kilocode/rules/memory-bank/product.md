@@ -1,44 +1,39 @@
-# Product Context: Next.js Starter Template
+# Product Context: КиноМир
 
-## Why This Template Exists
+## Why This Exists
 
-Starting a new Next.js project involves boilerplate setup, configuration decisions, and establishing patterns. This template provides a clean, opinionated starting point that eliminates setup friction and establishes best practices from the start. It's optimized for AI-assisted development, where an AI can quickly extend the template based on user requirements.
+КиноМир is a cinema community platform for Russian-speaking movie enthusiasts. It brings together forum discussions, expert reviews, news coverage, and interactive quizzes into a single destination for people passionate about cinema.
 
 ## Problems It Solves
 
-1. **Setup Time**: Eliminates boilerplate configuration (TypeScript, Tailwind, ESLint)
-2. **Decision Fatigue**: Pre-made choices for tooling and patterns
-3. **AI Context**: Memory bank provides persistent context for AI assistants
-4. **Extensibility**: Recipe system for adding common features
-5. **Consistency**: Standardized project structure and conventions
+1. **Fragmented community**: Cinema discussions are scattered across multiple platforms
+2. **Lack of depth**: Most movie sites offer superficial content — КиноМир aims for expert-level discourse
+3. **Engagement**: Quizzes and voting gamify the cinema experience beyond passive reading
+4. **Language**: Provides a dedicated Russian-language cinema community
 
-## How It Should Work (User Flow)
+## User Flows
 
-1. User starts with this template
-2. User describes what they want to build to AI assistant
-3. AI adds pages, components, and features as needed
-4. AI uses recipes for common additions (database, auth)
-5. User previews changes via hot reload
-6. Iterate until satisfied
-7. Deploy
+### First-time visitor
+1. Lands on hero section → learns about the platform
+2. Scrolls through three section strips → understands what's offered
+3. Sees founders → builds trust
+4. Registers via the form → joins the community
+
+### Returning user
+1. Checks latest news and reviews
+2. Participates in forum discussions and votes
+3. Takes weekly quizzes and competes on leaderboards
 
 ## Key User Experience Goals
 
-- **Zero to Feature Fast**: Get building immediately, no setup required
-- **AI-Friendly**: Memory bank and recipes make AI assistance effective
-- **Flexible Foundation**: Can become any type of application
-- **Best Practices Built-In**: TypeScript strict mode, ESLint, clean structure
+- **Cinematic atmosphere**: Dark, immersive design that reflects the subject matter
+- **Easy navigation**: Clear sections with distinct visual identity
+- **Mobile-first**: Fully responsive for phone/tablet browsing
+- **Fast**: Server Components for instant page loads
+- **Accessible**: Semantic HTML, proper contrast, keyboard navigation
 
-## What This Template Provides
+## Three Main Sections
 
-1. **Clean App Structure**: Single page ready for expansion
-2. **Type Safety**: Full TypeScript setup with strict mode
-3. **Modern Styling**: Tailwind CSS 4 ready to use
-4. **Code Quality**: ESLint configured
-5. **Extensibility**: Recipe system for common features
-
-## Integration Points
-
-- **Database**: Use add-database recipe for Drizzle + SQLite
-- **Styling**: Tailwind CSS pre-configured
-- **AI Assistance**: Memory bank for context persistence
+1. **Forum & Voting** (indigo) — Community discussions and film polls
+2. **Reviews & News** (red/deep rose) — Expert reviews and industry news
+3. **Quizzes & Tests** (amber/gold) — Interactive cinema knowledge challenges
