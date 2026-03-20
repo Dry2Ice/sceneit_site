@@ -115,16 +115,24 @@ export function Hero() {
         </div>
 
         {/* Description */}
-        <div className="hero-entrance mb-6 opacity-0" style={{ animationDelay: "1s" }}>
-          <h2 className="text-base sm:text-lg md:text-xl text-neutral-400 font-light tracking-wide max-w-2xl mx-auto">
+        <div className="hero-entrance mb-5 opacity-0" style={{ animationDelay: "1s" }}>
+          <h2 className="text-lg sm:text-xl md:text-2xl text-neutral-300 font-light tracking-wide max-w-2xl mx-auto">
             Every Frame Tells a Story
           </h2>
         </div>
 
-        <div className="hero-entrance opacity-0" style={{ animationDelay: "1.2s" }}>
-          <p className="text-sm text-neutral-600 max-w-lg mx-auto leading-relaxed">
-            The ultimate platform for cinephiles. Three worlds — debates, reviews, and quizzes —
-            united by a shared obsession with cinema.
+        <div className="hero-entrance mb-4 opacity-0" style={{ animationDelay: "1.15s" }}>
+          <p className="text-sm sm:text-base text-neutral-400 max-w-xl mx-auto leading-relaxed">
+            A community-driven platform built for true cinephiles. Dive into three immersive worlds:
+            fierce debates in <span className="text-violet-400 font-medium">Riot Reel</span>,
+            curated reviews and breaking news in <span className="text-rose-400 font-medium">Flick Feed</span>,
+            and cinematic trivia challenges in <span className="text-amber-400 font-medium">Binge Buddy</span>.
+          </p>
+        </div>
+
+        <div className="hero-entrance opacity-0" style={{ animationDelay: "1.3s" }}>
+          <p className="text-xs text-neutral-600 max-w-md mx-auto">
+            Discuss, discover, and test your knowledge — all in one place.
           </p>
         </div>
       </div>
