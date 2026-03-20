@@ -60,7 +60,7 @@ export function Header() {
       {/* Floating animated logo */}
       {logoRect && (
         <a href="#hero" style={logoStyle} className="text-white hover:text-amber-400 transition-colors duration-300">
-          <Logo className="w-28 sm:w-32 h-auto" />
+          <Logo className="w-20 sm:w-24 h-auto" />
         </a>
       )}
 
@@ -76,7 +76,7 @@ export function Header() {
         <div className="max-w-7xl mx-auto px-6 h-16 flex items-center justify-between">
           {/* Invisible anchor — measures where logo should land */}
           <div ref={anchorRef} className="flex items-center opacity-0 pointer-events-none" aria-hidden="true">
-            <Logo className="w-28 sm:w-32 h-auto" />
+            <Logo className="w-20 sm:w-24 h-auto" />
           </div>
 
           {/* Nav */}
