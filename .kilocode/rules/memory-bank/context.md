@@ -2,67 +2,57 @@
 
 ## Current State
 
-**Project Status**: AAA-quality cinematic presentation page complete
-
-SceneIt (wordplay on "scene" + "seen it") is a cinema community platform with three main sections: Riot Reel (forum & voting), Flick Feed (reviews & news), and Binge Buddy (quizzes & tests). The main page serves as a cinematic presentation/landing page with registration.
+**Project Status**: Interactive presentation page with expandable sections and founder toggle complete
 
 ## Recently Completed
 
-- [x] Base Next.js 16 setup with App Router
-- [x] TypeScript configuration with strict mode
-- [x] Tailwind CSS 4 integration
-- [x] ESLint configuration
-- [x] Full redesign to cinematic AAA presentation quality
+- [x] Base Next.js 16 setup with App Router, TypeScript, Tailwind CSS 4, ESLint
+- [x] Full redesign to SceneIt — AAA cinematic presentation
 - [x] SceneIt SVG logo as React component
-- [x] Hero section with parallax mouse-tracking orbs, film strip borders, scan lines, staggered CSS animations
-- [x] Three section strips (Riot Reel / Flick Feed / Binge Buddy) with unique gradients, accent colors, dot-grid patterns
-- [x] AnimatedSection utility (Intersection Observer for scroll-triggered reveals)
-- [x] Founders section with hover-enhanced cards
-- [x] Registration form with success state
-- [x] Header with scroll-aware blur backdrop
-- [x] Custom scrollbar, selection color, smooth scrolling
-- [x] Memory bank updated
+- [x] **Hero**: Large centered logo (#hero anchor), project description, parallax orbs, film strips, staggered CSS animations
+- [x] **Header**: Logo animates from hidden (center in hero) to visible in top-left when scrolled past 60% of hero height; glass backdrop on scroll
+- [x] **Sections (Riot Reel / Flick Feed / Binge Buddy)**: Click-to-expand strips with smooth height animation. Each shows section name, tagline, short description collapsed; extended description + feature cards expanded
+- [x] **Founders**: Two large photo cards (gradient placeholders with initials). Click one to expand details; the other shrinks/fades. Includes bio, details, and stats
+- [x] **Registration**: Form with success state animation
+- [x] AnimatedSection utility (Intersection Observer for scroll reveals)
+- [x] Custom scrollbar, selection color, CSS keyframe animations
 
 ## Current Structure
 
-| File/Directory | Purpose | Status |
-|----------------|---------|--------|
-| `src/app/page.tsx` | Home page — assembles all sections | ✅ Ready |
-| `src/app/layout.tsx` | Root layout + Header + Footer | ✅ Ready |
-| `src/app/globals.css` | Tailwind, custom scrollbar, keyframe animations | ✅ Ready |
-| `src/components/ui/Logo.tsx` | SceneIt SVG logo | ✅ Ready |
-| `src/components/ui/AnimatedSection.tsx` | Intersection Observer scroll animation wrapper | ✅ Ready |
-| `src/components/sections/Hero.tsx` | Cinematic hero with parallax + staggered animations | ✅ Ready |
-| `src/components/sections/Sections.tsx` | Three colored section strips (Riot Reel, Flick Feed, Binge Buddy) | ✅ Ready |
-| `src/components/sections/Founders.tsx` | Founders team cards | ✅ Ready |
-| `src/components/sections/Registration.tsx` | Registration form (client component) | ✅ Ready |
-| `src/components/layout/Header.tsx` | Fixed header with scroll-aware glass effect | ✅ Ready |
-| `src/components/layout/Footer.tsx` | Minimal site footer | ✅ Ready |
+| File | Purpose |
+|------|---------|
+| `src/app/page.tsx` | Home page — Hero, Sections, Founders, Registration |
+| `src/app/layout.tsx` | Root layout + Header + Footer |
+| `src/app/globals.css` | Tailwind, animations, scrollbar |
+| `src/components/ui/Logo.tsx` | SceneIt SVG logo |
+| `src/components/ui/AnimatedSection.tsx` | Scroll-triggered animation wrapper |
+| `src/components/sections/Hero.tsx` | Large centered logo, parallax, staggered entrance |
+| `src/components/sections/Sections.tsx` | Three expandable section strips (client component) |
+| `src/components/sections/Founders.tsx` | Two interactive founder photo cards (client component) |
+| `src/components/sections/Registration.tsx` | Registration form |
+| `src/components/layout/Header.tsx` | Scroll-aware logo transition (center→top-left) |
+| `src/components/layout/Footer.tsx` | Minimal footer |
+
+## Key Interaction Patterns
+
+1. **Logo transition**: Header logo starts at `opacity-0` + center position via translate. On scroll past 60% hero height, transitions to `opacity-100` + top-left with duration-700
+2. **Section expand**: Each `SectionBlock` manages `expanded` state. Click toggles `max-h-[600px]`/`max-h-0` with `ease-[cubic-bezier(0.4,0,0.2,1)]` and opacity
+3. **Founder toggle**: `activeFounder` state tracks which card is expanded. Active card gets `max-h-[400px]`; other card gets `opacity-50 scale-[0.97]`
 
 ## Design System
 
-- **Base**: #07070a (near-black)
-- **Accent**: amber-500 (#d4a853) / gold tones
-- **Riot Reel**: violet/indigo gradients (#2d1b69)
-- **Flick Feed**: rose/deep red gradients (#4a1528)
-- **Binge Buddy**: amber/orange gradients (#451a03)
-- **Typography**: Geist Sans
-- **Animations**: CSS keyframes (heroEntrance), Intersection Observer (AnimatedSection), mouse parallax (Hero orbs)
-- **Patterns**: Film strip borders, scan lines, dot-grid overlays, gradient orbs
-
-## Current Focus
-
-Presentation landing page is complete. Next steps:
-1. Build individual section pages (Riot Reel, Flick Feed, Binge Buddy)
-2. Add database for user persistence
-3. Add authentication system
-4. Build forum/discussion features
-5. Create quiz engine
+- Base: #07070a, Accent: amber-500 (#d4a853)
+- Riot Reel: violet (#2d1b69 → #a78bfa)
+- Flick Feed: rose (#4a1528 → #fb7185)
+- Binge Buddy: amber (#451a03 → #fbbf24)
+- Typography: Geist Sans
+- Animations: CSS keyframes + Intersection Observer + mouse parallax
 
 ## Session History
 
 | Date | Changes |
 |------|---------|
-| Initial | Template created with base setup |
-| 2026-03-20 | Built КиноМир main page — hero, sections, founders, registration |
-| 2026-03-20 | Full redesign to SceneIt — AAA cinematic presentation, SVG logos, animations, new branding |
+| Initial | Template created |
+| 2026-03-20 | Built КиноМир main page |
+| 2026-03-20 | Full redesign to SceneIt — AAA cinematic, SVG logos, animations |
+| 2026-03-20 | Large hero logo, scroll-transition header, expandable sections, interactive founder toggle |
