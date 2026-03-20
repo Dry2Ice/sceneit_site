@@ -31,6 +31,14 @@ export function Hero() {
     };
   }, []);
 
+  const entrance = (delay: number): React.CSSProperties => ({
+    animation: `fadeInUp 1s ${delay}s ease-out both`,
+  });
+
+  const scaleEntrance = (delay: number): React.CSSProperties => ({
+    animation: `fadeInScale 1s ${delay}s ease-out both`,
+  });
+
   return (
     <section id="hero" className="relative min-h-screen flex items-center justify-center overflow-hidden">
       {/* Deep background */}
@@ -99,7 +107,7 @@ export function Hero() {
       {/* Content */}
       <div className="relative z-20 text-center px-6 max-w-4xl mx-auto">
         {/* Badge */}
-        <div className="hero-entrance mb-10 opacity-0" style={{ animationDelay: "0.2s" }}>
+        <div style={entrance(0.2)} className="mb-10">
           <span className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full border border-amber-500/20 bg-amber-500/5 text-amber-400/70 text-[10px] tracking-[0.3em] uppercase font-medium">
             <span className="w-1 h-1 rounded-full bg-amber-500 animate-pulse" />
             Coming Soon
@@ -107,28 +115,28 @@ export function Hero() {
         </div>
 
         {/* Large centered logo */}
-        <div className="hero-entrance opacity-0" style={{ animationDelay: "0.5s" }}>
+        <div style={entrance(0.5)}>
           <div style={{ opacity: heroFade, transition: "opacity 0.15s linear" }}>
             <Logo className="w-72 sm:w-96 md:w-[480px] h-auto mx-auto text-white drop-shadow-[0_0_80px_rgba(212,168,83,0.2)]" />
           </div>
         </div>
 
         {/* Divider */}
-        <div className="hero-entrance-scale flex items-center justify-center gap-4 my-10 opacity-0" style={{ animationDelay: "0.8s" }}>
+        <div style={scaleEntrance(0.8)} className="flex items-center justify-center gap-4 my-10">
           <div className="h-px w-20 sm:w-32 bg-gradient-to-r from-transparent to-amber-500/30" />
           <div className="w-1.5 h-1.5 rotate-45 border border-amber-500/30" />
           <div className="h-px w-20 sm:w-32 bg-gradient-to-l from-transparent to-amber-500/30" />
         </div>
 
         {/* Tagline */}
-        <div className="hero-entrance mb-5 opacity-0" style={{ animationDelay: "1s" }}>
+        <div style={entrance(1)} className="mb-5">
           <h2 className="text-lg sm:text-xl md:text-2xl text-neutral-300 font-light tracking-wide max-w-2xl mx-auto">
             Every Frame Tells a Story
           </h2>
         </div>
 
         {/* Description */}
-        <div className="hero-entrance mb-4 opacity-0" style={{ animationDelay: "1.15s" }}>
+        <div style={entrance(1.15)} className="mb-4">
           <p className="text-sm sm:text-base text-neutral-400 max-w-xl mx-auto leading-relaxed">
             A community-driven platform built for true cinephiles. Dive into three immersive worlds:
             fierce debates in <span className="text-violet-400 font-medium">Riot Reel</span>,
@@ -137,7 +145,7 @@ export function Hero() {
           </p>
         </div>
 
-        <div className="hero-entrance opacity-0" style={{ animationDelay: "1.3s" }}>
+        <div style={entrance(1.3)}>
           <p className="text-xs text-neutral-600 max-w-md mx-auto">
             Discuss, discover, and test your knowledge — all in one place.
           </p>
@@ -148,11 +156,11 @@ export function Hero() {
       <div className="absolute bottom-0 left-0 right-0 h-40 bg-gradient-to-t from-[#07070a] to-transparent z-10" />
 
       {/* Scroll indicator */}
-      <div className="hero-entrance absolute bottom-10 left-1/2 -translate-x-1/2 z-20 opacity-0" style={{ animationDelay: "2s" }}>
+      <div style={entrance(2)} className="absolute bottom-10 left-1/2 -translate-x-1/2 z-20">
         <div className="flex flex-col items-center gap-2">
           <span className="text-[9px] text-neutral-700 tracking-[0.3em] uppercase">Scroll</span>
           <div className="w-5 h-9 rounded-full border border-neutral-800 flex justify-center pt-2">
-            <div className="w-0.5 h-2 rounded-full bg-amber-500/50 animate-bounce" />
+            <div className="w-0.5 h-2 rounded-full bg-amber-500/60 animate-bounce" />
           </div>
         </div>
       </div>
