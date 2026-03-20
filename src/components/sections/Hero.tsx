@@ -5,6 +5,7 @@ import { Logo } from "@/components/ui/Logo";
 
 export function Hero() {
   const [mousePos, setMousePos] = useState({ x: 0, y: 0 });
+  const [scrollY, setScrollY] = useState(0);
 
   useEffect(() => {
     const handleMouse = (e: MouseEvent) => {
@@ -13,9 +14,16 @@ export function Hero() {
         y: (e.clientY / window.innerHeight - 0.5) * 20,
       });
     };
+    const handleScroll = () => setScrollY(window.scrollY);
     window.addEventListener("mousemove", handleMouse);
-    return () => window.removeEventListener("mousemove", handleMouse);
+    window.addEventListener("scroll", handleScroll, { passive: true });
+    return () => {
+      window.removeEventListener("mousemove", handleMouse);
+      window.removeEventListener("scroll", handleScroll);
+    };
   }, []);
+
+  const heroFade = Math.max(0, 1 - scrollY / (window.innerHeight * 0.2));
 
   return (
     <section id="hero" className="relative min-h-screen flex items-center justify-center overflow-hidden">
@@ -92,9 +100,11 @@ export function Hero() {
           </span>
         </div>
 
-        {/* Large Logo */}
+        {/* Large Logo — fades out as Header logo takes over */}
         <div className="hero-entrance mb-8 opacity-0" style={{ animationDelay: "0.5s" }}>
-          <Logo className="w-64 sm:w-80 md:w-[420px] h-auto mx-auto text-white drop-shadow-[0_0_60px_rgba(212,168,83,0.25)]" />
+          <div style={{ opacity: heroFade, transition: "opacity 0.1s linear" }}>
+            <Logo className="w-64 sm:w-80 md:w-[420px] h-auto mx-auto text-white drop-shadow-[0_0_60px_rgba(212,168,83,0.25)]" />
+          </div>
         </div>
 
         {/* Divider */}
