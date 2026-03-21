@@ -117,7 +117,7 @@ export function Hero() {
         {/* Large centered logo */}
         <div style={entrance(0.5)}>
           <div style={{ opacity: heroFade, transition: "opacity 0.15s linear" }}>
-            <Logo className="w-72 sm:w-96 md:w-[480px] h-auto mx-auto text-white drop-shadow-[0_0_80px_rgba(212,168,83,0.2)]" />
+            <Logo className="w-72 sm:w-96 md:w-[480px] h-auto mx-auto drop-shadow-[0_0_60px_rgba(251,191,36,0.25)]" />
           </div>
         </div>
 
