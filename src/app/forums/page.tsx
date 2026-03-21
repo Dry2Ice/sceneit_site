@@ -124,7 +124,6 @@ export default function ForumsPage() {
               key={d.id}
               className="bg-white/[0.02] border border-neutral-800/30 rounded-xl p-5 transition-all duration-500 hover:bg-white/[0.04] hover:border-violet-500/15"
             >
-              {d.hot && <HotBadge />}
               <span className="text-[9px] tracking-[0.2em] uppercase text-violet-400/40 block mb-1.5">{d.category}</span>
               <h4 className="text-sm font-semibold text-white/90 mb-2 line-clamp-2">{d.title}</h4>
               <p className="text-xs text-neutral-500 line-clamp-2 mb-3">{d.preview}</p>
@@ -147,7 +146,6 @@ export default function ForumsPage() {
               key={d.id}
               className="bg-white/[0.02] border border-neutral-800/30 rounded-xl p-5 transition-all duration-500 hover:bg-white/[0.04] hover:border-violet-500/15"
             >
-              {d.hot && <HotBadge />}
               <span className="text-[9px] tracking-[0.2em] uppercase text-violet-400/40 block mb-1.5">{d.category}</span>
               <h4 className="text-sm font-semibold text-white/90 mb-2 line-clamp-2">{d.title}</h4>
               <p className="text-xs text-neutral-500 line-clamp-2 mb-3">{d.preview}</p>
@@ -172,7 +170,6 @@ export default function ForumsPage() {
                 key={p.id}
                 className="bg-white/[0.02] border border-neutral-800/30 rounded-xl p-5 transition-all duration-500 hover:bg-white/[0.04] hover:border-violet-500/15"
               >
-                {p.hot && <HotBadge />}
                 <span className="text-[9px] tracking-[0.2em] uppercase text-violet-400/40 block mb-1.5">{p.category}</span>
                 <h4 className="text-sm font-semibold text-white/90 mb-2">{p.title}</h4>
                 <div className="space-y-1.5 mb-3">
@@ -211,7 +208,6 @@ export default function ForumsPage() {
                 key={p.id}
                 className="bg-white/[0.02] border border-neutral-800/30 rounded-xl p-5 transition-all duration-500 hover:bg-white/[0.04] hover:border-violet-500/15"
               >
-                {p.hot && <HotBadge />}
                 <span className="text-[9px] tracking-[0.2em] uppercase text-violet-400/40 block mb-1.5">{p.category}</span>
                 <h4 className="text-sm font-semibold text-white/90 mb-2">{p.title}</h4>
                 <div className="space-y-1.5 mb-3">
@@ -260,15 +256,6 @@ function SectionHeader({ title, href }: { title: string; href: string }) {
           <path strokeLinecap="round" strokeLinejoin="round" d="M8.25 4.5l7.5 7.5-7.5 7.5" />
         </svg>
       </Link>
-    </div>
-  );
-}
-
-function HotBadge() {
-  return (
-    <div className="absolute top-4 right-4 flex items-center gap-1.5 px-2 py-0.5 rounded-full bg-orange-500/10 border border-orange-500/20">
-      <div className="w-1 h-1 rounded-full bg-orange-400 animate-pulse" />
-      <span className="text-[8px] tracking-[0.15em] uppercase text-orange-400">Hot</span>
     </div>
   );
 }
