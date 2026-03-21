@@ -35,10 +35,10 @@ export default function NewsPage() {
 
         {/* Hero logo */}
         <div className="w-full max-w-2xl mx-auto mb-10" style={{ animation: "fadeInUp 1s ease-out both" }}>
-          <svg viewBox="0 0 1761.72 516.42" xmlns="http://www.w3.org/2000/svg" className="w-full h-auto" style={{ filter: "drop-shadow(0 0 40px rgba(251, 113, 133, 0.3))" }}>
-            <defs><style>{`.st1-feed { font-family: 'Geometr706 BlkCn BT', sans-serif; font-size: 287.2px; font-weight: 800; }`}</style></defs>
-            <text className="st1-feed" fill="#fb7185" transform="translate(940.99 130)"><tspan x="0" y="0">Feed</tspan></text>
-            <text className="st1-feed" fill="#fb7185" transform="translate(976.08 130) rotate(-180) scale(1 -1)"><tspan x="0" y="0">Flick</tspan></text>
+          <svg viewBox="0 0 1920 800" xmlns="http://www.w3.org/2000/svg" className="w-full h-auto" style={{ filter: "drop-shadow(0 0 40px rgba(251, 113, 133, 0.3))" }}>
+            <defs><style>{`.st1-feed { font-family: 'Geometr706 BlkCn BT', sans-serif; font-size: 461.59px; font-weight: 800; }`}</style></defs>
+            <text className="st1-feed" fill="#fb7185" transform="translate(940.99 200)"><tspan x="0" y="0">Feed</tspan></text>
+            <text className="st1-feed" fill="#fb7185" transform="translate(976.08 200) rotate(-180) scale(1 -1)"><tspan x="0" y="0">Flick</tspan></text>
           </svg>
         </div>
 
