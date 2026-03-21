@@ -9,6 +9,8 @@
 | TypeScript   | 5.9.x   | Type-safe JavaScript            |
 | Tailwind CSS | 4.x     | Utility-first CSS               |
 | Bun          | Latest  | Package manager & runtime       |
+| Drizzle ORM  | 0.45.x  | SQLite ORM                      |
+| SQLite       | —       | Database (via app-builder-db)   |
 
 ## Development Environment
 
@@ -26,6 +28,8 @@ bun build          # Production build
 bun start          # Start production server
 bun lint           # Run ESLint
 bun typecheck      # Run TypeScript type checking
+bun db:generate    # Generate Drizzle migrations
+bun db:migrate     # Run migrations (auto in sandbox)
 ```
 
 ## Project Configuration
@@ -103,9 +107,10 @@ bun typecheck      # Run TypeScript type checking
 
 ### Starting Point
 
-- Minimal structure - expand as needed
-- No database by default (use recipe to add)
-- No authentication by default (add when needed)
+- Full-featured SceneIt platform
+- SQLite database via Drizzle ORM (app-builder-db)
+- Cookie-based session authentication
+- 10 database tables (users, sessions, + 8 content types)
 
 ### Browser Support
 

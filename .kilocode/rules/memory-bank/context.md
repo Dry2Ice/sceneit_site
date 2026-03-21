@@ -40,6 +40,17 @@
 | `src/data/forums.ts` | Mock data for discussions and polls with helper functions |
 | `src/data/flickfeed.ts` | Mock data for news articles, reviews, and longreads with helper functions |
 | `src/data/buddy.ts` | Mock data for brackets, tests, and trivia quizzes with helper functions |
+| `src/db/schema.ts` | Drizzle schema: users, sessions, discussions, polls, articles, reviews, longreads, brackets, tests, trivias |
+| `src/db/index.ts` | Database client (createDatabase from app-builder-db) |
+| `src/db/migrate.ts` | Migration runner script |
+| `src/actions/auth.ts` | Server actions: register, login, logout, getCurrentUser |
+| `src/actions/content.ts` | Server actions: create/get for discussions, polls, articles, reviews, longreads, brackets, tests, trivia |
+| `src/app/register/page.tsx` | Registration form |
+| `src/app/login/page.tsx` | Login form |
+| `src/app/create/page.tsx` | Content creation hub (8 types) |
+| `src/app/create/*/page.tsx` | Individual creation forms (discussion, poll, article, review, longread, bracket, test, trivia) |
+| `src/components/ui/AuthButtons.tsx` | Client auth buttons (login/register or user menu) |
+| `src/components/ui/CreateForm.tsx` | Reusable creation form component |
 | `src/components/ui/Logo.tsx` | SceneIt SVG logo with amber→violet gradient |
 | `src/components/ui/AnimatedSection.tsx` | Scroll-triggered animation wrapper |
 | `src/components/sections/Hero.tsx` | Large centered logo (colorful gradient), parallax, staggered entrance |
@@ -77,3 +88,4 @@
 | 2026-03-21 | Added Riot Reel forums: /forums/discussions and /forums/votes with search, sort filters, category chips; /forums shows weekly highlights |
 | 2026-03-21 | Added Flick Feed sections: /news/articles, /news/reviews, /news/longreads with search, sort, genre/category filters; /news shows weekly highlights; reviews include star ratings |
 | 2026-03-21 | Added Binge Buddy quiz sections: /quizzes/brackets (head-to-head tournaments), /quizzes/tests (personality quizzes with multiple results), /quizzes/trivia (knowledge tests with scores); all with search, sort, category filters; /quizzes shows weekly highlights |
+| 2026-03-21 | Added database (SQLite + Drizzle ORM), user auth (register/login/logout with cookie sessions), content creation (/create with 8 form types), Header shows auth state |
