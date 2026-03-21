@@ -28,8 +28,8 @@ export function Header() {
       }}
     >
       <div className="max-w-7xl mx-auto px-6 h-16 flex items-center justify-between">
-        <Link href="/#hero" className="text-white hover:text-amber-400 transition-colors duration-300">
-          <Logo className="w-20 sm:w-24 h-auto" />
+        <Link href="/#hero" className="group text-neutral-500 transition-colors duration-300">
+          <Logo className="w-16 sm:w-20 h-auto" />
         </Link>
 
         <nav className="hidden md:flex items-center gap-8">

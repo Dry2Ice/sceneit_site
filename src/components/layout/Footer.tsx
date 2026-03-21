@@ -6,7 +6,9 @@ export function Footer() {
     <footer className="relative bg-[#050507] border-t border-neutral-800/30 py-16">
       <div className="max-w-6xl mx-auto px-6">
         <div className="flex flex-col items-center text-center gap-8">
-          <Logo className="w-32 h-auto opacity-30" />
+          <div className="group text-neutral-600 cursor-pointer transition-colors duration-300">
+            <Logo className="w-32 h-auto" />
+          </div>
 
           <div className="flex items-center gap-8">
             <Link href="/#sections" className="text-xs tracking-widest uppercase text-neutral-600 hover:text-neutral-400 transition-colors">
