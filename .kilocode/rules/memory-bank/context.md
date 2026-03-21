@@ -27,11 +27,15 @@
 | `src/app/forums/page.tsx` | Riot Reel main — weekly highlights of discussions & polls |
 | `src/app/forums/discussions/page.tsx` | Discussions list with search, sort (popular/newest/discussed), category filters |
 | `src/app/forums/votes/page.tsx` | Polls list with search, sort (popular/newest/most-voted), category filters |
-| `src/app/news/page.tsx` | Flick Feed section page — rose gradient, centered SVG logo |
+| `src/app/news/page.tsx` | Flick Feed main — weekly highlights of news, reviews, longreads |
+| `src/app/news/articles/page.tsx` | News list with search, sort (popular/newest/discussed), category filters |
+| `src/app/news/reviews/page.tsx` | Reviews list with search, sort (popular/newest/highest-rated), genre filters, star ratings |
+| `src/app/news/longreads/page.tsx` | Longreads list with search, sort (popular/newest/longest), category filters |
 | `src/app/quizzes/page.tsx` | Binge Buddy section page — amber gradient, centered SVG logo |
 | `src/app/layout.tsx` | Root layout + Header + Footer |
 | `src/app/globals.css` | Tailwind, animations, scrollbar |
 | `src/data/forums.ts` | Mock data for discussions and polls with helper functions |
+| `src/data/flickfeed.ts` | Mock data for news articles, reviews, and longreads with helper functions |
 | `src/components/ui/Logo.tsx` | SceneIt SVG logo with amber→violet gradient |
 | `src/components/ui/AnimatedSection.tsx` | Scroll-triggered animation wrapper |
 | `src/components/sections/Hero.tsx` | Large centered logo (colorful gradient), parallax, staggered entrance |
@@ -67,3 +71,4 @@
 | 2026-03-21 | Created section pages (/forums, /news, /quizzes) with centered SVG logos; updated navigation to use `<Link>` components |
 | 2026-03-21 | Removed scroll-driven logo animation from Header; added amber→violet gradient fill to Logo component |
 | 2026-03-21 | Added Riot Reel forums: /forums/discussions and /forums/votes with search, sort filters, category chips; /forums shows weekly highlights |
+| 2026-03-21 | Added Flick Feed sections: /news/articles, /news/reviews, /news/longreads with search, sort, genre/category filters; /news shows weekly highlights; reviews include star ratings |
