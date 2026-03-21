@@ -4,7 +4,7 @@ import { useState, useEffect } from "react";
 import Link from "next/link";
 import { Logo } from "@/components/ui/Logo";
 
-export function Header() {
+export function Header({ authSlot }: { authSlot?: React.ReactNode }) {
   const [menuOpen, setMenuOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);
 
@@ -45,15 +45,7 @@ export function Header() {
           <Link href="/quizzes" className="text-[10px] tracking-[0.25em] uppercase text-neutral-600 hover:text-amber-400 transition-colors duration-300">
             Quizzes
           </Link>
-          <Link href="/#founders" className="text-[10px] tracking-[0.25em] uppercase text-neutral-600 hover:text-white transition-colors duration-300">
-            Team
-          </Link>
-          <Link
-            href="/#register"
-            className="px-5 py-2 border text-[10px] tracking-[0.25em] uppercase font-medium rounded-lg transition-all duration-300 bg-amber-500/10 hover:bg-amber-500/20 text-amber-400 border-amber-500/20 hover:border-amber-500/40"
-          >
-            Join
-          </Link>
+          {authSlot}
         </nav>
 
         <button
@@ -85,12 +77,9 @@ export function Header() {
           <Link onClick={() => setMenuOpen(false)} href="/quizzes" className="block text-[10px] tracking-[0.25em] uppercase text-neutral-500 hover:text-amber-400 transition-colors">
             Quizzes
           </Link>
-          <Link onClick={() => setMenuOpen(false)} href="/#founders" className="block text-[10px] tracking-[0.25em] uppercase text-neutral-500 hover:text-white transition-colors">
-            Team
-          </Link>
-          <Link onClick={() => setMenuOpen(false)} href="/#register" className="block text-center px-5 py-2.5 bg-amber-500/10 text-amber-400 border border-amber-500/20 text-[10px] tracking-[0.25em] uppercase font-medium rounded-lg">
-            Join
-          </Link>
+          <div onClick={() => setMenuOpen(false)}>
+            {authSlot}
+          </div>
         </div>
       )}
     </header>
