@@ -69,7 +69,7 @@ export default function ForumsPage() {
 
         <div className="w-16 h-px mx-auto mb-6" style={{ background: "linear-gradient(90deg, transparent, #a78bfa, transparent)" }} />
 
-        <p className="text-center text-[10px] tracking-[0.4em] uppercase mb-3" style={{ color: "#a78bfa", opacity: 0.6 }}>
+        <p className="text-center text-[10px] tracking-[0.4em] uppercase mb-10" style={{ color: "#a78bfa", opacity: 0.6 }}>
           Where Opinions Collide
         </p>
 

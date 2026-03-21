@@ -44,7 +44,7 @@ export default function NewsPage() {
 
         <div className="w-16 h-px mx-auto mb-6" style={{ background: "linear-gradient(90deg, transparent, #fb7185, transparent)" }} />
 
-        <p className="text-center text-[10px] tracking-[0.4em] uppercase mb-3" style={{ color: "#fb7185", opacity: 0.6 }}>Your Cinema Intelligence</p>
+        <p className="text-center text-[10px] tracking-[0.4em] uppercase mb-10" style={{ color: "#fb7185", opacity: 0.6 }}>Your Cinema Intelligence</p>
 
         {/* Section cards */}
         <div className="grid grid-cols-1 sm:grid-cols-3 gap-4 mb-16" style={{ animation: "fadeInUp 1s 0.3s ease-out both" }}>
