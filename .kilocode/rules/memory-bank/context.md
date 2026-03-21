@@ -16,22 +16,27 @@
 - [x] **Registration**: Form with success state animation
 - [x] AnimatedSection utility (Intersection Observer for scroll reveals)
 - [x] Custom scrollbar, selection color, CSS keyframe animations
+- [x] **Section pages**: /forums (Riot Reel), /news (Flick Feed), /quizzes (Binge Buddy) — each with centered SVG logo, section-themed gradient background, ambient glow, tagline, description, and "Coming Soon" badge
+- [x] **Navigation**: Header and Footer updated with `<Link>` to section pages; Sections.tsx "Enter" links route to dedicated pages
 
 ## Current Structure
 
 | File | Purpose |
 |------|---------|
 | `src/app/page.tsx` | Home page — Hero, Sections, Founders, Registration |
+| `src/app/forums/page.tsx` | Riot Reel section page — violet gradient, centered SVG logo |
+| `src/app/news/page.tsx` | Flick Feed section page — rose gradient, centered SVG logo |
+| `src/app/quizzes/page.tsx` | Binge Buddy section page — amber gradient, centered SVG logo |
 | `src/app/layout.tsx` | Root layout + Header + Footer |
 | `src/app/globals.css` | Tailwind, animations, scrollbar |
 | `src/components/ui/Logo.tsx` | SceneIt SVG logo |
 | `src/components/ui/AnimatedSection.tsx` | Scroll-triggered animation wrapper |
 | `src/components/sections/Hero.tsx` | Large centered logo, parallax, staggered entrance |
-| `src/components/sections/Sections.tsx` | Three expandable section strips (client component) |
+| `src/components/sections/Sections.tsx` | Three expandable section strips with links to dedicated pages |
 | `src/components/sections/Founders.tsx` | Two interactive founder photo cards (client component) |
 | `src/components/sections/Registration.tsx` | Registration form |
-| `src/components/layout/Header.tsx` | Scroll-aware logo transition (center→top-left) |
-| `src/components/layout/Footer.tsx` | Minimal footer |
+| `src/components/layout/Header.tsx` | Scroll-aware logo transition; nav links to /forums, /news, /quizzes |
+| `src/components/layout/Footer.tsx` | Footer with links to section pages |
 
 ## Key Interaction Patterns
 
@@ -56,3 +61,4 @@
 | 2026-03-20 | Built КиноМир main page |
 | 2026-03-20 | Full redesign to SceneIt — AAA cinematic, SVG logos, animations |
 | 2026-03-20 | Large hero logo, scroll-transition header, expandable sections, interactive founder toggle |
+| 2026-03-21 | Created section pages (/forums, /news, /quizzes) with centered SVG logos; updated navigation to use `<Link>` components |

@@ -1,3 +1,4 @@
+import Link from "next/link";
 import { Logo } from "@/components/ui/Logo";
 
 export function Footer() {
@@ -8,15 +9,24 @@ export function Footer() {
           <Logo className="w-32 h-auto text-neutral-700" />
 
           <div className="flex items-center gap-8">
-            <a href="#sections" className="text-xs tracking-widest uppercase text-neutral-600 hover:text-neutral-400 transition-colors">
+            <Link href="/#sections" className="text-xs tracking-widest uppercase text-neutral-600 hover:text-neutral-400 transition-colors">
               Sections
-            </a>
-            <a href="#founders" className="text-xs tracking-widest uppercase text-neutral-600 hover:text-neutral-400 transition-colors">
+            </Link>
+            <Link href="/forums" className="text-xs tracking-widest uppercase text-neutral-600 hover:text-neutral-400 transition-colors">
+              Forums
+            </Link>
+            <Link href="/news" className="text-xs tracking-widest uppercase text-neutral-600 hover:text-neutral-400 transition-colors">
+              News
+            </Link>
+            <Link href="/quizzes" className="text-xs tracking-widest uppercase text-neutral-600 hover:text-neutral-400 transition-colors">
+              Quizzes
+            </Link>
+            <Link href="/#founders" className="text-xs tracking-widest uppercase text-neutral-600 hover:text-neutral-400 transition-colors">
               Team
-            </a>
-            <a href="#register" className="text-xs tracking-widest uppercase text-neutral-600 hover:text-neutral-400 transition-colors">
+            </Link>
+            <Link href="/#register" className="text-xs tracking-widest uppercase text-neutral-600 hover:text-neutral-400 transition-colors">
               Join
-            </a>
+            </Link>
           </div>
 
           <div className="w-16 h-px bg-neutral-800/50" />

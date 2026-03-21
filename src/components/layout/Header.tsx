@@ -1,6 +1,7 @@
 "use client";
 
 import { useState, useEffect, useRef, useCallback } from "react";
+import Link from "next/link";
 import { Logo } from "@/components/ui/Logo";
 
 function easeInOutCubic(t: number): number {
@@ -59,9 +60,9 @@ export function Header() {
     <>
       {/* Floating animated logo */}
       {logoRect && (
-        <a href="#hero" style={logoStyle} className="text-white hover:text-amber-400 transition-colors duration-300">
+        <Link href="/#hero" style={logoStyle} className="text-white hover:text-amber-400 transition-colors duration-300">
           <Logo className="w-20 sm:w-24 h-auto" />
-        </a>
+        </Link>
       )}
 
       <header
@@ -84,18 +85,27 @@ export function Header() {
             className="hidden md:flex items-center gap-8"
             style={{ opacity: showHeader ? 1 : 0, transition: "opacity 0.5s ease" }}
           >
-            <a href="#sections" className="text-[10px] tracking-[0.25em] uppercase text-neutral-600 hover:text-white transition-colors duration-300">
+            <Link href="/#sections" className="text-[10px] tracking-[0.25em] uppercase text-neutral-600 hover:text-white transition-colors duration-300">
               Sections
-            </a>
-            <a href="#founders" className="text-[10px] tracking-[0.25em] uppercase text-neutral-600 hover:text-white transition-colors duration-300">
+            </Link>
+            <Link href="/forums" className="text-[10px] tracking-[0.25em] uppercase text-neutral-600 hover:text-violet-400 transition-colors duration-300">
+              Forums
+            </Link>
+            <Link href="/news" className="text-[10px] tracking-[0.25em] uppercase text-neutral-600 hover:text-rose-400 transition-colors duration-300">
+              News
+            </Link>
+            <Link href="/quizzes" className="text-[10px] tracking-[0.25em] uppercase text-neutral-600 hover:text-amber-400 transition-colors duration-300">
+              Quizzes
+            </Link>
+            <Link href="/#founders" className="text-[10px] tracking-[0.25em] uppercase text-neutral-600 hover:text-white transition-colors duration-300">
               Team
-            </a>
-            <a
-              href="#register"
+            </Link>
+            <Link
+              href="/#register"
               className="px-5 py-2 border text-[10px] tracking-[0.25em] uppercase font-medium rounded-lg transition-all duration-300 bg-amber-500/10 hover:bg-amber-500/20 text-amber-400 border-amber-500/20 hover:border-amber-500/40"
             >
               Join
-            </a>
+            </Link>
           </nav>
 
           <button
@@ -116,15 +126,24 @@ export function Header() {
 
         {menuOpen && (
           <div className="md:hidden bg-[#07070a]/95 backdrop-blur-xl border-t border-neutral-800/30 px-6 py-6 space-y-4">
-            <a onClick={() => setMenuOpen(false)} href="#sections" className="block text-[10px] tracking-[0.25em] uppercase text-neutral-500 hover:text-white transition-colors">
+            <Link onClick={() => setMenuOpen(false)} href="/#sections" className="block text-[10px] tracking-[0.25em] uppercase text-neutral-500 hover:text-white transition-colors">
               Sections
-            </a>
-            <a onClick={() => setMenuOpen(false)} href="#founders" className="block text-[10px] tracking-[0.25em] uppercase text-neutral-500 hover:text-white transition-colors">
+            </Link>
+            <Link onClick={() => setMenuOpen(false)} href="/forums" className="block text-[10px] tracking-[0.25em] uppercase text-neutral-500 hover:text-violet-400 transition-colors">
+              Forums
+            </Link>
+            <Link onClick={() => setMenuOpen(false)} href="/news" className="block text-[10px] tracking-[0.25em] uppercase text-neutral-500 hover:text-rose-400 transition-colors">
+              News
+            </Link>
+            <Link onClick={() => setMenuOpen(false)} href="/quizzes" className="block text-[10px] tracking-[0.25em] uppercase text-neutral-500 hover:text-amber-400 transition-colors">
+              Quizzes
+            </Link>
+            <Link onClick={() => setMenuOpen(false)} href="/#founders" className="block text-[10px] tracking-[0.25em] uppercase text-neutral-500 hover:text-white transition-colors">
               Team
-            </a>
-            <a onClick={() => setMenuOpen(false)} href="#register" className="block text-center px-5 py-2.5 bg-amber-500/10 text-amber-400 border border-amber-500/20 text-[10px] tracking-[0.25em] uppercase font-medium rounded-lg">
+            </Link>
+            <Link onClick={() => setMenuOpen(false)} href="/#register" className="block text-center px-5 py-2.5 bg-amber-500/10 text-amber-400 border border-amber-500/20 text-[10px] tracking-[0.25em] uppercase font-medium rounded-lg">
               Join
-            </a>
+            </Link>
           </div>
         )}
       </header>
