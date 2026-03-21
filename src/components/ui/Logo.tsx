@@ -1,4 +1,4 @@
-export function Logo({ className = "" }: { className?: string }) {
+export function Logo({ className = "", colorful = false }: { className?: string; colorful?: boolean }) {
   return (
     <svg
       className={className}
@@ -16,7 +16,7 @@ export function Logo({ className = "" }: { className?: string }) {
       </defs>
 
       {/* Gray base layer */}
-      <g fill="currentColor">
+      <g fill="currentColor" style={colorful ? { display: "none" } : undefined}>
         <path
           d="M242.3,26.89l-.48.17c-9.67,3.37-16.11,6.72-24.23,13L158.03,0v103.2l80.95-50.96-11.48-8.05-.34-.55c5.55-7.12,9.08-10.6,15.37-16.33l-.23-.38v-.04Z"
           opacity="0.6"
@@ -31,8 +31,11 @@ export function Logo({ className = "" }: { className?: string }) {
         <path d="M74.19,46.36h4.09v-8.68c0-1.6-.26-2.37-1.96-2.37h-.17c-1.5,0-1.96.77-1.96,2.37v8.68h0ZM90.15,54.1h-15.96v11.88c0,1.61.94,2.78,2.36,2.78,1.5,0,2.37-1.17,2.37-3.02v-7.48h11.23v7.72c0,8.71-2.88,11.28-11.45,11.28h-4.2c-7.86,0-11.5-1.85-11.5-11.11v-28.65c0-8.57,2.72-11.29,11.5-11.29h4.01c8.58,0,11.64,2.22,11.64,11.25v16.64h0Z" />
       </g>
 
-      {/* Colorful gradient layer — visible on hover via group-hover */}
-      <g fill="url(#logoGrad)" className="opacity-0 group-hover:opacity-100 transition-opacity duration-500">
+      {/* Colorful gradient layer */}
+      <g
+        fill="url(#logoGrad)"
+        className={colorful ? undefined : "opacity-0 group-hover:opacity-100 transition-opacity duration-500"}
+      >
         <path
           d="M242.3,26.89l-.48.17c-9.67,3.37-16.11,6.72-24.23,13L158.03,0v103.2l80.95-50.96-11.48-8.05-.34-.55c5.55-7.12,9.08-10.6,15.37-16.33l-.23-.38v-.04Z"
           opacity="0.7"
