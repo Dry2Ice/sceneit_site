@@ -26,9 +26,34 @@ export default async function Home() {
         subdescription={tr.hero.subdescription}
         scroll={tr.hero.scroll}
       />
-      <Sections />
-      <Founders />
-      <Registration />
+      <Sections
+        t={{
+          heading: tr.sections.heading,
+          enter: tr.sections.riotReel.enter.split(" Riot Reel")[0] || "Enter",
+          sections: [
+            {
+              tagline: tr.sections.riotReel.tagline,
+              description: tr.sections.riotReel.description,
+              expandedDescription: tr.sections.riotReel.description,
+              features: tr.sections.riotReel.features,
+            },
+            {
+              tagline: tr.sections.flickFeed.tagline,
+              description: tr.sections.flickFeed.description,
+              expandedDescription: tr.sections.flickFeed.description,
+              features: tr.sections.flickFeed.features,
+            },
+            {
+              tagline: tr.sections.bingeBuddy.tagline,
+              description: tr.sections.bingeBuddy.description,
+              expandedDescription: tr.sections.bingeBuddy.description,
+              features: tr.sections.bingeBuddy.features,
+            },
+          ],
+        }}
+      />
+      <Founders t={{ heading: tr.founders.heading, subtitle: tr.founders.subtitle }} />
+      <Registration t={{ heading: tr.registration.heading, subtitle: tr.registration.subtitle, name: tr.registration.name, namePlaceholder: tr.registration.namePlaceholder, email: tr.registration.email, password: tr.registration.password, passwordPlaceholder: tr.registration.passwordPlaceholder, createAccount: tr.registration.createAccount, join: tr.registration.join, successTitle: tr.registration.successTitle, successMsg: tr.registration.successMsg }} />
     </main>
   );
 }

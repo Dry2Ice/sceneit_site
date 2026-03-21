@@ -24,7 +24,7 @@ const founders = [
   },
 ];
 
-export function Founders() {
+export function Founders({ t = { heading: "The Founders", subtitle: "The minds behind the screen" } }: { t?: { heading: string; subtitle: string } }) {
   const [activeFounder, setActiveFounder] = useState<number | null>(null);
 
   const handleFounderClick = (index: number) => {
@@ -43,15 +43,15 @@ export function Founders() {
           <div className="text-center mb-16">
             <div className="flex items-center justify-center gap-3 mb-5">
               <div className="w-6 h-px bg-amber-500/20" />
-              <span className="text-[9px] tracking-[0.4em] uppercase text-amber-500/50">The Founders</span>
+              <span className="text-[9px] tracking-[0.4em] uppercase text-amber-500/50">{t.heading}</span>
               <div className="w-6 h-px bg-amber-500/20" />
             </div>
-            <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold text-white mb-4 tracking-tight">
-              Built by Cinephiles
-            </h2>
-            <p className="text-neutral-600 max-w-md mx-auto text-sm">
-              Two passionate minds united by a shared obsession with cinema.
-            </p>
+              <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold text-white mb-4 tracking-tight">
+                {t.heading}
+              </h2>
+              <p className="text-neutral-600 max-w-md mx-auto text-sm">
+                {t.subtitle}
+              </p>
           </div>
         </AnimatedSection>
 

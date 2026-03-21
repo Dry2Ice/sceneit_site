@@ -35,6 +35,7 @@ export const en = {
       description:
         "A battleground for cinephile discourse. Debate the greatest directors, argue over controversial rankings, and cast your vote in polls that shape the community canon.",
       enter: "Enter Riot Reel",
+      features: ["Heated Film Debates", "Community Polls & Rankings", "Director Showdowns", "Cult Classic Revivals"],
     },
     flickFeed: {
       name: "Flick Feed",
@@ -42,6 +43,7 @@ export const en = {
       description:
         "A curated stream of cinematic knowledge. Deep-dive reviews from seasoned critics, breaking industry news, and retrospectives that illuminate cinema history.",
       enter: "Enter Flick Feed",
+      features: ["Expert Deep Reviews", "Breaking Film News", "Festival Coverage", "Retrospective Archives"],
     },
     bingeBuddy: {
       name: "Binge Buddy",
@@ -49,6 +51,7 @@ export const en = {
       description:
         "The ultimate playground for movie trivia fanatics. From frame-guessing challenges to deep-cut director quizzes, prove your cinematic knowledge.",
       enter: "Enter Binge Buddy",
+      features: ["Frame-by-Frame Challenges", "Genre Master Quizzes", "Weekly Tournaments", "Global Leaderboards"],
     },
   },
   // Forums
@@ -197,11 +200,20 @@ export const en = {
   },
   // Registration section on home
   registration: {
-    heading: "Join the Community",
-    subtitle: "Be among the first to experience SceneIt",
-    emailPlaceholder: "Enter your email",
-    joinWaitlist: "Join the Waitlist",
-    success: "Welcome aboard!",
+    heading: "Be Among the First",
+    subtitle: "Early members get exclusive access to beta features, founding member badges, and a permanent place in SceneIt history.",
+    name: "Name",
+    namePlaceholder: "Your name",
+    email: "Email",
+    password: "Password",
+    passwordPlaceholder: "Min. 8 characters",
+    createAccount: "Create Account",
+    join: "Join",
+    successTitle: "Welcome to the Scene",
+    successMsg: "Check your inbox — confirmation sent to",
+    emailPlaceholder: "your@email.com",
+    joinWaitlist: "Create Account",
+    success: "Welcome to the Scene",
     successMessage: "You're on the list. We'll notify you when SceneIt launches.",
   },
   // Footer

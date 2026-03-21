@@ -60,7 +60,7 @@ const sections = [
   },
 ];
 
-function SectionBlock({ section, index }: { section: (typeof sections)[0]; index: number }) {
+function SectionBlock({ section, index, enterLabel, sectionT }: { section: (typeof sections)[0]; index: number; enterLabel: string; sectionT?: { tagline: string; description: string; expandedDescription: string; features: string[] } }) {
   const [expanded, setExpanded] = useState(false);
 
   return (
@@ -110,7 +110,7 @@ function SectionBlock({ section, index }: { section: (typeof sections)[0]; index
 
               <div>
                 <p className="text-[9px] tracking-[0.3em] uppercase mb-1" style={{ color: section.accentColor, opacity: 0.6 }}>
-                  {section.tagline}
+                  {sectionT?.tagline || section.tagline}
                 </p>
                 <h3 className="text-2xl sm:text-3xl md:text-4xl font-bold text-white tracking-tight">
                   {section.name}
@@ -140,7 +140,7 @@ function SectionBlock({ section, index }: { section: (typeof sections)[0]; index
 
           {/* Short description — always visible */}
           <p className="text-neutral-400/80 text-sm sm:text-base mt-4 max-w-2xl">
-            {section.description}
+            {sectionT?.description || section.description}
           </p>
         </div>
 
@@ -158,7 +158,7 @@ function SectionBlock({ section, index }: { section: (typeof sections)[0]; index
               {/* Extended description */}
               <div>
                 <p className="text-neutral-300 text-sm sm:text-base leading-relaxed">
-                  {section.expandedDescription}
+                  {sectionT?.expandedDescription || section.expandedDescription}
                 </p>
 
                 <a
@@ -175,13 +175,13 @@ function SectionBlock({ section, index }: { section: (typeof sections)[0]; index
                       <path strokeLinecap="round" strokeLinejoin="round" d="M13.5 4.5L21 12m0 0l-7.5 7.5M21 12H3" />
                     </svg>
                   </span>
-                  Enter {section.name}
+                  {enterLabel} {section.name}
                 </a>
               </div>
 
               {/* Feature cards */}
               <div className="grid grid-cols-2 gap-3">
-                {section.features.map((feature, i) => (
+                {(sectionT?.features || section.features).map((feature, i) => (
                   <div
                     key={i}
                     className="group/feature relative bg-white/[0.03] backdrop-blur-sm rounded-xl p-4 sm:p-5 border transition-all duration-500 hover:bg-white/[0.06] hover:-translate-y-0.5"
@@ -211,7 +211,20 @@ function SectionBlock({ section, index }: { section: (typeof sections)[0]; index
   );
 }
 
-export function Sections() {
+interface SectionsProps {
+  t: {
+    heading: string;
+    enter: string; // "Enter" prefix, e.g. "Enter" / "Войти в"
+    sections: {
+      tagline: string;
+      description: string;
+      expandedDescription: string;
+      features: string[];
+    }[];
+  };
+}
+
+export function Sections({ t }: SectionsProps) {
   return (
     <section id="sections" className="relative">
       {/* Section divider */}
@@ -221,7 +234,7 @@ export function Sections() {
           <AnimatedSection>
             <div className="flex items-center gap-3">
               <div className="w-6 h-px bg-neutral-700" />
-              <span className="text-[9px] tracking-[0.4em] uppercase text-neutral-600">Sections</span>
+              <span className="text-[9px] tracking-[0.4em] uppercase text-neutral-600">{t.heading}</span>
               <div className="w-6 h-px bg-neutral-700" />
             </div>
           </AnimatedSection>
@@ -231,7 +244,7 @@ export function Sections() {
       <div>
         {sections.map((section, index) => (
           <AnimatedSection key={index} delay={index * 100}>
-            <SectionBlock section={section} index={index} />
+            <SectionBlock section={section} index={index} enterLabel={t.enter} sectionT={t.sections[index]} />
           </AnimatedSection>
         ))}
       </div>

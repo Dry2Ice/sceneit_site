@@ -3,7 +3,7 @@
 import { useState } from "react";
 import { AnimatedSection } from "@/components/ui/AnimatedSection";
 
-export function Registration() {
+export function Registration({ t = { heading: "Be Among the First", subtitle: "Early members get exclusive access to beta features, founding member badges, and a permanent place in SceneIt history.", name: "Name", namePlaceholder: "Your name", email: "Email", password: "Password", passwordPlaceholder: "Min. 8 characters", createAccount: "Create Account", join: "Join", successTitle: "Welcome to the Scene", successMsg: "Check your inbox — confirmation sent to" } }: { t?: { heading: string; subtitle: string; name: string; namePlaceholder: string; email: string; password: string; passwordPlaceholder: string; createAccount: string; join: string; successTitle: string; successMsg: string } }) {
   const [email, setEmail] = useState("");
   const [name, setName] = useState("");
   const [submitted, setSubmitted] = useState(false);
@@ -27,15 +27,14 @@ export function Registration() {
           <div className="text-center mb-12">
             <div className="flex items-center justify-center gap-3 mb-6">
               <div className="w-8 h-px bg-amber-500/30" />
-              <span className="text-[10px] tracking-[0.4em] uppercase text-amber-500/60">Join</span>
+              <span className="text-[10px] tracking-[0.4em] uppercase text-amber-500/60">{t.join}</span>
               <div className="w-8 h-px bg-amber-500/30" />
             </div>
             <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold text-white mb-4 tracking-tight">
-              Be Among the First
+              {t.heading}
             </h2>
             <p className="text-neutral-500 text-sm sm:text-base max-w-md mx-auto">
-              Early members get exclusive access to beta features, founding member badges,
-              and a permanent place in SceneIt history.
+              {t.subtitle}
             </p>
           </div>
         </AnimatedSection>
@@ -48,9 +47,9 @@ export function Registration() {
                   <path strokeLinecap="round" strokeLinejoin="round" d="M4.5 12.75l6 6 9-13.5" />
                 </svg>
               </div>
-              <h3 className="text-2xl font-bold text-white mb-2">Welcome to the Scene</h3>
+              <h3 className="text-2xl font-bold text-white mb-2">{t.successTitle}</h3>
               <p className="text-neutral-400 text-sm">
-                Check your inbox — confirmation sent to{" "}
+                {t.successMsg}{" "}
                 <span className="text-amber-400">{email}</span>
               </p>
             </div>
@@ -70,7 +69,7 @@ export function Registration() {
                     required
                     value={name}
                     onChange={(e) => setName(e.target.value)}
-                    placeholder="Your name"
+                    placeholder={t.namePlaceholder}
                     className="w-full px-4 py-3 bg-white/[0.03] border border-neutral-800 rounded-xl text-white placeholder-neutral-600 text-sm focus:outline-none focus:border-amber-500/40 focus:ring-1 focus:ring-amber-500/20 transition-all duration-300"
                   />
                 </div>
@@ -108,7 +107,7 @@ export function Registration() {
                 type="submit"
                 className="group relative w-full mt-8 py-3.5 bg-gradient-to-r from-amber-500 to-yellow-500 text-neutral-950 font-semibold rounded-xl overflow-hidden transition-all duration-500 hover:shadow-[0_0_50px_rgba(212,168,83,0.3)] hover:scale-[1.02]"
               >
-                <span className="relative z-10 text-sm tracking-wide">Create Account</span>
+                <span className="relative z-10 text-sm tracking-wide">{t.createAccount}</span>
                 <div className="absolute inset-0 bg-gradient-to-r from-yellow-400 to-amber-400 opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
               </button>
 
