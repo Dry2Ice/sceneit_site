@@ -48,12 +48,11 @@ export default function ForumsPage() {
         </Link>
 
         {/* Hero logo */}
-        <div className="w-full max-w-2xl mx-auto mb-10" style={{ animation: "fadeInUp 1s ease-out both" }}>
+        <div className="w-full max-w-2xl mx-auto mb-10 flex justify-center" style={{ animation: "fadeInUp 1s ease-out both" }}>
           <svg
             viewBox="0 0 1761.72 516.42"
             xmlns="http://www.w3.org/2000/svg"
-            className="w-full h-auto"
-            style={{ filter: "drop-shadow(0 0 40px rgba(167, 139, 250, 0.3))" }}
+            style={{ filter: "drop-shadow(0 0 40px rgba(167, 139, 250, 0.3))", height: "190px", width: "auto" }}
           >
             <defs>
               <style>{`.cls-1-forums { font-family: Molot, sans-serif; font-size: 428.75px; }`}</style>
