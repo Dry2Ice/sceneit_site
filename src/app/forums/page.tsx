@@ -75,44 +75,24 @@ export default function ForumsPage() {
 
         {/* Section cards */}
         <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 mb-16" style={{ animation: "fadeInUp 1s 0.3s ease-out both" }}>
-          <Link
-            href="/forums/discussions"
-            className="group relative bg-white/[0.03] border border-neutral-800/30 rounded-xl p-6 transition-all duration-500 hover:bg-white/[0.06] hover:border-violet-500/20"
-          >
-            <div className="flex items-center gap-4">
-              <div className="w-12 h-12 rounded-lg bg-violet-500/10 border border-violet-500/15 flex items-center justify-center transition-colors group-hover:bg-violet-500/20">
-                <svg className="w-5 h-5 text-violet-400" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={1.5}>
-                  <path strokeLinecap="round" strokeLinejoin="round" d="M12 20.25c4.97 0 9-3.694 9-8.25s-4.03-8.25-9-8.25S3 7.444 3 12c0 2.104.859 4.023 2.273 5.48.432.447.74 1.04.586 1.641a4.483 4.483 0 01-.923 1.785A5.969 5.969 0 006 21c1.282 0 2.47-.402 3.445-1.087.81.22 1.668.337 2.555.337z" />
-                </svg>
-              </div>
-              <div>
-                <h3 className="text-base font-semibold text-white/90 group-hover:text-violet-300 transition-colors">Discussions</h3>
-                <p className="text-xs text-neutral-500 mt-0.5">{weekDiscussions.length} active this week</p>
-              </div>
-              <svg className="w-4 h-4 ml-auto text-neutral-600 group-hover:text-violet-400 transition-colors" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
-                <path strokeLinecap="round" strokeLinejoin="round" d="M8.25 4.5l7.5 7.5-7.5 7.5" />
+          <Link href="/forums/discussions" className="group relative bg-white/[0.03] border border-neutral-800/30 rounded-xl p-5 transition-all duration-500 hover:bg-white/[0.06] hover:border-violet-500/20">
+            <div className="w-10 h-10 rounded-lg bg-violet-500/10 border border-violet-500/15 flex items-center justify-center mb-3 transition-colors group-hover:bg-violet-500/20">
+              <svg className="w-4 h-4 text-violet-400" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={1.5}>
+                <path strokeLinecap="round" strokeLinejoin="round" d="M12 20.25c4.97 0 9-3.694 9-8.25s-4.03-8.25-9-8.25S3 7.444 3 12c0 2.104.859 4.023 2.273 5.48.432.447.74 1.04.586 1.641a4.483 4.483 0 01-.923 1.785A5.969 5.969 0 006 21c1.282 0 2.47-.402 3.445-1.087.81.22 1.668.337 2.555.337z" />
               </svg>
             </div>
+            <h3 className="text-sm font-semibold text-white/90 group-hover:text-violet-300 transition-colors">Discussions</h3>
+            <p className="text-[11px] text-neutral-500 mt-1">{weekDiscussions.length} active this week</p>
           </Link>
 
-          <Link
-            href="/forums/votes"
-            className="group relative bg-white/[0.03] border border-neutral-800/30 rounded-xl p-6 transition-all duration-500 hover:bg-white/[0.06] hover:border-violet-500/20"
-          >
-            <div className="flex items-center gap-4">
-              <div className="w-12 h-12 rounded-lg bg-violet-500/10 border border-violet-500/15 flex items-center justify-center transition-colors group-hover:bg-violet-500/20">
-                <svg className="w-5 h-5 text-violet-400" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={1.5}>
-                  <path strokeLinecap="round" strokeLinejoin="round" d="M10.5 6h9.75M10.5 6a1.5 1.5 0 11-3 0m3 0a1.5 1.5 0 10-3 0M3.75 6H7.5m3 12h9.75m-9.75 0a1.5 1.5 0 01-3 0m3 0a1.5 1.5 0 00-3 0m-3.75 0H7.5m9-6h3.75m-3.75 0a1.5 1.5 0 01-3 0m3 0a1.5 1.5 0 00-3 0m-9.75 0h9.75" />
-                </svg>
-              </div>
-              <div>
-                <h3 className="text-base font-semibold text-white/90 group-hover:text-violet-300 transition-colors">Votes & Polls</h3>
-                <p className="text-xs text-neutral-500 mt-0.5">{weekPolls.length} polls this week</p>
-              </div>
-              <svg className="w-4 h-4 ml-auto text-neutral-600 group-hover:text-violet-400 transition-colors" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
-                <path strokeLinecap="round" strokeLinejoin="round" d="M8.25 4.5l7.5 7.5-7.5 7.5" />
+          <Link href="/forums/votes" className="group relative bg-white/[0.03] border border-neutral-800/30 rounded-xl p-5 transition-all duration-500 hover:bg-white/[0.06] hover:border-violet-500/20">
+            <div className="w-10 h-10 rounded-lg bg-violet-500/10 border border-violet-500/15 flex items-center justify-center mb-3 transition-colors group-hover:bg-violet-500/20">
+              <svg className="w-4 h-4 text-violet-400" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={1.5}>
+                <path strokeLinecap="round" strokeLinejoin="round" d="M10.5 6h9.75M10.5 6a1.5 1.5 0 11-3 0m3 0a1.5 1.5 0 10-3 0M3.75 6H7.5m3 12h9.75m-9.75 0a1.5 1.5 0 01-3 0m3 0a1.5 1.5 0 00-3 0m-3.75 0H7.5m9-6h3.75m-3.75 0a1.5 1.5 0 01-3 0m3 0a1.5 1.5 0 00-3 0m-9.75 0h9.75" />
               </svg>
             </div>
+            <h3 className="text-sm font-semibold text-white/90 group-hover:text-violet-300 transition-colors">Votes & Polls</h3>
+            <p className="text-[11px] text-neutral-500 mt-1">{weekPolls.length} polls this week</p>
           </Link>
         </div>
 
