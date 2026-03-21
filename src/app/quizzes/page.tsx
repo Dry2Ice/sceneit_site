@@ -45,7 +45,7 @@ export default function QuizzesPage() {
         </Link>
 
         {/* Logo */}
-        <div className="w-full max-w-3xl mb-10" style={{ animation: "fadeInUp 1s ease-out both" }}>
+        <div className="w-full max-w-2xl mb-10" style={{ animation: "fadeInUp 1s ease-out both" }}>
           <svg
             viewBox="0 0 1761.72 516.42"
             xmlns="http://www.w3.org/2000/svg"
