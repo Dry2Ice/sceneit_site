@@ -35,7 +35,7 @@ export default function NewsPage() {
 
         {/* Hero logo */}
         <div className="w-full max-w-3xl mx-auto mb-10" style={{ animation: "fadeInUp 1s ease-out both" }}>
-          <svg viewBox="0 0 1920 1080" xmlns="http://www.w3.org/2000/svg" className="w-full h-auto" style={{ filter: "drop-shadow(0 0 40px rgba(251, 113, 133, 0.3))" }}>
+          <svg viewBox="0 0 1920 900" xmlns="http://www.w3.org/2000/svg" className="w-full h-auto" style={{ filter: "drop-shadow(0 0 40px rgba(251, 113, 133, 0.3))" }}>
             <defs><style>{`.st1-feed { font-family: 'Geometr706 BlkCn BT', sans-serif; font-size: 461.59px; font-weight: 800; }`}</style></defs>
             <text className="st1-feed" fill="#fb7185" transform="translate(940.99 688.9)"><tspan x="0" y="0">Feed</tspan></text>
             <text className="st1-feed" fill="#fb7185" transform="translate(976.08 688.9) rotate(-180) scale(1 -1)"><tspan x="0" y="0">Flick</tspan></text>
