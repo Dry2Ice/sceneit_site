@@ -2,8 +2,10 @@ import type { Metadata } from "next";
 import { Geist, Geist_Mono } from "next/font/google";
 import { Header } from "@/components/layout/Header";
 import { AuthButtons } from "@/components/ui/AuthButtons";
+import { LangSwitcher } from "@/components/ui/LangSwitcher";
 import { Footer } from "@/components/layout/Footer";
 import { getCurrentUser } from "@/actions/auth";
+import { getLang } from "@/i18n";
 import "./globals.css";
 
 const geistSans = Geist({
@@ -27,17 +29,20 @@ export default async function RootLayout({
 }: Readonly<{
   children: React.ReactNode;
 }>) {
-  const user = await getCurrentUser();
+  const [user, lang] = await Promise.all([getCurrentUser(), getLang()]);
   const userForClient = user ? { id: user.id, username: user.username, avatar: user.avatar } : null;
 
   return (
-    <html lang="en" className="dark">
+    <html lang={lang} className="dark">
       <body
         className={`${geistSans.variable} ${geistMono.variable} font-sans antialiased bg-[#07070a] text-white`}
       >
-        <Header authSlot={<AuthButtons user={userForClient} />} />
+        <Header
+          langSlot={<LangSwitcher currentLang={lang} />}
+          authSlot={<AuthButtons user={userForClient} />}
+        />
         {children}
-        <Footer />
+        <Footer lang={lang} />
       </body>
     </html>
   );

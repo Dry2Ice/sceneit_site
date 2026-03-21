@@ -4,7 +4,7 @@ import { useState, useEffect } from "react";
 import Link from "next/link";
 import { Logo } from "@/components/ui/Logo";
 
-export function Header({ authSlot }: { authSlot?: React.ReactNode }) {
+export function Header({ authSlot, langSlot }: { authSlot?: React.ReactNode; langSlot?: React.ReactNode }) {
   const [menuOpen, setMenuOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);
 
@@ -32,7 +32,7 @@ export function Header({ authSlot }: { authSlot?: React.ReactNode }) {
           <Logo className="w-16 sm:w-20 h-auto" />
         </Link>
 
-        <nav className="hidden md:flex items-center gap-8">
+        <nav className="hidden md:flex items-center gap-6">
           <Link href="/#sections" className="text-[10px] tracking-[0.25em] uppercase text-neutral-600 hover:text-white transition-colors duration-300">
             Sections
           </Link>
@@ -45,6 +45,8 @@ export function Header({ authSlot }: { authSlot?: React.ReactNode }) {
           <Link href="/quizzes" className="text-[10px] tracking-[0.25em] uppercase text-neutral-600 hover:text-amber-400 transition-colors duration-300">
             Quizzes
           </Link>
+          <div className="w-px h-4 bg-neutral-800/50" />
+          {langSlot}
           {authSlot}
         </nav>
 
@@ -77,6 +79,9 @@ export function Header({ authSlot }: { authSlot?: React.ReactNode }) {
           <Link onClick={() => setMenuOpen(false)} href="/quizzes" className="block text-[10px] tracking-[0.25em] uppercase text-neutral-500 hover:text-amber-400 transition-colors">
             Quizzes
           </Link>
+          <div className="flex items-center gap-3 pt-2">
+            {langSlot}
+          </div>
           <div onClick={() => setMenuOpen(false)}>
             {authSlot}
           </div>

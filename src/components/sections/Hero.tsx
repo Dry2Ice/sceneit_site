@@ -3,7 +3,15 @@
 import { useEffect, useState, useRef } from "react";
 import { Logo } from "@/components/ui/Logo";
 
-export function Hero() {
+interface HeroProps {
+  badge: string;
+  tagline: string;
+  description: React.ReactNode;
+  subdescription: string;
+  scroll: string;
+}
+
+export function Hero({ badge, tagline, description, subdescription, scroll }: HeroProps) {
   const [mousePos, setMousePos] = useState({ x: 0, y: 0 });
   const [heroFade, setHeroFade] = useState(1);
   const vhRef = useRef(0);
@@ -72,6 +80,15 @@ export function Hero() {
           top: "10%",
         }}
       />
+      <div
+        className="absolute w-[400px] h-[400px] rounded-full opacity-[0.05] blur-[120px] transition-transform duration-[3000ms] ease-out"
+        style={{
+          background: "radial-gradient(circle, #fb7185 0%, transparent 70%)",
+          transform: `translate(${mousePos.x * 0.8}px, ${mousePos.y * 1.2}px)`,
+          left: "40%",
+          bottom: "10%",
+        }}
+      />
 
       {/* Film strip borders */}
       <div className="absolute left-0 top-0 bottom-0 w-10 sm:w-14 bg-gradient-to-r from-[#07070a] via-[#07070a] to-transparent z-10">
@@ -104,13 +121,23 @@ export function Hero() {
         }}
       />
 
+      {/* Noise texture */}
+      <div
+        className="absolute inset-0 z-[2] pointer-events-none opacity-[0.015]"
+        style={{
+          backgroundImage: `url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E")`,
+          backgroundRepeat: "repeat",
+          backgroundSize: "128px 128px",
+        }}
+      />
+
       {/* Content */}
       <div className="relative z-20 text-center px-6 max-w-4xl mx-auto">
         {/* Badge */}
         <div style={entrance(0.2)} className="mb-10">
           <span className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full border border-amber-500/20 bg-amber-500/5 text-amber-400/70 text-[10px] tracking-[0.3em] uppercase font-medium">
             <span className="w-1 h-1 rounded-full bg-amber-500 animate-pulse" />
-            Coming Soon
+            {badge}
           </span>
         </div>
 
@@ -131,23 +158,20 @@ export function Hero() {
         {/* Tagline */}
         <div style={entrance(1)} className="mb-5">
           <h2 className="text-lg sm:text-xl md:text-2xl text-neutral-300 font-light tracking-wide max-w-2xl mx-auto">
-            Every Frame Tells a Story
+            {tagline}
           </h2>
         </div>
 
         {/* Description */}
         <div style={entrance(1.15)} className="mb-4">
           <p className="text-sm sm:text-base text-neutral-400 max-w-xl mx-auto leading-relaxed">
-            A community-driven platform built for true cinephiles. Dive into three immersive worlds:
-            fierce debates in <span className="text-violet-400 font-medium">Riot Reel</span>,
-            curated reviews and breaking news in <span className="text-rose-400 font-medium">Flick Feed</span>,
-            and cinematic trivia challenges in <span className="text-amber-400 font-medium">Binge Buddy</span>.
+            {description}
           </p>
         </div>
 
         <div style={entrance(1.3)}>
           <p className="text-xs text-neutral-600 max-w-md mx-auto">
-            Discuss, discover, and test your knowledge — all in one place.
+            {subdescription}
           </p>
         </div>
       </div>
@@ -158,7 +182,7 @@ export function Hero() {
       {/* Scroll indicator */}
       <div style={entrance(2)} className="absolute bottom-10 left-1/2 -translate-x-1/2 z-20">
         <div className="flex flex-col items-center gap-2">
-          <span className="text-[9px] text-neutral-700 tracking-[0.3em] uppercase">Scroll</span>
+          <span className="text-[9px] text-neutral-700 tracking-[0.3em] uppercase">{scroll}</span>
           <div className="w-5 h-9 rounded-full border border-neutral-800 flex justify-center pt-2">
             <div className="w-0.5 h-2 rounded-full bg-amber-500/60 animate-bounce" />
           </div>

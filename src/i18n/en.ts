@@ -1,0 +1,218 @@
+export const en = {
+  // Navigation
+  nav: {
+    sections: "Sections",
+    forums: "Forums",
+    news: "News",
+    quizzes: "Quizzes",
+    team: "Team",
+    join: "Join",
+    signIn: "Sign In",
+    create: "Create",
+    signOut: "Sign Out",
+    back: "Back",
+    home: "Home",
+    viewAll: "View all",
+  },
+  // Hero
+  hero: {
+    badge: "Coming Soon",
+    tagline: "Every Frame Tells a Story",
+    description:
+      "A community-driven platform built for true cinephiles. Dive into three immersive worlds: fierce debates in {riot}, curated reviews and breaking news in {flick}, and cinematic trivia challenges in {binge}.",
+    subdescription: "Discuss, discover, and test your knowledge — all in one place.",
+    scroll: "Scroll",
+    riotReel: "Riot Reel",
+    flickFeed: "Flick Feed",
+    bingeBuddy: "Binge Buddy",
+  },
+  // Sections overview
+  sections: {
+    heading: "Sections",
+    riotReel: {
+      name: "Riot Reel",
+      tagline: "Where Opinions Collide",
+      description:
+        "A battleground for cinephile discourse. Debate the greatest directors, argue over controversial rankings, and cast your vote in polls that shape the community canon.",
+      enter: "Enter Riot Reel",
+    },
+    flickFeed: {
+      name: "Flick Feed",
+      tagline: "Your Cinema Intelligence",
+      description:
+        "A curated stream of cinematic knowledge. Deep-dive reviews from seasoned critics, breaking industry news, and retrospectives that illuminate cinema history.",
+      enter: "Enter Flick Feed",
+    },
+    bingeBuddy: {
+      name: "Binge Buddy",
+      tagline: "Test Your Film IQ",
+      description:
+        "The ultimate playground for movie trivia fanatics. From frame-guessing challenges to deep-cut director quizzes, prove your cinematic knowledge.",
+      enter: "Enter Binge Buddy",
+    },
+  },
+  // Forums
+  forums: {
+    tagline: "Where Opinions Collide",
+    discussions: "Discussions",
+    votesPolls: "Votes & Polls",
+    activeThisWeek: "active this week",
+    pollsThisWeek: "polls this week",
+    popularDiscussions: "Popular Discussions This Week",
+    newestDiscussions: "Newest Discussions This Week",
+    popularPolls: "Popular Polls This Week",
+    newestPolls: "Newest Polls This Week",
+    likes: "likes",
+    replies: "replies",
+    votes: "votes",
+    leading: "Leading",
+    // Discussions page
+    searchPlaceholder: "Search discussions...",
+    popular: "Popular",
+    newest: "Newest",
+    mostDiscussed: "Most Discussed",
+    all: "All",
+    comments: "comments",
+    hot: "Hot",
+    // Votes page
+    searchPollsPlaceholder: "Search polls...",
+    mostVoted: "Most Voted",
+  },
+  // News
+  news: {
+    tagline: "Your Cinema Intelligence",
+    articlesThisWeek: "articles this week",
+    reviewsThisWeek: "reviews this week",
+    essaysThisWeek: "essays this week",
+    news: "News",
+    reviews: "Reviews",
+    longreads: "Longreads",
+    popularNews: "Popular News This Week",
+    newestNews: "Newest News This Week",
+    popularReviews: "Popular Reviews This Week",
+    newestReviews: "Newest Reviews This Week",
+    popularLongreads: "Popular Longreads This Week",
+    newestLongreads: "Newest Longreads This Week",
+    // Articles page
+    searchNews: "Search news...",
+    mostDiscussed: "Most Discussed",
+    breakingNews: "Breaking News",
+    // Reviews page
+    searchReviews: "Search reviews...",
+    highestRated: "Highest Rated",
+    // Longreads page
+    searchLongreads: "Search longreads...",
+    longest: "Longest",
+    minRead: "min read",
+  },
+  // Quizzes
+  quizzes: {
+    tagline: "Test Your Film IQ",
+    activeThisWeek: "active this week",
+    newThisWeek: "new this week",
+    quizzesThisWeek: "quizzes this week",
+    brackets: "Brackets",
+    tests: "Tests",
+    trivia: "Trivia",
+    popularBrackets: "Popular Brackets This Week",
+    newestBrackets: "Newest Brackets This Week",
+    popularTests: "Popular Tests This Week",
+    newestTests: "Newest Tests This Week",
+    popularTrivia: "Popular Trivia This Week",
+    newestTrivia: "Newest Trivia This Week",
+    played: "played",
+    entries: "entries",
+    questions: "questions",
+    results: "results",
+    avgScore: "Avg score",
+    // Brackets page
+    searchBrackets: "Search brackets...",
+    mostEntries: "Most Entries",
+    // Tests page
+    searchTests: "Search tests...",
+    mostQuestions: "Most Questions",
+    more: "more",
+    // Trivia page
+    searchTrivia: "Search trivia...",
+    hardest: "Hardest",
+  },
+  // Auth
+  auth: {
+    createAccount: "Create Account",
+    joinSceneIt: "Join SceneIt and start creating content.",
+    username: "Username",
+    email: "Email",
+    password: "Password",
+    minChars: "Min 6 characters",
+    register: "Register",
+    creating: "Creating...",
+    alreadyAccount: "Already have an account?",
+    signInLink: "Sign in",
+    welcomeBack: "Welcome back to SceneIt.",
+    yourPassword: "Your password",
+    signingIn: "Signing in...",
+    noAccount: "No account?",
+    createOne: "Create one",
+  },
+  // Create
+  create: {
+    title: "Create Content",
+    chooseWhat: "Choose what you want to create.",
+    creatingAs: "Creating as",
+    startDebate: "Start a new film debate",
+    createVote: "Create a community vote",
+    shareNews: "Share breaking news",
+    rateFilm: "Rate and critique a film",
+    writeEssay: "Write an in-depth essay",
+    buildTournament: "Build a head-to-head tournament",
+    createPersonality: "Create a personality quiz",
+    writeQuiz: "Write a knowledge quiz",
+    // Form labels
+    titleField: "Title",
+    headline: "Headline",
+    reviewTitle: "Review Title",
+    question: "Question",
+    category: "Category",
+    description: "Description",
+    articleSummary: "Article Summary",
+    synopsis: "Synopsis",
+    review: "Review",
+    filmTitle: "Film Title",
+    year: "Year",
+    rating: "Rating (0-10)",
+    genre: "Genre",
+    readTime: "Read Time (minutes)",
+    numberOfEntries: "Number of Entries",
+    participants: "Participants (one per line)",
+    numberOfQuestions: "Number of Questions",
+    possibleResults: "Possible Results (one per line)",
+    options: "Options (one per line)",
+    select: "Select...",
+    publish: "Publish",
+  },
+  // Founders
+  founders: {
+    heading: "The Founders",
+    subtitle: "The minds behind the screen",
+  },
+  // Registration section on home
+  registration: {
+    heading: "Join the Community",
+    subtitle: "Be among the first to experience SceneIt",
+    emailPlaceholder: "Enter your email",
+    joinWaitlist: "Join the Waitlist",
+    success: "Welcome aboard!",
+    successMessage: "You're on the list. We'll notify you when SceneIt launches.",
+  },
+  // Footer
+  footer: {
+    copyright: "© 2026 SceneIt. All rights reserved.",
+  },
+  // Filters
+  filters: {
+    category: "Category",
+    noResults: "No results found.",
+  },
+};
+
+export type Translations = typeof en;

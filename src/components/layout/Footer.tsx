@@ -1,7 +1,11 @@
 import Link from "next/link";
 import { Logo } from "@/components/ui/Logo";
+import { en, ru } from "@/i18n";
+import type { Lang } from "@/i18n";
 
-export function Footer() {
+export function Footer({ lang = "en" }: { lang?: Lang }) {
+  const t = lang === "ru" ? ru : en;
+
   return (
     <footer className="relative bg-[#050507] border-t border-neutral-800/30 py-16">
       <div className="max-w-6xl mx-auto px-6">
@@ -12,29 +16,29 @@ export function Footer() {
 
           <div className="flex items-center gap-8">
             <Link href="/#sections" className="text-xs tracking-widest uppercase text-neutral-600 hover:text-neutral-400 transition-colors">
-              Sections
+              {t.nav.sections}
             </Link>
             <Link href="/forums" className="text-xs tracking-widest uppercase text-neutral-600 hover:text-neutral-400 transition-colors">
-              Forums
+              {t.nav.forums}
             </Link>
             <Link href="/news" className="text-xs tracking-widest uppercase text-neutral-600 hover:text-neutral-400 transition-colors">
-              News
+              {t.nav.news}
             </Link>
             <Link href="/quizzes" className="text-xs tracking-widest uppercase text-neutral-600 hover:text-neutral-400 transition-colors">
-              Quizzes
+              {t.nav.quizzes}
             </Link>
             <Link href="/#founders" className="text-xs tracking-widest uppercase text-neutral-600 hover:text-neutral-400 transition-colors">
-              Team
+              {t.nav.team}
             </Link>
             <Link href="/#register" className="text-xs tracking-widest uppercase text-neutral-600 hover:text-neutral-400 transition-colors">
-              Join
+              {t.nav.join}
             </Link>
           </div>
 
           <div className="w-16 h-px bg-neutral-800/50" />
 
           <p className="text-neutral-700 text-xs">
-            &copy; 2026 SceneIt. All rights reserved.
+            {t.footer.copyright}
           </p>
         </div>
       </div>
