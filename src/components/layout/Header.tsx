@@ -4,7 +4,18 @@ import { useState, useEffect } from "react";
 import Link from "next/link";
 import { Logo } from "@/components/ui/Logo";
 
-export function Header({ authSlot, langSlot }: { authSlot?: React.ReactNode; langSlot?: React.ReactNode }) {
+interface HeaderProps {
+  authSlot?: React.ReactNode;
+  langSlot?: React.ReactNode;
+  nav: {
+    sections: string;
+    forums: string;
+    news: string;
+    quizzes: string;
+  };
+}
+
+export function Header({ authSlot, langSlot, nav }: HeaderProps) {
   const [menuOpen, setMenuOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);
 
@@ -34,16 +45,16 @@ export function Header({ authSlot, langSlot }: { authSlot?: React.ReactNode; lan
 
         <nav className="hidden md:flex items-center gap-6">
           <Link href="/#sections" className="text-[10px] tracking-[0.25em] uppercase text-neutral-600 hover:text-white transition-colors duration-300">
-            Sections
+            {nav.sections}
           </Link>
           <Link href="/forums" className="text-[10px] tracking-[0.25em] uppercase text-neutral-600 hover:text-violet-400 transition-colors duration-300">
-            Forums
+            {nav.forums}
           </Link>
           <Link href="/news" className="text-[10px] tracking-[0.25em] uppercase text-neutral-600 hover:text-rose-400 transition-colors duration-300">
-            News
+            {nav.news}
           </Link>
           <Link href="/quizzes" className="text-[10px] tracking-[0.25em] uppercase text-neutral-600 hover:text-amber-400 transition-colors duration-300">
-            Quizzes
+            {nav.quizzes}
           </Link>
           <div className="w-px h-4 bg-neutral-800/50" />
           {langSlot}
@@ -68,16 +79,16 @@ export function Header({ authSlot, langSlot }: { authSlot?: React.ReactNode; lan
       {menuOpen && (
         <div className="md:hidden bg-[#07070a]/95 backdrop-blur-xl border-t border-neutral-800/30 px-6 py-6 space-y-4">
           <Link onClick={() => setMenuOpen(false)} href="/#sections" className="block text-[10px] tracking-[0.25em] uppercase text-neutral-500 hover:text-white transition-colors">
-            Sections
+            {nav.sections}
           </Link>
           <Link onClick={() => setMenuOpen(false)} href="/forums" className="block text-[10px] tracking-[0.25em] uppercase text-neutral-500 hover:text-violet-400 transition-colors">
-            Forums
+            {nav.forums}
           </Link>
           <Link onClick={() => setMenuOpen(false)} href="/news" className="block text-[10px] tracking-[0.25em] uppercase text-neutral-500 hover:text-rose-400 transition-colors">
-            News
+            {nav.news}
           </Link>
           <Link onClick={() => setMenuOpen(false)} href="/quizzes" className="block text-[10px] tracking-[0.25em] uppercase text-neutral-500 hover:text-amber-400 transition-colors">
-            Quizzes
+            {nav.quizzes}
           </Link>
           <div className="flex items-center gap-3 pt-2">
             {langSlot}

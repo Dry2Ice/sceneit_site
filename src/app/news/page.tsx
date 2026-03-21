@@ -1,13 +1,16 @@
 import type { Metadata } from "next";
 import Link from "next/link";
 import { getThisWeekArticles, getThisWeekReviews, getThisWeekLongreads, formatDate, formatRating } from "@/data/flickfeed";
+import { getLang, en, ru } from "@/i18n";
 
 export const metadata: Metadata = {
   title: "Flick Feed — SceneIt News",
   description: "Your cinema intelligence. Expert deep reviews, breaking film news, and festival coverage.",
 };
 
-export default function NewsPage() {
+export default async function NewsPage() {
+  const lang = await getLang();
+  const t = lang === "ru" ? ru : en;
   const weekArticles = getThisWeekArticles();
   const weekReviews = getThisWeekReviews();
   const weekLongreads = getThisWeekLongreads();
@@ -30,7 +33,7 @@ export default function NewsPage() {
         {/* Back link */}
         <Link href="/" className="inline-flex items-center gap-2 text-[10px] tracking-[0.25em] uppercase text-neutral-500 hover:text-rose-400 transition-colors duration-300 mb-10">
           <svg className="w-3.5 h-3.5" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}><path strokeLinecap="round" strokeLinejoin="round" d="M10.5 19.5L3 12m0 0l7.5-7.5M3 12h18" /></svg>
-          Back
+          {t.nav.back}
         </Link>
 
         {/* Hero logo */}
@@ -44,7 +47,7 @@ export default function NewsPage() {
 
         <div className="w-16 h-px mx-auto mb-6" style={{ background: "linear-gradient(90deg, transparent, #fb7185, transparent)" }} />
 
-        <p className="text-center text-[10px] tracking-[0.4em] uppercase mb-10" style={{ color: "#fb7185", opacity: 0.6 }}>Your Cinema Intelligence</p>
+        <p className="text-center text-[10px] tracking-[0.4em] uppercase mb-10" style={{ color: "#fb7185", opacity: 0.6 }}>{t.news.tagline}</p>
 
         {/* Section cards */}
         <div className="grid grid-cols-1 sm:grid-cols-3 gap-4 mb-16" style={{ animation: "fadeInUp 1s 0.3s ease-out both" }}>
@@ -52,29 +55,29 @@ export default function NewsPage() {
             <div className="w-10 h-10 rounded-lg bg-rose-500/10 border border-rose-500/15 flex items-center justify-center mb-3 transition-colors group-hover:bg-rose-500/20">
               <svg className="w-4 h-4 text-rose-400" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={1.5}><path strokeLinecap="round" strokeLinejoin="round" d="M12 7.5h1.5m-1.5 3h1.5m-7.5 3h7.5m-7.5 3h7.5m3-9h3.375c.621 0 1.125.504 1.125 1.125V18a2.25 2.25 0 01-2.25 2.25M16.5 7.5V18a2.25 2.25 0 002.25 2.25M16.5 7.5V4.875c0-.621-.504-1.125-1.125-1.125H4.125C3.504 3.75 3 4.254 3 4.875V18a2.25 2.25 0 002.25 2.25h13.5M6 7.5h3v3H6v-3z" /></svg>
             </div>
-            <h3 className="text-sm font-semibold text-white/90 group-hover:text-rose-300 transition-colors">News</h3>
-            <p className="text-[11px] text-neutral-500 mt-1">{weekArticles.length} articles this week</p>
+            <h3 className="text-sm font-semibold text-white/90 group-hover:text-rose-300 transition-colors">{t.news.news}</h3>
+            <p className="text-[11px] text-neutral-500 mt-1">{weekArticles.length} {t.news.articlesThisWeek}</p>
           </Link>
 
           <Link href="/news/reviews" className="group relative bg-white/[0.03] border border-neutral-800/30 rounded-xl p-5 transition-all duration-500 hover:bg-white/[0.06] hover:border-rose-500/20">
             <div className="w-10 h-10 rounded-lg bg-rose-500/10 border border-rose-500/15 flex items-center justify-center mb-3 transition-colors group-hover:bg-rose-500/20">
               <svg className="w-4 h-4 text-rose-400" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={1.5}><path strokeLinecap="round" strokeLinejoin="round" d="M11.48 3.499a.562.562 0 011.04 0l2.125 5.111a.563.563 0 00.475.345l5.518.442c.499.04.701.663.321.988l-4.204 3.602a.563.563 0 00-.182.557l1.285 5.385a.562.562 0 01-.84.61l-4.725-2.885a.563.563 0 00-.586 0L6.982 20.54a.562.562 0 01-.84-.61l1.285-5.386a.562.562 0 00-.182-.557l-4.204-3.602a.563.563 0 01.321-.988l5.518-.442a.563.563 0 00.475-.345L11.48 3.5z" /></svg>
             </div>
-            <h3 className="text-sm font-semibold text-white/90 group-hover:text-rose-300 transition-colors">Reviews</h3>
-            <p className="text-[11px] text-neutral-500 mt-1">{weekReviews.length} reviews this week</p>
+            <h3 className="text-sm font-semibold text-white/90 group-hover:text-rose-300 transition-colors">{t.news.reviews}</h3>
+            <p className="text-[11px] text-neutral-500 mt-1">{weekReviews.length} {t.news.reviewsThisWeek}</p>
           </Link>
 
           <Link href="/news/longreads" className="group relative bg-white/[0.03] border border-neutral-800/30 rounded-xl p-5 transition-all duration-500 hover:bg-white/[0.06] hover:border-rose-500/20">
             <div className="w-10 h-10 rounded-lg bg-rose-500/10 border border-rose-500/15 flex items-center justify-center mb-3 transition-colors group-hover:bg-rose-500/20">
               <svg className="w-4 h-4 text-rose-400" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={1.5}><path strokeLinecap="round" strokeLinejoin="round" d="M12 6.042A8.967 8.967 0 006 3.75c-1.052 0-2.062.18-3 .512v14.25A8.987 8.987 0 016 18c2.305 0 4.408.867 6 2.292m0-14.25a8.966 8.966 0 016-2.292c1.052 0 2.062.18 3 .512v14.25A8.987 8.987 0 0018 18a8.967 8.967 0 00-6 2.292m0-14.25v14.25" /></svg>
             </div>
-            <h3 className="text-sm font-semibold text-white/90 group-hover:text-rose-300 transition-colors">Longreads</h3>
-            <p className="text-[11px] text-neutral-500 mt-1">{weekLongreads.length} essays this week</p>
+            <h3 className="text-sm font-semibold text-white/90 group-hover:text-rose-300 transition-colors">{t.news.longreads}</h3>
+            <p className="text-[11px] text-neutral-500 mt-1">{weekLongreads.length} {t.news.essaysThisWeek}</p>
           </Link>
         </div>
 
         {/* Popular News */}
-        <SectionHeader title="Popular News This Week" href="/news/articles" />
+        <SectionHeader title={t.news.popularNews} href="/news/articles" viewAll={t.nav.viewAll} />
         <div className="grid grid-cols-1 sm:grid-cols-2 gap-3 mb-12">
           {popularArticles.map((a) => (
             <div key={a.id} className="bg-white/[0.02] border border-neutral-800/30 rounded-xl p-5 transition-all duration-500 hover:bg-white/[0.04] hover:border-rose-500/15">
@@ -82,14 +85,14 @@ export default function NewsPage() {
               <h4 className="text-sm font-semibold text-white/90 mb-2 line-clamp-2">{a.title}</h4>
               <p className="text-xs text-neutral-500 line-clamp-2 mb-3">{a.preview}</p>
               <div className="flex items-center gap-3 text-[10px] text-neutral-600">
-                <span>{a.author}</span><span className="opacity-30">·</span><span>{formatDate(a.date)}</span><span className="opacity-30">·</span><span>{a.likes} likes</span>
+                <span>{a.author}</span><span className="opacity-30">·</span><span>{formatDate(a.date)}</span><span className="opacity-30">·</span>                <span>{a.likes} {t.forums.likes}</span>
               </div>
             </div>
           ))}
         </div>
 
         {/* Newest News */}
-        <SectionHeader title="Newest News This Week" href="/news/articles" />
+        <SectionHeader title={t.news.newestNews} href="/news/articles" viewAll={t.nav.viewAll} />
         <div className="grid grid-cols-1 sm:grid-cols-2 gap-3 mb-12">
           {newestArticles.map((a) => (
             <div key={a.id} className="bg-white/[0.02] border border-neutral-800/30 rounded-xl p-5 transition-all duration-500 hover:bg-white/[0.04] hover:border-rose-500/15">
@@ -97,14 +100,14 @@ export default function NewsPage() {
               <h4 className="text-sm font-semibold text-white/90 mb-2 line-clamp-2">{a.title}</h4>
               <p className="text-xs text-neutral-500 line-clamp-2 mb-3">{a.preview}</p>
               <div className="flex items-center gap-3 text-[10px] text-neutral-600">
-                <span>{a.author}</span><span className="opacity-30">·</span><span>{formatDate(a.date)}</span><span className="opacity-30">·</span><span>{a.comments} comments</span>
+                <span>{a.author}</span><span className="opacity-30">·</span><span>{formatDate(a.date)}</span><span className="opacity-30">·</span>                <span>{a.comments} {t.forums.comments}</span>
               </div>
             </div>
           ))}
         </div>
 
         {/* Popular Reviews */}
-        <SectionHeader title="Popular Reviews This Week" href="/news/reviews" />
+        <SectionHeader title={t.news.popularReviews} href="/news/reviews" viewAll={t.nav.viewAll} />
         <div className="grid grid-cols-1 sm:grid-cols-2 gap-3 mb-12">
           {popularReviews.map((r) => (
             <div key={r.id} className="bg-white/[0.02] border border-neutral-800/30 rounded-xl p-5 transition-all duration-500 hover:bg-white/[0.04] hover:border-rose-500/15">
@@ -124,14 +127,14 @@ export default function NewsPage() {
               </div>
               <p className="text-xs text-neutral-500 line-clamp-2 mb-3">{r.preview}</p>
               <div className="flex items-center gap-3 text-[10px] text-neutral-600">
-                <span>{r.author}</span><span className="opacity-30">·</span><span>{formatDate(r.date)}</span><span className="opacity-30">·</span><span>{r.likes} likes</span>
+                <span>{r.author}</span><span className="opacity-30">·</span><span>{formatDate(r.date)}</span><span className="opacity-30">·</span>                <span>{r.likes} {t.forums.likes}</span>
               </div>
             </div>
           ))}
         </div>
 
         {/* Newest Reviews */}
-        <SectionHeader title="Newest Reviews This Week" href="/news/reviews" />
+        <SectionHeader title={t.news.newestReviews} href="/news/reviews" viewAll={t.nav.viewAll} />
         <div className="grid grid-cols-1 sm:grid-cols-2 gap-3 mb-12">
           {newestReviews.map((r) => (
             <div key={r.id} className="bg-white/[0.02] border border-neutral-800/30 rounded-xl p-5 transition-all duration-500 hover:bg-white/[0.04] hover:border-rose-500/15">
@@ -151,14 +154,14 @@ export default function NewsPage() {
               </div>
               <p className="text-xs text-neutral-500 line-clamp-2 mb-3">{r.preview}</p>
               <div className="flex items-center gap-3 text-[10px] text-neutral-600">
-                <span>{r.author}</span><span className="opacity-30">·</span><span>{formatDate(r.date)}</span><span className="opacity-30">·</span><span>{r.comments} comments</span>
+                <span>{r.author}</span><span className="opacity-30">·</span><span>{formatDate(r.date)}</span><span className="opacity-30">·</span>                <span>{r.comments} {t.forums.comments}</span>
               </div>
             </div>
           ))}
         </div>
 
         {/* Popular Longreads */}
-        <SectionHeader title="Popular Longreads This Week" href="/news/longreads" />
+        <SectionHeader title={t.news.popularLongreads} href="/news/longreads" viewAll={t.nav.viewAll} />
         <div className="grid grid-cols-1 sm:grid-cols-2 gap-3 mb-12">
           {popularLongreads.map((l) => (
             <div key={l.id} className="bg-white/[0.02] border border-neutral-800/30 rounded-xl p-5 transition-all duration-500 hover:bg-white/[0.04] hover:border-rose-500/15">
@@ -170,14 +173,14 @@ export default function NewsPage() {
               <h4 className="text-sm font-semibold text-white/90 mb-2 line-clamp-2">{l.title}</h4>
               <p className="text-xs text-neutral-500 line-clamp-2 mb-3">{l.preview}</p>
               <div className="flex items-center gap-3 text-[10px] text-neutral-600">
-                <span>{l.author}</span><span className="opacity-30">·</span><span>{formatDate(l.date)}</span><span className="opacity-30">·</span><span>{l.likes} likes</span>
+                <span>{l.author}</span><span className="opacity-30">·</span><span>{formatDate(l.date)}</span><span className="opacity-30">·</span>                <span>{l.likes} {t.forums.likes}</span>
               </div>
             </div>
           ))}
         </div>
 
         {/* Newest Longreads */}
-        <SectionHeader title="Newest Longreads This Week" href="/news/longreads" />
+        <SectionHeader title={t.news.newestLongreads} href="/news/longreads" viewAll={t.nav.viewAll} />
         <div className="grid grid-cols-1 sm:grid-cols-2 gap-3 mb-12">
           {newestLongreads.map((l) => (
             <div key={l.id} className="bg-white/[0.02] border border-neutral-800/30 rounded-xl p-5 transition-all duration-500 hover:bg-white/[0.04] hover:border-rose-500/15">
@@ -189,7 +192,7 @@ export default function NewsPage() {
               <h4 className="text-sm font-semibold text-white/90 mb-2 line-clamp-2">{l.title}</h4>
               <p className="text-xs text-neutral-500 line-clamp-2 mb-3">{l.preview}</p>
               <div className="flex items-center gap-3 text-[10px] text-neutral-600">
-                <span>{l.author}</span><span className="opacity-30">·</span><span>{formatDate(l.date)}</span><span className="opacity-30">·</span><span>{l.comments} comments</span>
+                <span>{l.author}</span><span className="opacity-30">·</span><span>{formatDate(l.date)}</span><span className="opacity-30">·</span>                <span>{l.comments} {t.forums.comments}</span>
               </div>
             </div>
           ))}
@@ -199,7 +202,7 @@ export default function NewsPage() {
   );
 }
 
-function SectionHeader({ title, href }: { title: string; href: string }) {
+function SectionHeader({ title, href, viewAll = "View all" }: { title: string; href: string; viewAll?: string }) {
   return (
     <div className="flex items-center justify-between mb-5">
       <div className="flex items-center gap-3">
@@ -207,7 +210,7 @@ function SectionHeader({ title, href }: { title: string; href: string }) {
         <h2 className="text-sm sm:text-base font-semibold text-white/80">{title}</h2>
       </div>
       <Link href={href} className="text-[10px] tracking-[0.15em] uppercase text-rose-400/50 hover:text-rose-400 transition-colors flex items-center gap-1.5">
-        View all
+        {viewAll}
         <svg className="w-3 h-3" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}><path strokeLinecap="round" strokeLinejoin="round" d="M8.25 4.5l7.5 7.5-7.5 7.5" /></svg>
       </Link>
     </div>

@@ -1,21 +1,23 @@
 import Link from "next/link";
 import { getCurrentUser } from "@/actions/auth";
+import { getLang, en, ru } from "@/i18n";
 import { redirect } from "next/navigation";
 
-const contentTypes = [
-  { name: "Discussion", href: "/create/discussion", section: "Riot Reel", color: "#a78bfa", desc: "Start a new film debate" },
-  { name: "Poll", href: "/create/poll", section: "Riot Reel", color: "#a78bfa", desc: "Create a community vote" },
-  { name: "News Article", href: "/create/article", section: "Flick Feed", color: "#fb7185", desc: "Share breaking news" },
-  { name: "Review", href: "/create/review", section: "Flick Feed", color: "#fb7185", desc: "Rate and critique a film" },
-  { name: "Longread", href: "/create/longread", section: "Flick Feed", color: "#fb7185", desc: "Write an in-depth essay" },
-  { name: "Bracket", href: "/create/bracket", section: "Binge Buddy", color: "#fbbf24", desc: "Build a head-to-head tournament" },
-  { name: "Test", href: "/create/test", section: "Binge Buddy", color: "#fbbf24", desc: "Create a personality quiz" },
-  { name: "Trivia", href: "/create/trivia", section: "Binge Buddy", color: "#fbbf24", desc: "Write a knowledge quiz" },
-];
-
 export default async function CreatePage() {
-  const user = await getCurrentUser();
+  const [user, lang] = await Promise.all([getCurrentUser(), getLang()]);
+  const t = lang === "ru" ? ru : en;
   if (!user) redirect("/login");
+
+  const contentTypes = [
+    { name: "Discussion", href: "/create/discussion", section: "Riot Reel", color: "#a78bfa", desc: t.create.startDebate },
+    { name: "Poll", href: "/create/poll", section: "Riot Reel", color: "#a78bfa", desc: t.create.createVote },
+    { name: "News Article", href: "/create/article", section: "Flick Feed", color: "#fb7185", desc: t.create.shareNews },
+    { name: "Review", href: "/create/review", section: "Flick Feed", color: "#fb7185", desc: t.create.rateFilm },
+    { name: "Longread", href: "/create/longread", section: "Flick Feed", color: "#fb7185", desc: t.create.writeEssay },
+    { name: "Bracket", href: "/create/bracket", section: "Binge Buddy", color: "#fbbf24", desc: t.create.buildTournament },
+    { name: "Test", href: "/create/test", section: "Binge Buddy", color: "#fbbf24", desc: t.create.createPersonality },
+    { name: "Trivia", href: "/create/trivia", section: "Binge Buddy", color: "#fbbf24", desc: t.create.writeQuiz },
+  ];
 
   return (
     <main className="relative min-h-screen bg-[#07070a] text-white overflow-hidden">
@@ -25,18 +27,18 @@ export default async function CreatePage() {
       <div className="relative z-10 max-w-3xl mx-auto px-6 pt-28 pb-20">
         <Link href="/" className="inline-flex items-center gap-2 text-[10px] tracking-[0.25em] uppercase text-neutral-500 hover:text-white transition-colors mb-10">
           <svg className="w-3.5 h-3.5" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}><path strokeLinecap="round" strokeLinejoin="round" d="M10.5 19.5L3 12m0 0l7.5-7.5M3 12h18" /></svg>
-          Back
+          {t.nav.back}
         </Link>
 
         <div className="flex items-center gap-3 mb-2">
           <div className="w-8 h-8 rounded-lg bg-white/[0.05] border border-neutral-800/30 flex items-center justify-center">
             <span className="text-[10px] font-bold text-neutral-400">{user.avatar}</span>
           </div>
-          <span className="text-sm text-neutral-400">Creating as <span className="text-white font-medium">{user.username}</span></span>
+          <span className="text-sm text-neutral-400">{t.create.creatingAs} <span className="text-white font-medium">{user.username}</span></span>
         </div>
 
-        <h1 className="text-3xl sm:text-4xl font-bold tracking-tight mb-3">Create Content</h1>
-        <p className="text-neutral-500 text-sm mb-10">Choose what you want to create.</p>
+        <h1 className="text-3xl sm:text-4xl font-bold tracking-tight mb-3">{t.create.title}</h1>
+        <p className="text-neutral-500 text-sm mb-10">{t.create.chooseWhat}</p>
 
         <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
           {contentTypes.map((ct) => (

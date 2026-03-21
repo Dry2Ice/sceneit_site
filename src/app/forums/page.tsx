@@ -1,13 +1,16 @@
 import type { Metadata } from "next";
 import Link from "next/link";
 import { getThisWeekDiscussions, getThisWeekPolls, formatDate } from "@/data/forums";
+import { getLang, en, ru } from "@/i18n";
 
 export const metadata: Metadata = {
   title: "Riot Reel — SceneIt Forums",
   description: "Where opinions collide. Join heated film debates, community polls, and director showdowns.",
 };
 
-export default function ForumsPage() {
+export default async function ForumsPage() {
+  const lang = await getLang();
+  const t = lang === "ru" ? ru : en;
   const weekDiscussions = getThisWeekDiscussions();
   const weekPolls = getThisWeekPolls();
 
@@ -44,7 +47,7 @@ export default function ForumsPage() {
           <svg className="w-3.5 h-3.5" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
             <path strokeLinecap="round" strokeLinejoin="round" d="M10.5 19.5L3 12m0 0l7.5-7.5M3 12h18" />
           </svg>
-          Back
+          {t.nav.back}
         </Link>
 
         {/* Hero logo */}
@@ -70,7 +73,7 @@ export default function ForumsPage() {
         <div className="w-16 h-px mx-auto mb-6" style={{ background: "linear-gradient(90deg, transparent, #a78bfa, transparent)" }} />
 
         <p className="text-center text-[10px] tracking-[0.4em] uppercase mb-10" style={{ color: "#a78bfa", opacity: 0.6 }}>
-          Where Opinions Collide
+          {t.forums.tagline}
         </p>
 
         {/* Section cards */}
@@ -81,8 +84,8 @@ export default function ForumsPage() {
                 <path strokeLinecap="round" strokeLinejoin="round" d="M12 20.25c4.97 0 9-3.694 9-8.25s-4.03-8.25-9-8.25S3 7.444 3 12c0 2.104.859 4.023 2.273 5.48.432.447.74 1.04.586 1.641a4.483 4.483 0 01-.923 1.785A5.969 5.969 0 006 21c1.282 0 2.47-.402 3.445-1.087.81.22 1.668.337 2.555.337z" />
               </svg>
             </div>
-            <h3 className="text-sm font-semibold text-white/90 group-hover:text-violet-300 transition-colors">Discussions</h3>
-            <p className="text-[11px] text-neutral-500 mt-1">{weekDiscussions.length} active this week</p>
+            <h3 className="text-sm font-semibold text-white/90 group-hover:text-violet-300 transition-colors">{t.forums.discussions}</h3>
+            <p className="text-[11px] text-neutral-500 mt-1">{weekDiscussions.length} {t.forums.activeThisWeek}</p>
           </Link>
 
           <Link href="/forums/votes" className="group relative bg-white/[0.03] border border-neutral-800/30 rounded-xl p-5 transition-all duration-500 hover:bg-white/[0.06] hover:border-violet-500/20">
@@ -91,13 +94,13 @@ export default function ForumsPage() {
                 <path strokeLinecap="round" strokeLinejoin="round" d="M10.5 6h9.75M10.5 6a1.5 1.5 0 11-3 0m3 0a1.5 1.5 0 10-3 0M3.75 6H7.5m3 12h9.75m-9.75 0a1.5 1.5 0 01-3 0m3 0a1.5 1.5 0 00-3 0m-3.75 0H7.5m9-6h3.75m-3.75 0a1.5 1.5 0 01-3 0m3 0a1.5 1.5 0 00-3 0m-9.75 0h9.75" />
               </svg>
             </div>
-            <h3 className="text-sm font-semibold text-white/90 group-hover:text-violet-300 transition-colors">Votes & Polls</h3>
-            <p className="text-[11px] text-neutral-500 mt-1">{weekPolls.length} polls this week</p>
+            <h3 className="text-sm font-semibold text-white/90 group-hover:text-violet-300 transition-colors">{t.forums.votesPolls}</h3>
+            <p className="text-[11px] text-neutral-500 mt-1">{weekPolls.length} {t.forums.pollsThisWeek}</p>
           </Link>
         </div>
 
         {/* Weekly: Popular Discussions */}
-        <SectionHeader title="Popular Discussions This Week" href="/forums/discussions" />
+        <SectionHeader title={t.forums.popularDiscussions} href="/forums/discussions" viewAll={t.nav.viewAll} />
         <div className="grid grid-cols-1 sm:grid-cols-2 gap-3 mb-12">
           {popularDiscussions.map((d) => (
             <div
@@ -112,14 +115,14 @@ export default function ForumsPage() {
                 <span className="opacity-30">·</span>
                 <span>{formatDate(d.date)}</span>
                 <span className="opacity-30">·</span>
-                <span>{d.likes} likes</span>
+                <span>{d.likes} {t.forums.likes}</span>
               </div>
             </div>
           ))}
         </div>
 
         {/* Weekly: Newest Discussions */}
-        <SectionHeader title="Newest Discussions This Week" href="/forums/discussions" />
+        <SectionHeader title={t.forums.newestDiscussions} href="/forums/discussions" viewAll={t.nav.viewAll} />
         <div className="grid grid-cols-1 sm:grid-cols-2 gap-3 mb-12">
           {newestDiscussions.map((d) => (
             <div
@@ -134,14 +137,14 @@ export default function ForumsPage() {
                 <span className="opacity-30">·</span>
                 <span>{formatDate(d.date)}</span>
                 <span className="opacity-30">·</span>
-                <span>{d.replies} replies</span>
+                <span>{d.replies} {t.forums.replies}</span>
               </div>
             </div>
           ))}
         </div>
 
         {/* Weekly: Popular Polls */}
-        <SectionHeader title="Popular Polls This Week" href="/forums/votes" />
+        <SectionHeader title={t.forums.popularPolls} href="/forums/votes" viewAll={t.nav.viewAll} />
         <div className="grid grid-cols-1 sm:grid-cols-2 gap-3 mb-12">
           {popularPolls.map((p) => {
             const top = p.options.reduce((a, b) => (a.votes > b.votes ? a : b));
@@ -169,9 +172,9 @@ export default function ForumsPage() {
                   })}
                 </div>
                 <div className="flex items-center gap-3 text-[10px] text-neutral-600">
-                  <span>{p.totalVotes.toLocaleString()} votes</span>
+                  <span>{p.totalVotes.toLocaleString()} {t.forums.votes}</span>
                   <span className="opacity-30">·</span>
-                  <span>Leading: {top.label}</span>
+                  <span>{t.forums.leading}: {top.label}</span>
                 </div>
               </div>
             );
@@ -179,7 +182,7 @@ export default function ForumsPage() {
         </div>
 
         {/* Weekly: Newest Polls */}
-        <SectionHeader title="Newest Polls This Week" href="/forums/votes" />
+        <SectionHeader title={t.forums.newestPolls} href="/forums/votes" viewAll={t.nav.viewAll} />
         <div className="grid grid-cols-1 sm:grid-cols-2 gap-3 mb-12">
           {newestPolls.map((p) => {
             const top = p.options.reduce((a, b) => (a.votes > b.votes ? a : b));
@@ -207,9 +210,9 @@ export default function ForumsPage() {
                   })}
                 </div>
                 <div className="flex items-center gap-3 text-[10px] text-neutral-600">
-                  <span>{p.totalVotes.toLocaleString()} votes</span>
+                  <span>{p.totalVotes.toLocaleString()} {t.forums.votes}</span>
                   <span className="opacity-30">·</span>
-                  <span>Leading: {top.label}</span>
+                  <span>{t.forums.leading}: {top.label}</span>
                 </div>
               </div>
             );
@@ -220,7 +223,7 @@ export default function ForumsPage() {
   );
 }
 
-function SectionHeader({ title, href }: { title: string; href: string }) {
+function SectionHeader({ title, href, viewAll = "View all" }: { title: string; href: string; viewAll?: string }) {
   return (
     <div className="flex items-center justify-between mb-5">
       <div className="flex items-center gap-3">
@@ -231,7 +234,7 @@ function SectionHeader({ title, href }: { title: string; href: string }) {
         href={href}
         className="text-[10px] tracking-[0.15em] uppercase text-violet-400/50 hover:text-violet-400 transition-colors flex items-center gap-1.5"
       >
-        View all
+        {viewAll}
         <svg className="w-3 h-3" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
           <path strokeLinecap="round" strokeLinejoin="round" d="M8.25 4.5l7.5 7.5-7.5 7.5" />
         </svg>
