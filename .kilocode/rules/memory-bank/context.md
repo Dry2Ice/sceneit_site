@@ -25,16 +25,24 @@
 |------|---------|
 | `src/app/page.tsx` | Home page — Hero, Sections, Founders, Registration |
 | `src/app/forums/page.tsx` | Riot Reel main — weekly highlights of discussions & polls |
-| `src/app/forums/discussions/page.tsx` | Discussions list with search, sort (popular/newest/discussed), category filters |
-| `src/app/forums/votes/page.tsx` | Polls list with search, sort (popular/newest/most-voted), category filters |
+| `src/app/forums/discussions/page.tsx` | Server wrapper — fetches translations, renders DiscussionsPage |
+| `src/app/forums/discussions/ClientPage.tsx` | Client discussions list with search, sort, category filters |
+| `src/app/forums/votes/page.tsx` | Server wrapper — fetches translations, renders VotesPage |
+| `src/app/forums/votes/ClientPage.tsx` | Client polls list with search, sort, category filters |
 | `src/app/news/page.tsx` | Flick Feed main — weekly highlights of news, reviews, longreads |
-| `src/app/news/articles/page.tsx` | News list with search, sort (popular/newest/discussed), category filters |
-| `src/app/news/reviews/page.tsx` | Reviews list with search, sort (popular/newest/highest-rated), genre filters, star ratings |
-| `src/app/news/longreads/page.tsx` | Longreads list with search, sort (popular/newest/longest), category filters |
+| `src/app/news/articles/page.tsx` | Server wrapper — fetches translations, renders ArticlesPage |
+| `src/app/news/articles/ClientPage.tsx` | Client news list with search, sort, category filters |
+| `src/app/news/reviews/page.tsx` | Server wrapper — fetches translations, renders ReviewsPage |
+| `src/app/news/reviews/ClientPage.tsx` | Client reviews list with search, sort, genre filters, star ratings |
+| `src/app/news/longreads/page.tsx` | Server wrapper — fetches translations, renders LongreadsPage |
+| `src/app/news/longreads/ClientPage.tsx` | Client longreads list with search, sort, category filters |
 | `src/app/quizzes/page.tsx` | Binge Buddy main — weekly highlights of brackets, tests, trivia |
-| `src/app/quizzes/brackets/page.tsx` | Head-to-head brackets with search, sort (popular/newest/entries), category filters |
-| `src/app/quizzes/tests/page.tsx` | Personality/result tests with search, sort (popular/newest/questions), category filters |
-| `src/app/quizzes/trivia/page.tsx` | Trivia quizzes with search, sort (popular/newest/hardest), category filters, avg score bars |
+| `src/app/quizzes/brackets/page.tsx` | Server wrapper — fetches translations, renders BracketsPage |
+| `src/app/quizzes/brackets/ClientPage.tsx` | Client head-to-head brackets with search, sort, category filters |
+| `src/app/quizzes/tests/page.tsx` | Server wrapper — fetches translations, renders TestsPage |
+| `src/app/quizzes/tests/ClientPage.tsx` | Client personality tests with search, sort, category filters |
+| `src/app/quizzes/trivia/page.tsx` | Server wrapper — fetches translations, renders TriviaPage |
+| `src/app/quizzes/trivia/ClientPage.tsx` | Client trivia quizzes with search, sort, category filters, avg score bars |
 | `src/app/layout.tsx` | Root layout + Header + Footer |
 | `src/app/globals.css` | Tailwind, animations, scrollbar |
 | `src/data/forums.ts` | Mock data for discussions and polls with helper functions |
@@ -96,3 +104,4 @@
 | 2026-03-21 | Added database (SQLite + Drizzle ORM), user auth (register/login/logout with cookie sessions), content creation (/create with 8 form types), Header shows auth state |
 | 2026-03-21 | Added EN/RU i18n with language switcher in Header; translations for all UI text; design polish: noise texture, 4th orb, glass-card effects, focus styles, shimmer/float/glow-pulse animations |
 | 2026-03-21 | Added i18n translations to /news page — replaced all hardcoded English strings with `t.news.*`, `t.nav.*`, and `t.forums.*` keys; SectionHeader accepts `viewAll` prop |
+| 2026-03-21 | Converted 8 sub-page files to server component pattern: each split into page.tsx (server wrapper fetching translations via getLang) + ClientPage.tsx ("use client" component with t prop). Covers: discussions, votes, articles, reviews, longreads, brackets, tests, trivia |
