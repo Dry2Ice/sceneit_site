@@ -51,14 +51,19 @@
 | `src/app/create/*/page.tsx` | Individual creation forms (discussion, poll, article, review, longread, bracket, test, trivia) |
 | `src/components/ui/AuthButtons.tsx` | Client auth buttons (login/register or user menu) |
 | `src/components/ui/CreateForm.tsx` | Reusable creation form component |
+| `src/i18n/en.ts` | English translations (full UI dictionary) |
+| `src/i18n/ru.ts` | Russian translations (full UI dictionary) |
+| `src/i18n/index.ts` | i18n helpers: getLang, setLang, t() |
+| `src/actions/lang.ts` | Server action to switch language (sets cookie) |
+| `src/components/ui/LangSwitcher.tsx` | Client language switcher (EN/RU toggle) |
 | `src/components/ui/Logo.tsx` | SceneIt SVG logo with amber→violet gradient |
 | `src/components/ui/AnimatedSection.tsx` | Scroll-triggered animation wrapper |
 | `src/components/sections/Hero.tsx` | Large centered logo (colorful gradient), parallax, staggered entrance |
 | `src/components/sections/Sections.tsx` | Three expandable section strips with links to dedicated pages |
 | `src/components/sections/Founders.tsx` | Two interactive founder photo cards (client component) |
 | `src/components/sections/Registration.tsx` | Registration form |
-| `src/components/layout/Header.tsx` | Fixed header with logo + nav; glass backdrop on scroll |
-| `src/components/layout/Footer.tsx` | Footer with links to section pages |
+| `src/components/layout/Header.tsx` | Fixed header with logo, nav, lang switcher, auth; glass backdrop on scroll |
+| `src/components/layout/Footer.tsx` | Footer with translated links and copyright |
 
 ## Key Interaction Patterns
 
@@ -89,3 +94,4 @@
 | 2026-03-21 | Added Flick Feed sections: /news/articles, /news/reviews, /news/longreads with search, sort, genre/category filters; /news shows weekly highlights; reviews include star ratings |
 | 2026-03-21 | Added Binge Buddy quiz sections: /quizzes/brackets (head-to-head tournaments), /quizzes/tests (personality quizzes with multiple results), /quizzes/trivia (knowledge tests with scores); all with search, sort, category filters; /quizzes shows weekly highlights |
 | 2026-03-21 | Added database (SQLite + Drizzle ORM), user auth (register/login/logout with cookie sessions), content creation (/create with 8 form types), Header shows auth state |
+| 2026-03-21 | Added EN/RU i18n with language switcher in Header; translations for all UI text; design polish: noise texture, 4th orb, glass-card effects, focus styles, shimmer/float/glow-pulse animations |
