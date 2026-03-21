@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import Link from "next/link";
+import { getThisWeekBrackets, getThisWeekTests, getThisWeekTrivias, formatDate } from "@/data/buddy";
 
 export const metadata: Metadata = {
   title: "Binge Buddy — SceneIt Quizzes",
@@ -7,111 +8,176 @@ export const metadata: Metadata = {
 };
 
 export default function QuizzesPage() {
+  const weekBrackets = getThisWeekBrackets();
+  const weekTests = getThisWeekTests();
+  const weekTrivias = getThisWeekTrivias();
+
+  const popularBrackets = [...weekBrackets].sort((a, b) => b.totalPlayed - a.totalPlayed).slice(0, 4);
+  const newestBrackets = [...weekBrackets].sort((a, b) => new Date(b.date).getTime() - new Date(a.date).getTime()).slice(0, 4);
+  const popularTests = [...weekTests].sort((a, b) => b.totalPlayed - a.totalPlayed).slice(0, 4);
+  const newestTests = [...weekTests].sort((a, b) => new Date(b.date).getTime() - new Date(a.date).getTime()).slice(0, 4);
+  const popularTrivias = [...weekTrivias].sort((a, b) => b.totalPlayed - a.totalPlayed).slice(0, 4);
+  const newestTrivias = [...weekTrivias].sort((a, b) => new Date(b.date).getTime() - new Date(a.date).getTime()).slice(0, 4);
+
   return (
     <main className="relative min-h-screen bg-[#07070a] text-white overflow-hidden">
-      {/* Background gradient */}
       <div className="absolute inset-0 bg-gradient-to-br from-[#451a03] via-[#2a1501] to-[#0d0b1a]" />
+      <div className="absolute w-[600px] h-[600px] rounded-full blur-[200px] opacity-20" style={{ background: "rgba(251, 191, 36, 0.3)", left: "30%", top: "15%" }} />
+      <div className="absolute w-[400px] h-[400px] rounded-full blur-[180px] opacity-15" style={{ background: "rgba(251, 191, 36, 0.2)", right: "15%", bottom: "25%" }} />
+      <div className="absolute inset-0 opacity-[0.03]" style={{ backgroundImage: "radial-gradient(circle at 1px 1px, #fbbf24 1px, transparent 0)", backgroundSize: "40px 40px" }} />
 
-      {/* Ambient glow */}
-      <div
-        className="absolute w-[600px] h-[600px] rounded-full blur-[200px] opacity-20"
-        style={{ background: "rgba(251, 191, 36, 0.3)", left: "30%", top: "15%" }}
-      />
-      <div
-        className="absolute w-[400px] h-[400px] rounded-full blur-[180px] opacity-15"
-        style={{ background: "rgba(251, 191, 36, 0.2)", right: "15%", bottom: "25%" }}
-      />
-
-      {/* Grid pattern */}
-      <div
-        className="absolute inset-0 opacity-[0.03]"
-        style={{
-          backgroundImage: "radial-gradient(circle at 1px 1px, #fbbf24 1px, transparent 0)",
-          backgroundSize: "40px 40px",
-        }}
-      />
-
-      {/* Content */}
-      <div className="relative z-10 min-h-screen flex flex-col items-center justify-center px-6">
+      <div className="relative z-10 max-w-5xl mx-auto px-6 pt-28 pb-20">
         {/* Back link */}
-        <Link
-          href="/"
-          className="absolute top-24 left-6 sm:left-10 inline-flex items-center gap-2 text-[10px] tracking-[0.25em] uppercase text-neutral-500 hover:text-amber-400 transition-colors duration-300"
-        >
-          <svg className="w-3.5 h-3.5" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
-            <path strokeLinecap="round" strokeLinejoin="round" d="M10.5 19.5L3 12m0 0l7.5-7.5M3 12h18" />
-          </svg>
+        <Link href="/" className="inline-flex items-center gap-2 text-[10px] tracking-[0.25em] uppercase text-neutral-500 hover:text-amber-400 transition-colors duration-300 mb-10">
+          <svg className="w-3.5 h-3.5" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}><path strokeLinecap="round" strokeLinejoin="round" d="M10.5 19.5L3 12m0 0l7.5-7.5M3 12h18" /></svg>
           Back
         </Link>
 
-        {/* Logo */}
-        <div className="w-full max-w-2xl mb-10" style={{ animation: "fadeInUp 1s ease-out both" }}>
-          <svg
-            viewBox="0 0 1761.72 516.42"
-            xmlns="http://www.w3.org/2000/svg"
-            className="w-full h-auto"
-            style={{ filter: "drop-shadow(0 0 40px rgba(251, 191, 36, 0.3))" }}
-          >
-            <defs>
-              <style>
-                {`.cls-1-quizzes { font-family: 'Square721 BT', sans-serif; font-size: 303.16px; font-weight: 700; }`}
-              </style>
-            </defs>
-            <text className="cls-1-quizzes" fill="#fbbf24" transform="translate(828.8 353.35)">
-              <tspan x="0" y="0">Buddy</tspan>
-            </text>
-            <text className="cls-1-quizzes" fill="#fbbf24" transform="translate(851.81 353.35) rotate(-180) scale(1 -1)">
-              <tspan x="0" y="0">Binge</tspan>
-            </text>
+        {/* Hero logo */}
+        <div className="w-full max-w-2xl mx-auto mb-10" style={{ animation: "fadeInUp 1s ease-out both" }}>
+          <svg viewBox="0 0 1761.72 516.42" xmlns="http://www.w3.org/2000/svg" className="w-full h-auto" style={{ filter: "drop-shadow(0 0 40px rgba(251, 191, 36, 0.3))" }}>
+            <defs><style>{`.cls-1-quizzes { font-family: 'Square721 BT', sans-serif; font-size: 303.16px; font-weight: 700; }`}</style></defs>
+            <text className="cls-1-quizzes" fill="#fbbf24" transform="translate(828.8 353.35)"><tspan x="0" y="0">Buddy</tspan></text>
+            <text className="cls-1-quizzes" fill="#fbbf24" transform="translate(851.81 353.35) rotate(-180) scale(1 -1)"><tspan x="0" y="0">Binge</tspan></text>
           </svg>
         </div>
 
-        {/* Divider */}
-        <div
-          className="w-16 h-px mb-8"
-          style={{
-            background: "linear-gradient(90deg, transparent, #fbbf24, transparent)",
-            animation: "fadeInUp 1s 0.2s ease-out both",
-          }}
-        />
+        <div className="w-16 h-px mx-auto mb-6" style={{ background: "linear-gradient(90deg, transparent, #fbbf24, transparent)" }} />
 
-        {/* Tagline */}
-        <p
-          className="text-[10px] tracking-[0.4em] uppercase mb-4"
-          style={{ color: "#fbbf24", opacity: 0.6, animation: "fadeInUp 1s 0.3s ease-out both" }}
-        >
-          Test Your Film IQ
-        </p>
+        <p className="text-center text-[10px] tracking-[0.4em] uppercase mb-3" style={{ color: "#fbbf24", opacity: 0.6 }}>Test Your Film IQ</p>
 
-        {/* Title */}
-        <h1
-          className="text-3xl sm:text-4xl md:text-5xl font-bold tracking-tight mb-6 text-center"
-          style={{ animation: "fadeInUp 1s 0.4s ease-out both" }}
-        >
-          Quizzes
-        </h1>
+        {/* Section cards */}
+        <div className="grid grid-cols-1 sm:grid-cols-3 gap-4 mb-16" style={{ animation: "fadeInUp 1s 0.3s ease-out both" }}>
+          <Link href="/quizzes/brackets" className="group relative bg-white/[0.03] border border-neutral-800/30 rounded-xl p-5 transition-all duration-500 hover:bg-white/[0.06] hover:border-amber-500/20">
+            <div className="w-10 h-10 rounded-lg bg-amber-500/10 border border-amber-500/15 flex items-center justify-center mb-3 transition-colors group-hover:bg-amber-500/20">
+              <svg className="w-4 h-4 text-amber-400" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={1.5}><path strokeLinecap="round" strokeLinejoin="round" d="M16.5 18.75h-9m9 0a3 3 0 013 3h-15a3 3 0 013-3m9 0v-3.375c0-.621-.503-1.125-1.125-1.125h-.871M7.5 18.75v-3.375c0-.621.504-1.125 1.125-1.125h.872m5.007 0H9.497m5.007 0a7.454 7.454 0 01-.982-3.172M9.497 14.25a7.454 7.454 0 00.981-3.172M5.25 4.236c-.982.143-1.954.317-2.916.52A6.003 6.003 0 007.73 9.728M5.25 4.236V4.5c0 2.108.966 3.99 2.48 5.228M5.25 4.236V2.721C7.456 2.41 9.71 2.25 12 2.25c2.291 0 4.545.16 6.75.47v1.516M18.75 4.236c.982.143 1.954.317 2.916.52A6.003 6.003 0 0016.27 9.728M18.75 4.236V4.5c0 2.108-.966 3.99-2.48 5.228m0 0a6.003 6.003 0 01-3.77 1.522m0 0a6.003 6.003 0 01-3.77-1.522" /></svg>
+            </div>
+            <h3 className="text-sm font-semibold text-white/90 group-hover:text-amber-300 transition-colors">Brackets</h3>
+            <p className="text-[11px] text-neutral-500 mt-1">{weekBrackets.length} active this week</p>
+          </Link>
 
-        {/* Description */}
-        <p
-          className="text-neutral-400 text-sm sm:text-base max-w-xl text-center leading-relaxed mb-12"
-          style={{ animation: "fadeInUp 1s 0.5s ease-out both" }}
-        >
-          The ultimate playground for movie trivia fanatics. From frame-guessing challenges
-          to deep-cut director quizzes, prove your cinematic knowledge.
-        </p>
+          <Link href="/quizzes/tests" className="group relative bg-white/[0.03] border border-neutral-800/30 rounded-xl p-5 transition-all duration-500 hover:bg-white/[0.06] hover:border-amber-500/20">
+            <div className="w-10 h-10 rounded-lg bg-amber-500/10 border border-amber-500/15 flex items-center justify-center mb-3 transition-colors group-hover:bg-amber-500/20">
+              <svg className="w-4 h-4 text-amber-400" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={1.5}><path strokeLinecap="round" strokeLinejoin="round" d="M9.813 15.904L9 18.75l-.813-2.846a4.5 4.5 0 00-3.09-3.09L2.25 12l2.846-.813a4.5 4.5 0 003.09-3.09L9 5.25l.813 2.846a4.5 4.5 0 003.09 3.09L15.75 12l-2.846.813a4.5 4.5 0 00-3.09 3.09zM18.259 8.715L18 9.75l-.259-1.035a3.375 3.375 0 00-2.455-2.456L14.25 6l1.036-.259a3.375 3.375 0 002.455-2.456L18 2.25l.259 1.035a3.375 3.375 0 002.455 2.456L21.75 6l-1.036.259a3.375 3.375 0 00-2.455 2.456zM16.894 20.567L16.5 21.75l-.394-1.183a2.25 2.25 0 00-1.423-1.423L13.5 18.75l1.183-.394a2.25 2.25 0 001.423-1.423l.394-1.183.394 1.183a2.25 2.25 0 001.423 1.423l1.183.394-1.183.394a2.25 2.25 0 00-1.423 1.423z" /></svg>
+            </div>
+            <h3 className="text-sm font-semibold text-white/90 group-hover:text-amber-300 transition-colors">Tests</h3>
+            <p className="text-[11px] text-neutral-500 mt-1">{weekTests.length} new this week</p>
+          </Link>
 
-        {/* Coming soon badge */}
-        <div
-          className="inline-flex items-center gap-2 px-4 py-2 rounded-full border bg-white/[0.03] backdrop-blur-sm"
-          style={{
-            borderColor: "rgba(251, 191, 36, 0.15)",
-            animation: "fadeInUp 1s 0.6s ease-out both",
-          }}
-        >
-          <div className="w-1.5 h-1.5 rounded-full bg-amber-400 animate-pulse" />
-          <span className="text-[10px] tracking-[0.2em] uppercase text-neutral-400">Coming Soon</span>
+          <Link href="/quizzes/trivia" className="group relative bg-white/[0.03] border border-neutral-800/30 rounded-xl p-5 transition-all duration-500 hover:bg-white/[0.06] hover:border-amber-500/20">
+            <div className="w-10 h-10 rounded-lg bg-amber-500/10 border border-amber-500/15 flex items-center justify-center mb-3 transition-colors group-hover:bg-amber-500/20">
+              <svg className="w-4 h-4 text-amber-400" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={1.5}><path strokeLinecap="round" strokeLinejoin="round" d="M4.26 10.147a60.436 60.436 0 00-.491 6.347A48.627 48.627 0 0112 20.904a48.627 48.627 0 018.232-4.41 60.46 60.46 0 00-.491-6.347m-15.482 0a50.57 50.57 0 00-2.658-.813A59.905 59.905 0 0112 3.493a59.902 59.902 0 0110.399 5.84c-.896.248-1.783.52-2.658.814m-15.482 0A50.697 50.697 0 0112 13.489a50.702 50.702 0 017.74-3.342M6.75 15a.75.75 0 100-1.5.75.75 0 000 1.5zm0 0v-3.675A55.378 55.378 0 0112 8.443m-7.007 11.55A5.981 5.981 0 006.75 15.75v-1.5" /></svg>
+            </div>
+            <h3 className="text-sm font-semibold text-white/90 group-hover:text-amber-300 transition-colors">Trivia</h3>
+            <p className="text-[11px] text-neutral-500 mt-1">{weekTrivias.length} quizzes this week</p>
+          </Link>
+        </div>
+
+        {/* Popular Brackets */}
+        <SectionHeader title="Popular Brackets This Week" href="/quizzes/brackets" />
+        <div className="grid grid-cols-1 sm:grid-cols-2 gap-3 mb-12">
+          {popularBrackets.map((b) => (
+            <div key={b.id} className="bg-white/[0.02] border border-neutral-800/30 rounded-xl p-5 transition-all duration-500 hover:bg-white/[0.04] hover:border-amber-500/15">
+              <span className="text-[9px] tracking-[0.2em] uppercase text-amber-400/40 block mb-1.5">{b.category}</span>
+              <h4 className="text-sm font-semibold text-white/90 mb-2 line-clamp-2">{b.title}</h4>
+              <p className="text-xs text-neutral-500 line-clamp-2 mb-3">{b.preview}</p>
+              <div className="flex items-center gap-3 text-[10px] text-neutral-600">
+                <span>{b.participants} entries</span><span className="opacity-30">·</span><span>{b.totalPlayed.toLocaleString()} played</span>
+              </div>
+            </div>
+          ))}
+        </div>
+
+        {/* Newest Brackets */}
+        <SectionHeader title="Newest Brackets This Week" href="/quizzes/brackets" />
+        <div className="grid grid-cols-1 sm:grid-cols-2 gap-3 mb-12">
+          {newestBrackets.map((b) => (
+            <div key={b.id} className="bg-white/[0.02] border border-neutral-800/30 rounded-xl p-5 transition-all duration-500 hover:bg-white/[0.04] hover:border-amber-500/15">
+              <span className="text-[9px] tracking-[0.2em] uppercase text-amber-400/40 block mb-1.5">{b.category}</span>
+              <h4 className="text-sm font-semibold text-white/90 mb-2 line-clamp-2">{b.title}</h4>
+              <p className="text-xs text-neutral-500 line-clamp-2 mb-3">{b.preview}</p>
+              <div className="flex items-center gap-3 text-[10px] text-neutral-600">
+                <span>{formatDate(b.date)}</span><span className="opacity-30">·</span><span>{b.totalPlayed.toLocaleString()} played</span>
+              </div>
+            </div>
+          ))}
+        </div>
+
+        {/* Popular Tests */}
+        <SectionHeader title="Popular Tests This Week" href="/quizzes/tests" />
+        <div className="grid grid-cols-1 sm:grid-cols-2 gap-3 mb-12">
+          {popularTests.map((t) => (
+            <div key={t.id} className="bg-white/[0.02] border border-neutral-800/30 rounded-xl p-5 transition-all duration-500 hover:bg-white/[0.04] hover:border-amber-500/15">
+              <span className="text-[9px] tracking-[0.2em] uppercase text-amber-400/40 block mb-1.5">{t.category}</span>
+              <h4 className="text-sm font-semibold text-white/90 mb-2 line-clamp-2">{t.title}</h4>
+              <p className="text-xs text-neutral-500 line-clamp-2 mb-3">{t.preview}</p>
+              <div className="flex items-center gap-3 text-[10px] text-neutral-600">
+                <span>{t.questionsCount} questions</span><span className="opacity-30">·</span><span>{t.totalPlayed.toLocaleString()} played</span>
+              </div>
+            </div>
+          ))}
+        </div>
+
+        {/* Newest Tests */}
+        <SectionHeader title="Newest Tests This Week" href="/quizzes/tests" />
+        <div className="grid grid-cols-1 sm:grid-cols-2 gap-3 mb-12">
+          {newestTests.map((t) => (
+            <div key={t.id} className="bg-white/[0.02] border border-neutral-800/30 rounded-xl p-5 transition-all duration-500 hover:bg-white/[0.04] hover:border-amber-500/15">
+              <span className="text-[9px] tracking-[0.2em] uppercase text-amber-400/40 block mb-1.5">{t.category}</span>
+              <h4 className="text-sm font-semibold text-white/90 mb-2 line-clamp-2">{t.title}</h4>
+              <p className="text-xs text-neutral-500 line-clamp-2 mb-3">{t.preview}</p>
+              <div className="flex items-center gap-3 text-[10px] text-neutral-600">
+                <span>{formatDate(t.date)}</span><span className="opacity-30">·</span><span>{t.totalPlayed.toLocaleString()} played</span>
+              </div>
+            </div>
+          ))}
+        </div>
+
+        {/* Popular Trivia */}
+        <SectionHeader title="Popular Trivia This Week" href="/quizzes/trivia" />
+        <div className="grid grid-cols-1 sm:grid-cols-2 gap-3 mb-12">
+          {popularTrivias.map((t) => (
+            <div key={t.id} className="bg-white/[0.02] border border-neutral-800/30 rounded-xl p-5 transition-all duration-500 hover:bg-white/[0.04] hover:border-amber-500/15">
+              <span className="text-[9px] tracking-[0.2em] uppercase text-amber-400/40 block mb-1.5">{t.category}</span>
+              <h4 className="text-sm font-semibold text-white/90 mb-2 line-clamp-2">{t.title}</h4>
+              <p className="text-xs text-neutral-500 line-clamp-2 mb-3">{t.preview}</p>
+              <div className="flex items-center gap-3 text-[10px] text-neutral-600">
+                <span>{t.questionsCount} questions</span><span className="opacity-30">·</span><span>Avg: {t.avgScore}%</span>
+              </div>
+            </div>
+          ))}
+        </div>
+
+        {/* Newest Trivia */}
+        <SectionHeader title="Newest Trivia This Week" href="/quizzes/trivia" />
+        <div className="grid grid-cols-1 sm:grid-cols-2 gap-3 mb-12">
+          {newestTrivias.map((t) => (
+            <div key={t.id} className="bg-white/[0.02] border border-neutral-800/30 rounded-xl p-5 transition-all duration-500 hover:bg-white/[0.04] hover:border-amber-500/15">
+              <span className="text-[9px] tracking-[0.2em] uppercase text-amber-400/40 block mb-1.5">{t.category}</span>
+              <h4 className="text-sm font-semibold text-white/90 mb-2 line-clamp-2">{t.title}</h4>
+              <p className="text-xs text-neutral-500 line-clamp-2 mb-3">{t.preview}</p>
+              <div className="flex items-center gap-3 text-[10px] text-neutral-600">
+                <span>{formatDate(t.date)}</span><span className="opacity-30">·</span><span>{t.totalPlayed.toLocaleString()} played</span>
+              </div>
+            </div>
+          ))}
         </div>
       </div>
     </main>
+  );
+}
+
+function SectionHeader({ title, href }: { title: string; href: string }) {
+  return (
+    <div className="flex items-center justify-between mb-5">
+      <div className="flex items-center gap-3">
+        <div className="w-1 h-5 rounded-full bg-amber-500/40" />
+        <h2 className="text-sm sm:text-base font-semibold text-white/80">{title}</h2>
+      </div>
+      <Link href={href} className="text-[10px] tracking-[0.15em] uppercase text-amber-400/50 hover:text-amber-400 transition-colors flex items-center gap-1.5">
+        View all
+        <svg className="w-3 h-3" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}><path strokeLinecap="round" strokeLinejoin="round" d="M8.25 4.5l7.5 7.5-7.5 7.5" /></svg>
+      </Link>
+    </div>
   );
 }
