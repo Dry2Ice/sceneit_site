@@ -85,7 +85,7 @@ export default async function NewsPage() {
               <h4 className="text-sm font-semibold text-white/90 mb-2 line-clamp-2">{a.title}</h4>
               <p className="text-xs text-neutral-500 line-clamp-2 mb-3">{a.preview}</p>
               <div className="flex items-center gap-3 text-[10px] text-neutral-600">
-                <span>{a.author}</span><span className="opacity-30">·</span><span>{formatDate(a.date)}</span><span className="opacity-30">·</span>                <span>{a.likes} {t.forums.likes}</span>
+                <span>{a.author}</span><span className="opacity-30">·</span><span>{formatDate(a.date)}</span><span className="opacity-30">·</span><span>{a.likes} {t.forums.likes}</span>
               </div>
             </div>
           ))}
@@ -100,7 +100,7 @@ export default async function NewsPage() {
               <h4 className="text-sm font-semibold text-white/90 mb-2 line-clamp-2">{a.title}</h4>
               <p className="text-xs text-neutral-500 line-clamp-2 mb-3">{a.preview}</p>
               <div className="flex items-center gap-3 text-[10px] text-neutral-600">
-                <span>{a.author}</span><span className="opacity-30">·</span><span>{formatDate(a.date)}</span><span className="opacity-30">·</span>                <span>{a.comments} {t.forums.comments}</span>
+                <span>{a.author}</span><span className="opacity-30">·</span><span>{formatDate(a.date)}</span><span className="opacity-30">·</span><span>{a.comments} {t.forums.comments}</span>
               </div>
             </div>
           ))}
@@ -127,7 +127,7 @@ export default async function NewsPage() {
               </div>
               <p className="text-xs text-neutral-500 line-clamp-2 mb-3">{r.preview}</p>
               <div className="flex items-center gap-3 text-[10px] text-neutral-600">
-                <span>{r.author}</span><span className="opacity-30">·</span><span>{formatDate(r.date)}</span><span className="opacity-30">·</span>                <span>{r.likes} {t.forums.likes}</span>
+                <span>{r.author}</span><span className="opacity-30">·</span><span>{formatDate(r.date)}</span><span className="opacity-30">·</span><span>{r.likes} {t.forums.likes}</span>
               </div>
             </div>
           ))}
@@ -154,7 +154,7 @@ export default async function NewsPage() {
               </div>
               <p className="text-xs text-neutral-500 line-clamp-2 mb-3">{r.preview}</p>
               <div className="flex items-center gap-3 text-[10px] text-neutral-600">
-                <span>{r.author}</span><span className="opacity-30">·</span><span>{formatDate(r.date)}</span><span className="opacity-30">·</span>                <span>{r.comments} {t.forums.comments}</span>
+                <span>{r.author}</span><span className="opacity-30">·</span><span>{formatDate(r.date)}</span><span className="opacity-30">·</span><span>{r.comments} {t.forums.comments}</span>
               </div>
             </div>
           ))}
@@ -173,7 +173,7 @@ export default async function NewsPage() {
               <h4 className="text-sm font-semibold text-white/90 mb-2 line-clamp-2">{l.title}</h4>
               <p className="text-xs text-neutral-500 line-clamp-2 mb-3">{l.preview}</p>
               <div className="flex items-center gap-3 text-[10px] text-neutral-600">
-                <span>{l.author}</span><span className="opacity-30">·</span><span>{formatDate(l.date)}</span><span className="opacity-30">·</span>                <span>{l.likes} {t.forums.likes}</span>
+                <span>{l.author}</span><span className="opacity-30">·</span><span>{formatDate(l.date)}</span><span className="opacity-30">·</span><span>{l.likes} {t.forums.likes}</span>
               </div>
             </div>
           ))}
@@ -192,7 +192,7 @@ export default async function NewsPage() {
               <h4 className="text-sm font-semibold text-white/90 mb-2 line-clamp-2">{l.title}</h4>
               <p className="text-xs text-neutral-500 line-clamp-2 mb-3">{l.preview}</p>
               <div className="flex items-center gap-3 text-[10px] text-neutral-600">
-                <span>{l.author}</span><span className="opacity-30">·</span><span>{formatDate(l.date)}</span><span className="opacity-30">·</span>                <span>{l.comments} {t.forums.comments}</span>
+                <span>{l.author}</span><span className="opacity-30">·</span><span>{formatDate(l.date)}</span><span className="opacity-30">·</span><span>{l.comments} {t.forums.comments}</span>
               </div>
             </div>
           ))}

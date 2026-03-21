@@ -95,3 +95,4 @@
 | 2026-03-21 | Added Binge Buddy quiz sections: /quizzes/brackets (head-to-head tournaments), /quizzes/tests (personality quizzes with multiple results), /quizzes/trivia (knowledge tests with scores); all with search, sort, category filters; /quizzes shows weekly highlights |
 | 2026-03-21 | Added database (SQLite + Drizzle ORM), user auth (register/login/logout with cookie sessions), content creation (/create with 8 form types), Header shows auth state |
 | 2026-03-21 | Added EN/RU i18n with language switcher in Header; translations for all UI text; design polish: noise texture, 4th orb, glass-card effects, focus styles, shimmer/float/glow-pulse animations |
+| 2026-03-21 | Added i18n translations to /news page — replaced all hardcoded English strings with `t.news.*`, `t.nav.*`, and `t.forums.*` keys; SectionHeader accepts `viewAll` prop |
