@@ -31,11 +31,15 @@
 | `src/app/news/articles/page.tsx` | News list with search, sort (popular/newest/discussed), category filters |
 | `src/app/news/reviews/page.tsx` | Reviews list with search, sort (popular/newest/highest-rated), genre filters, star ratings |
 | `src/app/news/longreads/page.tsx` | Longreads list with search, sort (popular/newest/longest), category filters |
-| `src/app/quizzes/page.tsx` | Binge Buddy section page — amber gradient, centered SVG logo |
+| `src/app/quizzes/page.tsx` | Binge Buddy main — weekly highlights of brackets, tests, trivia |
+| `src/app/quizzes/brackets/page.tsx` | Head-to-head brackets with search, sort (popular/newest/entries), category filters |
+| `src/app/quizzes/tests/page.tsx` | Personality/result tests with search, sort (popular/newest/questions), category filters |
+| `src/app/quizzes/trivia/page.tsx` | Trivia quizzes with search, sort (popular/newest/hardest), category filters, avg score bars |
 | `src/app/layout.tsx` | Root layout + Header + Footer |
 | `src/app/globals.css` | Tailwind, animations, scrollbar |
 | `src/data/forums.ts` | Mock data for discussions and polls with helper functions |
 | `src/data/flickfeed.ts` | Mock data for news articles, reviews, and longreads with helper functions |
+| `src/data/buddy.ts` | Mock data for brackets, tests, and trivia quizzes with helper functions |
 | `src/components/ui/Logo.tsx` | SceneIt SVG logo with amber→violet gradient |
 | `src/components/ui/AnimatedSection.tsx` | Scroll-triggered animation wrapper |
 | `src/components/sections/Hero.tsx` | Large centered logo (colorful gradient), parallax, staggered entrance |
@@ -72,3 +76,4 @@
 | 2026-03-21 | Removed scroll-driven logo animation from Header; added amber→violet gradient fill to Logo component |
 | 2026-03-21 | Added Riot Reel forums: /forums/discussions and /forums/votes with search, sort filters, category chips; /forums shows weekly highlights |
 | 2026-03-21 | Added Flick Feed sections: /news/articles, /news/reviews, /news/longreads with search, sort, genre/category filters; /news shows weekly highlights; reviews include star ratings |
+| 2026-03-21 | Added Binge Buddy quiz sections: /quizzes/brackets (head-to-head tournaments), /quizzes/tests (personality quizzes with multiple results), /quizzes/trivia (knowledge tests with scores); all with search, sort, category filters; /quizzes shows weekly highlights |
