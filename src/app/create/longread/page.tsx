@@ -13,7 +13,7 @@ export default async function CreateLongreadPage() {
       section="Flick Feed"
       color="#fb7185"
       action={createLongread}
-      redirectPath="/news/longreads"
+      redirectPath="/publications/longreads"
       fields={[
         { name: "title", label: "Title", placeholder: "e.g. The complete oral history of A24" },
         { name: "category", label: "Category", options: ["Oral History", "Technology", "Essay", "Retrospective"] },

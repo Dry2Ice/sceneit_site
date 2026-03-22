@@ -13,7 +13,7 @@ export default async function CreateArticlePage() {
       section="Flick Feed"
       color="#fb7185"
       action={createArticle}
-      redirectPath="/news/articles"
+      redirectPath="/publications/articles"
       fields={[
         { name: "title", label: "Headline", placeholder: "e.g. Nolan signs exclusive IMAX deal" },
         { name: "category", label: "Category", options: ["Festival Coverage", "Industry", "Production News", "Trends", "Awards"] },

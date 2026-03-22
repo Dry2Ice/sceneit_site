@@ -81,7 +81,7 @@ export function TriviaPage({ t }: PageProps) {
         </div>
 
         <div className="mb-10">
-          <p className="text-[10px] tracking-[0.4em] uppercase mb-3" style={{ color: "#fbbf24", opacity: 0.6 }}>{t.section}</p>
+          <p className="text-[10px] tracking-[0.4em] uppercase mb-3" style={{ color: "#fbbf24", opacity: 0.6 }}>{t.title}</p>
           <h1 className="text-3xl sm:text-4xl font-bold tracking-tight mb-3">{t.title}</h1>
           <p className="text-neutral-500 text-sm">{t.description}</p>
         </div>

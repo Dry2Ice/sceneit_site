@@ -51,7 +51,7 @@ export default async function NewsPage() {
 
         {/* Section cards */}
         <div className="grid grid-cols-1 sm:grid-cols-3 gap-4 mb-16" style={{ animation: "fadeInUp 1s 0.3s ease-out both" }}>
-          <Link href="/news/articles" className="group relative bg-white/[0.03] border border-neutral-800/30 rounded-xl p-5 transition-all duration-500 hover:bg-white/[0.06] hover:border-rose-500/20">
+          <Link href="/publications/articles" className="group relative bg-white/[0.03] border border-neutral-800/30 rounded-xl p-5 transition-all duration-500 hover:bg-white/[0.06] hover:border-rose-500/20">
             <div className="w-10 h-10 rounded-lg bg-rose-500/10 border border-rose-500/15 flex items-center justify-center mb-3 transition-colors group-hover:bg-rose-500/20">
               <svg className="w-4 h-4 text-rose-400" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={1.5}><path strokeLinecap="round" strokeLinejoin="round" d="M12 7.5h1.5m-1.5 3h1.5m-7.5 3h7.5m-7.5 3h7.5m3-9h3.375c.621 0 1.125.504 1.125 1.125V18a2.25 2.25 0 01-2.25 2.25M16.5 7.5V18a2.25 2.25 0 002.25 2.25M16.5 7.5V4.875c0-.621-.504-1.125-1.125-1.125H4.125C3.504 3.75 3 4.254 3 4.875V18a2.25 2.25 0 002.25 2.25h13.5M6 7.5h3v3H6v-3z" /></svg>
             </div>
@@ -59,7 +59,7 @@ export default async function NewsPage() {
             <p className="text-[11px] text-neutral-500 mt-1">{weekArticles.length} {t.news.articlesThisWeek}</p>
           </Link>
 
-          <Link href="/news/reviews" className="group relative bg-white/[0.03] border border-neutral-800/30 rounded-xl p-5 transition-all duration-500 hover:bg-white/[0.06] hover:border-rose-500/20">
+          <Link href="/publications/reviews" className="group relative bg-white/[0.03] border border-neutral-800/30 rounded-xl p-5 transition-all duration-500 hover:bg-white/[0.06] hover:border-rose-500/20">
             <div className="w-10 h-10 rounded-lg bg-rose-500/10 border border-rose-500/15 flex items-center justify-center mb-3 transition-colors group-hover:bg-rose-500/20">
               <svg className="w-4 h-4 text-rose-400" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={1.5}><path strokeLinecap="round" strokeLinejoin="round" d="M11.48 3.499a.562.562 0 011.04 0l2.125 5.111a.563.563 0 00.475.345l5.518.442c.499.04.701.663.321.988l-4.204 3.602a.563.563 0 00-.182.557l1.285 5.385a.562.562 0 01-.84.61l-4.725-2.885a.563.563 0 00-.586 0L6.982 20.54a.562.562 0 01-.84-.61l1.285-5.386a.562.562 0 00-.182-.557l-4.204-3.602a.563.563 0 01.321-.988l5.518-.442a.563.563 0 00.475-.345L11.48 3.5z" /></svg>
             </div>
@@ -67,7 +67,7 @@ export default async function NewsPage() {
             <p className="text-[11px] text-neutral-500 mt-1">{weekReviews.length} {t.news.reviewsThisWeek}</p>
           </Link>
 
-          <Link href="/news/longreads" className="group relative bg-white/[0.03] border border-neutral-800/30 rounded-xl p-5 transition-all duration-500 hover:bg-white/[0.06] hover:border-rose-500/20">
+          <Link href="/publications/longreads" className="group relative bg-white/[0.03] border border-neutral-800/30 rounded-xl p-5 transition-all duration-500 hover:bg-white/[0.06] hover:border-rose-500/20">
             <div className="w-10 h-10 rounded-lg bg-rose-500/10 border border-rose-500/15 flex items-center justify-center mb-3 transition-colors group-hover:bg-rose-500/20">
               <svg className="w-4 h-4 text-rose-400" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={1.5}><path strokeLinecap="round" strokeLinejoin="round" d="M12 6.042A8.967 8.967 0 006 3.75c-1.052 0-2.062.18-3 .512v14.25A8.987 8.987 0 016 18c2.305 0 4.408.867 6 2.292m0-14.25a8.966 8.966 0 016-2.292c1.052 0 2.062.18 3 .512v14.25A8.987 8.987 0 0018 18a8.967 8.967 0 00-6 2.292m0-14.25v14.25" /></svg>
             </div>
@@ -77,7 +77,7 @@ export default async function NewsPage() {
         </div>
 
         {/* Popular News */}
-        <SectionHeader title={t.news.popularNews} href="/news/articles" viewAll={t.nav.viewAll} />
+        <SectionHeader title={t.news.popularNews} href="/publications/articles" viewAll={t.nav.viewAll} />
         <div className="grid grid-cols-1 sm:grid-cols-2 gap-3 mb-12">
           {popularArticles.map((a) => (
             <div key={a.id} className="bg-white/[0.02] border border-neutral-800/30 rounded-xl p-5 transition-all duration-500 hover:bg-white/[0.04] hover:border-rose-500/15">
@@ -92,7 +92,7 @@ export default async function NewsPage() {
         </div>
 
         {/* Newest News */}
-        <SectionHeader title={t.news.newestNews} href="/news/articles" viewAll={t.nav.viewAll} />
+        <SectionHeader title={t.news.newestNews} href="/publications/articles" viewAll={t.nav.viewAll} />
         <div className="grid grid-cols-1 sm:grid-cols-2 gap-3 mb-12">
           {newestArticles.map((a) => (
             <div key={a.id} className="bg-white/[0.02] border border-neutral-800/30 rounded-xl p-5 transition-all duration-500 hover:bg-white/[0.04] hover:border-rose-500/15">
@@ -107,7 +107,7 @@ export default async function NewsPage() {
         </div>
 
         {/* Popular Reviews */}
-        <SectionHeader title={t.news.popularReviews} href="/news/reviews" viewAll={t.nav.viewAll} />
+        <SectionHeader title={t.news.popularReviews} href="/publications/reviews" viewAll={t.nav.viewAll} />
         <div className="grid grid-cols-1 sm:grid-cols-2 gap-3 mb-12">
           {popularReviews.map((r) => (
             <div key={r.id} className="bg-white/[0.02] border border-neutral-800/30 rounded-xl p-5 transition-all duration-500 hover:bg-white/[0.04] hover:border-rose-500/15">
@@ -134,7 +134,7 @@ export default async function NewsPage() {
         </div>
 
         {/* Newest Reviews */}
-        <SectionHeader title={t.news.newestReviews} href="/news/reviews" viewAll={t.nav.viewAll} />
+        <SectionHeader title={t.news.newestReviews} href="/publications/reviews" viewAll={t.nav.viewAll} />
         <div className="grid grid-cols-1 sm:grid-cols-2 gap-3 mb-12">
           {newestReviews.map((r) => (
             <div key={r.id} className="bg-white/[0.02] border border-neutral-800/30 rounded-xl p-5 transition-all duration-500 hover:bg-white/[0.04] hover:border-rose-500/15">
@@ -161,7 +161,7 @@ export default async function NewsPage() {
         </div>
 
         {/* Popular Longreads */}
-        <SectionHeader title={t.news.popularLongreads} href="/news/longreads" viewAll={t.nav.viewAll} />
+        <SectionHeader title={t.news.popularLongreads} href="/publications/longreads" viewAll={t.nav.viewAll} />
         <div className="grid grid-cols-1 sm:grid-cols-2 gap-3 mb-12">
           {popularLongreads.map((l) => (
             <div key={l.id} className="bg-white/[0.02] border border-neutral-800/30 rounded-xl p-5 transition-all duration-500 hover:bg-white/[0.04] hover:border-rose-500/15">
@@ -180,7 +180,7 @@ export default async function NewsPage() {
         </div>
 
         {/* Newest Longreads */}
-        <SectionHeader title={t.news.newestLongreads} href="/news/longreads" viewAll={t.nav.viewAll} />
+        <SectionHeader title={t.news.newestLongreads} href="/publications/longreads" viewAll={t.nav.viewAll} />
         <div className="grid grid-cols-1 sm:grid-cols-2 gap-3 mb-12">
           {newestLongreads.map((l) => (
             <div key={l.id} className="bg-white/[0.02] border border-neutral-800/30 rounded-xl p-5 transition-all duration-500 hover:bg-white/[0.04] hover:border-rose-500/15">

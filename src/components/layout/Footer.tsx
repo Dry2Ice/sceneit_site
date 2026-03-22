@@ -21,7 +21,7 @@ export function Footer({ lang = "en" }: { lang?: Lang }) {
             <Link href="/forums" className="text-xs tracking-widest uppercase text-neutral-600 hover:text-neutral-400 transition-colors">
               {t.nav.forums}
             </Link>
-            <Link href="/news" className="text-xs tracking-widest uppercase text-neutral-600 hover:text-neutral-400 transition-colors">
+            <Link href="/publications" className="text-xs tracking-widest uppercase text-neutral-600 hover:text-neutral-400 transition-colors">
               {t.nav.news}
             </Link>
             <Link href="/quizzes" className="text-xs tracking-widest uppercase text-neutral-600 hover:text-neutral-400 transition-colors">

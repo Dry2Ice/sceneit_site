@@ -2,8 +2,8 @@
 
 import { useState, useMemo } from "react";
 import Link from "next/link";
-import { longreads, formatDate } from "@/data/flickfeed";
-import type { Longread } from "@/data/flickfeed";
+import { articles, formatDate } from "@/data/flickfeed";
+import type { Article } from "@/data/flickfeed";
 
 interface PageProps {
   t: {
@@ -19,35 +19,34 @@ interface PageProps {
     noResults: string;
     likes?: string;
     comments?: string;
-    longest?: string;
-    minRead?: string;
+    mostDiscussed?: string;
     resultsCount: string;
   };
 }
 
-type SortKey = "popular" | "newest" | "longest";
-const categories = [...new Set(longreads.map((l) => l.category))];
+type SortKey = "popular" | "newest" | "most-discussed";
+const categories = [...new Set(articles.map((a) => a.category))];
 
-export function LongreadsPage({ t }: PageProps) {
+export function ArticlesPage({ t }: PageProps) {
   const [search, setSearch] = useState("");
   const [sort, setSort] = useState<SortKey>("newest");
   const [category, setCategory] = useState<string | null>(null);
 
   const filtered = useMemo(() => {
-    let list: Longread[] = [...longreads];
+    let list: Article[] = [...articles];
 
     if (search) {
       const q = search.toLowerCase();
       list = list.filter(
-        (l) =>
-          l.title.toLowerCase().includes(q) ||
-          l.preview.toLowerCase().includes(q) ||
-          l.author.toLowerCase().includes(q)
+        (a) =>
+          a.title.toLowerCase().includes(q) ||
+          a.preview.toLowerCase().includes(q) ||
+          a.author.toLowerCase().includes(q)
       );
     }
 
     if (category) {
-      list = list.filter((l) => l.category === category);
+      list = list.filter((a) => a.category === category);
     }
 
     switch (sort) {
@@ -57,8 +56,8 @@ export function LongreadsPage({ t }: PageProps) {
       case "newest":
         list.sort((a, b) => new Date(b.date).getTime() - new Date(a.date).getTime());
         break;
-      case "longest":
-        list.sort((a, b) => b.readTime - a.readTime);
+      case "most-discussed":
+        list.sort((a, b) => b.comments - a.comments);
         break;
     }
 
@@ -68,20 +67,20 @@ export function LongreadsPage({ t }: PageProps) {
   return (
     <main className="relative min-h-screen bg-[#07070a] text-white overflow-hidden">
       <div className="absolute inset-0 bg-gradient-to-br from-[#4a1528] via-[#2d0f1a] to-[#0d0b1a]" />
-      <div className="absolute w-[600px] h-[600px] rounded-full blur-[200px] opacity-15" style={{ background: "rgba(251, 113, 133, 0.3)", right: "10%", bottom: "10%" }} />
+      <div className="absolute w-[600px] h-[600px] rounded-full blur-[200px] opacity-15" style={{ background: "rgba(251, 113, 133, 0.3)", right: "-10%", top: "5%" }} />
       <div className="absolute inset-0 opacity-[0.03]" style={{ backgroundImage: "radial-gradient(circle at 1px 1px, #fb7185 1px, transparent 0)", backgroundSize: "40px 40px" }} />
 
       <div className="relative z-10 max-w-4xl mx-auto px-6 pt-28 pb-20">
         <div className="flex items-center gap-2 mb-10 text-[10px] tracking-[0.2em] uppercase text-neutral-500">
           <Link href="/" className="hover:text-rose-400 transition-colors">{t.home}</Link>
           <span className="opacity-30">/</span>
-          <Link href="/news" className="hover:text-rose-400 transition-colors">{t.section}</Link>
+          <Link href="/publications" className="hover:text-rose-400 transition-colors">{t.section}</Link>
           <span className="opacity-30">/</span>
-          <span className="text-rose-400/70">{t.title}</span>
+          <span className="text-rose-400/70">News</span>
         </div>
 
         <div className="mb-10">
-          <p className="text-[10px] tracking-[0.4em] uppercase mb-3" style={{ color: "#fb7185", opacity: 0.6 }}>{t.section}</p>
+          <p className="text-[10px] tracking-[0.4em] uppercase mb-3" style={{ color: "#fb7185", opacity: 0.6 }}>{t.title}</p>
           <h1 className="text-3xl sm:text-4xl font-bold tracking-tight mb-3">{t.title}</h1>
           <p className="text-neutral-500 text-sm">{t.description}</p>
         </div>
@@ -94,7 +93,7 @@ export function LongreadsPage({ t }: PageProps) {
         </div>
 
         <div className="flex items-center gap-1 mb-6 p-1 bg-white/[0.02] rounded-lg w-fit">
-          {([{ key: "newest" as SortKey, label: t.newest }, { key: "popular" as SortKey, label: t.popular }, { key: "longest" as SortKey, label: t.longest ?? "Longest" }]).map((tab) => (
+          {([{ key: "newest" as SortKey, label: t.newest }, { key: "popular" as SortKey, label: t.popular }, { key: "most-discussed" as SortKey, label: t.mostDiscussed ?? "Most Discussed" }]).map((tab) => (
             <button key={tab.key} onClick={() => setSort(tab.key)} className={`px-4 py-1.5 rounded-md text-[10px] tracking-[0.15em] uppercase transition-all duration-300 ${sort === tab.key ? "bg-rose-500/15 text-rose-300 border border-rose-500/20" : "text-neutral-500 hover:text-neutral-300 border border-transparent"}`}>
               {tab.label}
             </button>
@@ -111,31 +110,27 @@ export function LongreadsPage({ t }: PageProps) {
         <p className="text-[10px] tracking-[0.2em] uppercase text-neutral-600 mb-6">{filtered.length} {t.resultsCount}</p>
 
         <div className="space-y-3">
-          {filtered.map((l, i) => (
-            <div key={l.id} className="group relative bg-white/[0.02] border border-neutral-800/30 rounded-xl p-5 sm:p-6 transition-all duration-500 hover:bg-white/[0.04] hover:border-rose-500/15" style={{ animation: `fadeInUp 0.5s ${i * 0.05}s ease-out both` }}>
-              {l.hot && <HotBadge />}
+          {filtered.map((a, i) => (
+            <div key={a.id} className="group relative bg-white/[0.02] border border-neutral-800/30 rounded-xl p-5 sm:p-6 transition-all duration-500 hover:bg-white/[0.04] hover:border-rose-500/15" style={{ animation: `fadeInUp 0.5s ${i * 0.05}s ease-out both` }}>
+              {a.hot && <HotBadge />}
               <div className="flex gap-4">
                 <div className="shrink-0 w-10 h-10 rounded-lg bg-rose-500/10 border border-rose-500/15 flex items-center justify-center">
                   <svg className="w-4 h-4 text-rose-400" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={1.5}>
-                    <path strokeLinecap="round" strokeLinejoin="round" d="M12 6.042A8.967 8.967 0 006 3.75c-1.052 0-2.062.18-3 .512v14.25A8.987 8.987 0 016 18c2.305 0 4.408.867 6 2.292m0-14.25a8.966 8.966 0 016-2.292c1.052 0 2.062.18 3 .512v14.25A8.987 8.987 0 0018 18a8.967 8.967 0 00-6 2.292m0-14.25v14.25" />
+                    <path strokeLinecap="round" strokeLinejoin="round" d="M12 7.5h1.5m-1.5 3h1.5m-7.5 3h7.5m-7.5 3h7.5m3-9h3.375c.621 0 1.125.504 1.125 1.125V18a2.25 2.25 0 01-2.25 2.25M16.5 7.5V18a2.25 2.25 0 002.25 2.25M16.5 7.5V4.875c0-.621-.504-1.125-1.125-1.125H4.125C3.504 3.75 3 4.254 3 4.875V18a2.25 2.25 0 002.25 2.25h13.5M6 7.5h3v3H6v-3z" />
                   </svg>
                 </div>
                 <div className="flex-1 min-w-0">
-                  <div className="flex items-center gap-2 mb-1">
-                    <span className="text-[9px] tracking-[0.2em] uppercase text-rose-400/50">{l.category}</span>
-                    <span className="text-[9px] text-neutral-700">·</span>
-                    <span className="text-[9px] tracking-[0.1em] uppercase text-neutral-500">{l.readTime} {t.minRead ?? "min read"}</span>
-                  </div>
-                  <h3 className="text-sm sm:text-base font-semibold text-white/90 mb-1.5 group-hover:text-rose-300 transition-colors">{l.title}</h3>
-                  <p className="text-neutral-500 text-xs sm:text-sm leading-relaxed line-clamp-3 mb-3">{l.preview}</p>
+                  <span className="text-[9px] tracking-[0.2em] uppercase text-rose-400/50 mb-1 block">{a.category}</span>
+                  <h3 className="text-sm sm:text-base font-semibold text-white/90 mb-1.5 group-hover:text-rose-300 transition-colors">{a.title}</h3>
+                  <p className="text-neutral-500 text-xs sm:text-sm leading-relaxed line-clamp-2 mb-3">{a.preview}</p>
                   <div className="flex items-center gap-4 text-[10px] text-neutral-600">
-                    <span>{l.author}</span>
+                    <span>{a.author}</span>
                     <span className="opacity-30">·</span>
-                    <span>{formatDate(l.date)}</span>
+                    <span>{formatDate(a.date)}</span>
                     <span className="opacity-30">·</span>
-                    <span>{l.likes} {t.likes ?? "likes"}</span>
+                    <span>{a.likes} {t.likes ?? "likes"}</span>
                     <span className="opacity-30">·</span>
-                    <span>{l.comments} {t.comments ?? "comments"}</span>
+                    <span>{a.comments} {t.comments ?? "comments"}</span>
                   </div>
                 </div>
               </div>

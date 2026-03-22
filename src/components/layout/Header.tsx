@@ -50,7 +50,7 @@ export function Header({ authSlot, langSlot, nav }: HeaderProps) {
           <Link href="/forums" className="text-[10px] tracking-[0.25em] uppercase text-neutral-600 hover:text-violet-400 transition-colors duration-300">
             {nav.forums}
           </Link>
-          <Link href="/news" className="text-[10px] tracking-[0.25em] uppercase text-neutral-600 hover:text-rose-400 transition-colors duration-300">
+          <Link href="/publications" className="text-[10px] tracking-[0.25em] uppercase text-neutral-600 hover:text-rose-400 transition-colors duration-300">
             {nav.news}
           </Link>
           <Link href="/quizzes" className="text-[10px] tracking-[0.25em] uppercase text-neutral-600 hover:text-amber-400 transition-colors duration-300">
@@ -84,7 +84,7 @@ export function Header({ authSlot, langSlot, nav }: HeaderProps) {
           <Link onClick={() => setMenuOpen(false)} href="/forums" className="block text-[10px] tracking-[0.25em] uppercase text-neutral-500 hover:text-violet-400 transition-colors">
             {nav.forums}
           </Link>
-          <Link onClick={() => setMenuOpen(false)} href="/news" className="block text-[10px] tracking-[0.25em] uppercase text-neutral-500 hover:text-rose-400 transition-colors">
+          <Link onClick={() => setMenuOpen(false)} href="/publications" className="block text-[10px] tracking-[0.25em] uppercase text-neutral-500 hover:text-rose-400 transition-colors">
             {nav.news}
           </Link>
           <Link onClick={() => setMenuOpen(false)} href="/quizzes" className="block text-[10px] tracking-[0.25em] uppercase text-neutral-500 hover:text-amber-400 transition-colors">

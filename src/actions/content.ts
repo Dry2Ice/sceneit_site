@@ -56,8 +56,8 @@ export async function createArticle(formData: FormData) {
   const category = formData.get("category") as string;
 
   await db.insert(articles).values({ title, preview, category, authorId: user.id });
-  revalidatePath("/news/articles");
-  revalidatePath("/news");
+  revalidatePath("/publications/articles");
+  revalidatePath("/publications");
   return { success: true };
 }
 
@@ -76,8 +76,8 @@ export async function createReview(formData: FormData) {
   const genre = formData.get("genre") as string;
 
   await db.insert(reviews).values({ title, film, year, rating, preview, genre, authorId: user.id });
-  revalidatePath("/news/reviews");
-  revalidatePath("/news");
+  revalidatePath("/publications/reviews");
+  revalidatePath("/publications");
   return { success: true };
 }
 
@@ -94,8 +94,8 @@ export async function createLongread(formData: FormData) {
   const readTime = parseInt(formData.get("readTime") as string);
 
   await db.insert(longreads).values({ title, preview, category, readTime, authorId: user.id });
-  revalidatePath("/news/longreads");
-  revalidatePath("/news");
+  revalidatePath("/publications/longreads");
+  revalidatePath("/publications");
   return { success: true };
 }
 

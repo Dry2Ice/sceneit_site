@@ -13,7 +13,7 @@ export default async function CreateReviewPage() {
       section="Flick Feed"
       color="#fb7185"
       action={createReview}
-      redirectPath="/news/reviews"
+      redirectPath="/publications/reviews"
       fields={[
         { name: "title", label: "Review Title", placeholder: "e.g. A visceral masterpiece that redefines the genre" },
         { name: "film", label: "Film Title", placeholder: "e.g. Nosferatu" },
