@@ -10,7 +10,7 @@ export default async function Page() {
       t={{
         lang,
         home: t.nav.home,
-        section: t.news.news,
+        section: "Flick Feed",
         title: t.news.news,
         description: "Breaking stories and industry updates from the world of cinema.",
         searchPlaceholder: t.news.searchNews,

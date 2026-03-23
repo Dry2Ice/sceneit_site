@@ -3,7 +3,7 @@ export const en = {
   nav: {
     sections: "Sections",
     forums: "Forums",
-    news: "News",
+    news: "Publications",
     quizzes: "Quizzes",
     team: "Team",
     join: "Join",

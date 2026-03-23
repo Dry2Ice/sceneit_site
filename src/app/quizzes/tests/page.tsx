@@ -10,7 +10,7 @@ export default async function Page() {
       t={{
         lang,
         home: t.nav.home,
-        section: t.quizzes.tests,
+        section: "Binge Buddy",
         title: t.quizzes.tests,
         description: "Personality quizzes and knowledge tests for every kind of film fan.",
         searchPlaceholder: t.quizzes.searchTests,

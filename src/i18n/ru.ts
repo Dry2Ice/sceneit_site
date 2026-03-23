@@ -4,7 +4,7 @@ export const ru: Translations = {
   nav: {
     sections: "Разделы",
     forums: "Форумы",
-    news: "Новости",
+    news: "Публикации",
     quizzes: "Квизы",
     team: "Команда",
     join: "Присоединиться",
