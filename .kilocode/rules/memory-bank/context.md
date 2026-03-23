@@ -110,3 +110,5 @@
 | 2026-03-21 | Added i18n translations to /news page — replaced all hardcoded English strings with `t.news.*`, `t.nav.*`, and `t.forums.*` keys; SectionHeader accepts `viewAll` prop |
 | 2026-03-21 | Converted 8 sub-page files to server component pattern: each split into page.tsx (server wrapper fetching translations via getLang) + ClientPage.tsx ("use client" component with t prop). Covers: discussions, votes, articles, reviews, longreads, brackets, tests, trivia |
 | 2026-03-23 | Added interactive bracket tournament play page at `/quizzes/brackets/[id]` — server component fetches bracket from DB, client component handles tournament logic (shuffle, pair, pick winners, advance rounds, champion celebration with Play Again) |
+| 2026-03-23 | Renamed /news to /publications; fixed breadcrumbs to show Section/Block; translated time-relative strings (formatDate accepts lang param); fixed language switcher (revalidatePath layout) |
+| 2026-03-23 | Added admin system (isAdmin field, requireAdmin, seed script with admin+test accounts); detail pages for all content types; interactive test quiz; all list cards clickable; admin edit modal on all detail pages |
