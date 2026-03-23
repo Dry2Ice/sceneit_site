@@ -35,6 +35,17 @@ export async function getCurrentUser() {
   return user || null;
 }
 
+export async function requireAdmin() {
+  const user = await getCurrentUser();
+  if (!user || !user.isAdmin) throw new Error("Admin access required");
+  return user;
+}
+
+export async function isAdmin(): Promise<boolean> {
+  const user = await getCurrentUser();
+  return !!user?.isAdmin;
+}
+
 export async function register(username: string, email: string, password: string) {
   const existing = await db.select().from(users).where(eq(users.email, email)).get();
   if (existing) return { error: "Email already registered" };

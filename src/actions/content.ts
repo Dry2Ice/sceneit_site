@@ -2,9 +2,9 @@
 
 import { db } from "@/db";
 import { discussions, polls, articles, reviews, longreads, brackets, tests, trivias } from "@/db/schema";
-import { getCurrentUser } from "./auth";
+import { getCurrentUser, requireAdmin } from "./auth";
 import { revalidatePath } from "next/cache";
-import { desc } from "drizzle-orm";
+import { desc, eq } from "drizzle-orm";
 
 async function requireAuth() {
   const user = await getCurrentUser();
@@ -159,4 +159,33 @@ export async function createTrivia(formData: FormData) {
 
 export async function getTrivias() {
   return db.select().from(trivias).orderBy(desc(trivias.createdAt)).all();
+}
+
+// eslint-disable-next-line @typescript-eslint/no-explicit-any
+type AnyTable = any;
+
+// Admin delete
+// eslint-disable-next-line @typescript-eslint/no-explicit-any
+export async function deleteContent(type: string, id: number) {
+  await requireAdmin();
+  const tableMap: Record<string, AnyTable> = { discussions, polls, articles, reviews, longreads, brackets, tests, trivias };
+  const table = tableMap[type];
+  if (!table) throw new Error("Invalid type");
+  await db.delete(table).where(eq(table.id, id));
+  revalidatePath("/");
+  return { success: true };
+}
+
+// Like action
+export async function likeContent(type: string, id: number) {
+  await requireAuth();
+  const tableMap: Record<string, AnyTable> = { discussions, polls, articles, reviews, longreads, brackets, tests, trivias };
+  const table = tableMap[type];
+  if (!table) throw new Error("Invalid type");
+  const item = await db.select().from(table).where(eq(table.id, id)).get();
+  if (item && "likes" in item) {
+    await db.update(table).set({ likes: item.likes + 1 }).where(eq(table.id, id));
+  }
+  revalidatePath("/");
+  return { success: true };
 }
