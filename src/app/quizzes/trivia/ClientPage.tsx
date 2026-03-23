@@ -113,7 +113,7 @@ export function TriviaPage({ t }: PageProps) {
 
         <div className="space-y-3">
           {filtered.map((trivia, i) => (
-            <div key={trivia.id} className="group relative bg-white/[0.02] border border-neutral-800/30 rounded-xl p-5 sm:p-6 transition-all duration-500 hover:bg-white/[0.04] hover:border-amber-500/15" style={{ animation: `fadeInUp 0.5s ${i * 0.05}s ease-out both` }}>
+            <Link key={trivia.id} href={`/quizzes/trivia/${trivia.id}`} className="block group relative bg-white/[0.02] border border-neutral-800/30 rounded-xl p-5 sm:p-6 transition-all duration-500 hover:bg-white/[0.04] hover:border-amber-500/15" style={{ animation: `fadeInUp 0.5s ${i * 0.05}s ease-out both` }}>
               {trivia.hot && <HotBadge />}
               <div className="flex gap-4">
                 <div className="shrink-0 w-10 h-10 rounded-lg bg-amber-500/10 border border-amber-500/15 flex items-center justify-center">
@@ -144,9 +144,15 @@ export function TriviaPage({ t }: PageProps) {
                     <span className="opacity-30">·</span>
                     <span>{trivia.totalPlayed.toLocaleString()} {t.played}</span>
                   </div>
+                  <div className="flex items-center gap-1.5 mt-3 text-[10px] text-amber-400/60">
+                    <svg className="w-3 h-3" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
+                      <path strokeLinecap="round" strokeLinejoin="round" d="M5.25 5.653c0-.856.917-1.398 1.667-.986l11.54 6.347a1.125 1.125 0 0 1 0 1.972l-11.54 6.347a1.125 1.125 0 0 1-1.667-.986V5.653Z" />
+                    </svg>
+                    Start quiz
+                  </div>
                 </div>
               </div>
-            </div>
+            </Link>
           ))}
         </div>
 

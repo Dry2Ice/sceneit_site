@@ -2,9 +2,11 @@
 
 ## Current State
 
-**Project Status**: Interactive presentation page with expandable sections and founder toggle complete
+**Project Status**: Interactive bracket tournament play page complete; brackets list links to individual bracket play
 
 ## Recently Completed
+
+- [x] Interactive bracket tournament page at `/quizzes/brackets/[id]` — server component fetches bracket from DB, client component with round-based tournament UI (amber theme, hover effects, smooth transitions, bye handling, winner celebration, Play Again)
 
 - [x] Base Next.js 16 setup with App Router, TypeScript, Tailwind CSS 4, ESLint
 - [x] Full redesign to SceneIt — AAA cinematic presentation
@@ -39,6 +41,8 @@
 | `src/app/quizzes/page.tsx` | Binge Buddy main — weekly highlights of brackets, tests, trivia |
 | `src/app/quizzes/brackets/page.tsx` | Server wrapper — fetches translations, renders BracketsPage |
 | `src/app/quizzes/brackets/ClientPage.tsx` | Client head-to-head brackets with search, sort, category filters |
+| `src/app/quizzes/brackets/[id]/page.tsx` | Server component — fetches bracket by ID, renders ClientBracket |
+| `src/app/quizzes/brackets/[id]/ClientBracket.tsx` | Client interactive bracket tournament: shuffle, pair, pick winners, advance rounds, celebrate champion |
 | `src/app/quizzes/tests/page.tsx` | Server wrapper — fetches translations, renders TestsPage |
 | `src/app/quizzes/tests/ClientPage.tsx` | Client personality tests with search, sort, category filters |
 | `src/app/quizzes/trivia/page.tsx` | Server wrapper — fetches translations, renders TriviaPage |
@@ -105,3 +109,4 @@
 | 2026-03-21 | Added EN/RU i18n with language switcher in Header; translations for all UI text; design polish: noise texture, 4th orb, glass-card effects, focus styles, shimmer/float/glow-pulse animations |
 | 2026-03-21 | Added i18n translations to /news page — replaced all hardcoded English strings with `t.news.*`, `t.nav.*`, and `t.forums.*` keys; SectionHeader accepts `viewAll` prop |
 | 2026-03-21 | Converted 8 sub-page files to server component pattern: each split into page.tsx (server wrapper fetching translations via getLang) + ClientPage.tsx ("use client" component with t prop). Covers: discussions, votes, articles, reviews, longreads, brackets, tests, trivia |
+| 2026-03-23 | Added interactive bracket tournament play page at `/quizzes/brackets/[id]` — server component fetches bracket from DB, client component handles tournament logic (shuffle, pair, pick winners, advance rounds, champion celebration with Play Again) |
