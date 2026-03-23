@@ -5,9 +5,23 @@ import { getCurrentUser } from "@/actions/auth";
 import { getLang, en, ru } from "@/i18n";
 import { ClientArticle } from "./ClientArticle";
 import { notFound } from "next/navigation";
+import { articles as mockArticles } from "@/data/flickfeed";
 
 export default async function Page({ params }: { params: Promise<{ id: string }> }) {
   const { id } = await params;
+
+  const mockItem = mockArticles.find(a => a.id === id);
+  if (mockItem) {
+    return (
+      <ClientArticle
+        article={mockItem}
+        author={{ username: mockItem.author, avatar: mockItem.avatar }}
+        currentUser={null}
+        t={{ lang: "en", home: "Home", section: "Flick Feed", title: "Articles", likes: "likes", comments: "comments" }}
+      />
+    );
+  }
+
   const articleId = parseInt(id);
   if (isNaN(articleId)) notFound();
 

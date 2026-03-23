@@ -8,7 +8,7 @@ import { EditModal } from "@/components/ui/EditModal";
 interface ClientBracketProps {
   items: string[];
   title: string;
-  bracketId: number;
+  bracketId: number | string;
   isAdmin: boolean;
 }
 
@@ -322,7 +322,7 @@ export function ClientBracket({ items, title, bracketId, isAdmin }: ClientBracke
         <div className="relative z-10 max-w-4xl mx-auto px-6 pb-8">
           <div className="flex items-center gap-4 pt-4 border-t border-neutral-800/30">
             <span className="text-[9px] tracking-[0.2em] uppercase text-neutral-600">Admin</span>
-            <EditModal type="brackets" id={bracketId} accentColor="#fbbf24" fields={[
+            <EditModal type="brackets" id={bracketId as number} accentColor="#fbbf24" fields={[
               { name: "title", label: "Title", type: "text", value: title },
               { name: "category", label: "Category", type: "text", value: "" },
               { name: "preview", label: "Preview", type: "textarea", value: "" },
@@ -331,7 +331,7 @@ export function ClientBracket({ items, title, bracketId, isAdmin }: ClientBracke
             <button onClick={() => {
               if (!confirm("Are you sure you want to delete this bracket?")) return;
               setDeleting(true);
-              deleteContent("brackets", bracketId).then(() => router.push("/quizzes/brackets"));
+              deleteContent("brackets", bracketId as number).then(() => router.push("/quizzes/brackets"));
             }} disabled={deleting} className="text-[10px] tracking-[0.15em] uppercase text-red-400/50 hover:text-red-400 transition-colors">{deleting ? "Deleting..." : "Delete"}</button>
           </div>
         </div>

@@ -9,14 +9,14 @@ import { formatDate } from "@/data/forums";
 
 interface ClientDiscussionProps {
   discussion: {
-    id: number;
+    id: number | string;
     title: string;
     preview: string;
     category: string;
-    authorId: number;
+    authorId?: number;
     likes: number;
     replies: number;
-    createdAt: Date | null;
+    createdAt?: Date | string | null;
   };
   authorName: string;
   authorAvatar: string;
@@ -35,13 +35,13 @@ export function ClientDiscussion({ discussion, authorName, authorAvatar, isAdmin
     if (liked) return;
     setLiked(true);
     setLikes((prev) => prev + 1);
-    await likeContent("discussions", discussion.id);
+    await likeContent("discussions", discussion.id as number);
   }, [liked, discussion.id]);
 
   const handleDelete = useCallback(async () => {
     if (!confirm("Are you sure you want to delete this discussion?")) return;
     setDeleting(true);
-    await deleteContent("discussions", discussion.id);
+    await deleteContent("discussions", discussion.id as number);
     router.push("/forums/discussions");
   }, [discussion.id, router]);
 
@@ -104,7 +104,7 @@ export function ClientDiscussion({ discussion, authorName, authorAvatar, isAdmin
         {isAdmin && (
           <div className="flex items-center gap-4 mt-4 pt-4 border-t border-neutral-800/30">
             <span className="text-[9px] tracking-[0.2em] uppercase text-neutral-600">Admin</span>
-            <EditModal type="discussions" id={discussion.id} accentColor="#a78bfa" fields={[
+            <EditModal type="discussions" id={discussion.id as number} accentColor="#a78bfa" fields={[
               { name: "title", label: "Title", type: "text", value: discussion.title },
               { name: "category", label: "Category", type: "text", value: discussion.category },
               { name: "preview", label: "Description", type: "textarea", value: discussion.preview },

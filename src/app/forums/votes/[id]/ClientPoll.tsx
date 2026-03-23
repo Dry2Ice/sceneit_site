@@ -9,12 +9,12 @@ import { formatDate } from "@/data/forums";
 
 interface ClientPollProps {
   poll: {
-    id: number;
+    id: number | string;
     title: string;
     category: string;
-    authorId: number;
+    authorId?: number;
     totalVotes: number;
-    createdAt: Date | null;
+    createdAt?: Date | string | null;
     options: { label: string; votes: number }[];
   };
   authorName: string;
@@ -52,13 +52,13 @@ export function ClientPoll({ poll, authorName, authorAvatar, isAdmin, currentUse
     if (liked) return;
     setLiked(true);
     setLikes((prev) => prev + 1);
-    await likeContent("polls", poll.id);
+    await likeContent("polls", poll.id as number);
   }, [liked, poll.id]);
 
   const handleDelete = useCallback(async () => {
     if (!confirm("Are you sure you want to delete this poll?")) return;
     setDeleting(true);
-    await deleteContent("polls", poll.id);
+    await deleteContent("polls", poll.id as number);
     router.push("/forums/votes");
   }, [poll.id, router]);
 
@@ -123,7 +123,7 @@ export function ClientPoll({ poll, authorName, authorAvatar, isAdmin, currentUse
         {isAdmin && (
           <div className="flex items-center gap-4 mt-4 pt-4 border-t border-neutral-800/30">
             <span className="text-[9px] tracking-[0.2em] uppercase text-neutral-600">Admin</span>
-            <EditModal type="polls" id={poll.id} accentColor="#a78bfa" fields={[
+            <EditModal type="polls" id={poll.id as number} accentColor="#a78bfa" fields={[
               { name: "title", label: "Title", type: "text", value: poll.title },
               { name: "category", label: "Category", type: "text", value: poll.category },
             ]} />

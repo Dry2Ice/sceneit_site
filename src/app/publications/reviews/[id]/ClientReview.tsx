@@ -8,17 +8,17 @@ import { EditModal } from "@/components/ui/EditModal";
 import { useTransition } from "react";
 
 interface ReviewData {
-  id: number;
+  id: number | string;
   title: string;
   film: string;
   year: number;
   rating: number;
   preview: string;
   genre: string;
-  authorId: number;
+  authorId?: number;
   likes: number;
   comments: number;
-  createdAt: Date | null;
+  createdAt?: Date | string | null;
 }
 
 interface AuthorData {
@@ -61,14 +61,14 @@ export function ClientReview({ review, author, currentUser, t }: PageProps) {
 
   function handleLike() {
     startTransition(async () => {
-      await likeContent("reviews", review.id);
+      await likeContent("reviews", review.id as number);
       router.refresh();
     });
   }
 
   function handleDelete() {
     startTransition(async () => {
-      await deleteContent("reviews", review.id);
+      await deleteContent("reviews", review.id as number);
       router.push("/publications/reviews");
     });
   }
@@ -134,7 +134,7 @@ export function ClientReview({ review, author, currentUser, t }: PageProps) {
         {currentUser?.isAdmin && (
           <div className="flex items-center gap-4 mt-6 pt-6 border-t border-neutral-800/30">
             <span className="text-[9px] tracking-[0.2em] uppercase text-neutral-600">Admin</span>
-            <EditModal type="reviews" id={review.id} accentColor="#fb7185" fields={[
+            <EditModal type="reviews" id={review.id as number} accentColor="#fb7185" fields={[
               { name: "title", label: "Title", type: "text", value: review.title },
               { name: "film", label: "Film", type: "text", value: review.film },
               { name: "year", label: "Year", type: "number", value: review.year },

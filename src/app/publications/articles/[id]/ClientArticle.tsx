@@ -8,14 +8,14 @@ import { EditModal } from "@/components/ui/EditModal";
 import { useTransition } from "react";
 
 interface ArticleData {
-  id: number;
+  id: number | string;
   title: string;
   preview: string;
   category: string;
-  authorId: number;
+  authorId?: number;
   likes: number;
   comments: number;
-  createdAt: Date | null;
+  createdAt?: Date | string | null;
 }
 
 interface AuthorData {
@@ -43,14 +43,14 @@ export function ClientArticle({ article, author, currentUser, t }: PageProps) {
 
   function handleLike() {
     startTransition(async () => {
-      await likeContent("articles", article.id);
+      await likeContent("articles", article.id as number);
       router.refresh();
     });
   }
 
   function handleDelete() {
     startTransition(async () => {
-      await deleteContent("articles", article.id);
+      await deleteContent("articles", article.id as number);
       router.push("/publications/articles");
     });
   }
@@ -110,7 +110,7 @@ export function ClientArticle({ article, author, currentUser, t }: PageProps) {
         {currentUser?.isAdmin && (
           <div className="flex items-center gap-4 mt-6 pt-6 border-t border-neutral-800/30">
             <span className="text-[9px] tracking-[0.2em] uppercase text-neutral-600">Admin</span>
-            <EditModal type="articles" id={article.id} accentColor="#fb7185" fields={[
+            <EditModal type="articles" id={article.id as number} accentColor="#fb7185" fields={[
               { name: "title", label: "Title", type: "text", value: article.title },
               { name: "category", label: "Category", type: "text", value: article.category },
               { name: "preview", label: "Preview", type: "textarea", value: article.preview },

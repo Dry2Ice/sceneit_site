@@ -8,15 +8,15 @@ import { EditModal } from "@/components/ui/EditModal";
 import { useTransition } from "react";
 
 interface LongreadData {
-  id: number;
+  id: number | string;
   title: string;
   preview: string;
   category: string;
   readTime: number;
-  authorId: number;
+  authorId?: number;
   likes: number;
   comments: number;
-  createdAt: Date | null;
+  createdAt?: Date | string | null;
 }
 
 interface AuthorData {
@@ -45,14 +45,14 @@ export function ClientLongread({ longread, author, currentUser, t }: PageProps) 
 
   function handleLike() {
     startTransition(async () => {
-      await likeContent("longreads", longread.id);
+      await likeContent("longreads", longread.id as number);
       router.refresh();
     });
   }
 
   function handleDelete() {
     startTransition(async () => {
-      await deleteContent("longreads", longread.id);
+      await deleteContent("longreads", longread.id as number);
       router.push("/publications/longreads");
     });
   }
@@ -114,7 +114,7 @@ export function ClientLongread({ longread, author, currentUser, t }: PageProps) 
         {currentUser?.isAdmin && (
           <div className="flex items-center gap-4 mt-6 pt-6 border-t border-neutral-800/30">
             <span className="text-[9px] tracking-[0.2em] uppercase text-neutral-600">Admin</span>
-            <EditModal type="longreads" id={longread.id} accentColor="#fb7185" fields={[
+            <EditModal type="longreads" id={longread.id as number} accentColor="#fb7185" fields={[
               { name: "title", label: "Title", type: "text", value: longread.title },
               { name: "category", label: "Category", type: "text", value: longread.category },
               { name: "readTime", label: "Read Time", type: "number", value: longread.readTime },

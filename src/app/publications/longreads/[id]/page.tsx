@@ -5,9 +5,23 @@ import { getCurrentUser } from "@/actions/auth";
 import { getLang, en, ru } from "@/i18n";
 import { ClientLongread } from "./ClientLongread";
 import { notFound } from "next/navigation";
+import { longreads as mockLongreads } from "@/data/flickfeed";
 
 export default async function Page({ params }: { params: Promise<{ id: string }> }) {
   const { id } = await params;
+
+  const mockItem = mockLongreads.find(l => l.id === id);
+  if (mockItem) {
+    return (
+      <ClientLongread
+        longread={mockItem}
+        author={{ username: mockItem.author, avatar: mockItem.avatar }}
+        currentUser={null}
+        t={{ lang: "en", home: "Home", section: "Flick Feed", title: "Longreads", likes: "likes", comments: "comments", minRead: "min read" }}
+      />
+    );
+  }
+
   const longreadId = parseInt(id);
   if (isNaN(longreadId)) notFound();
 

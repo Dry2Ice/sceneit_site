@@ -5,9 +5,16 @@ import { notFound } from "next/navigation";
 import { ClientPoll } from "./ClientPoll";
 import { getCurrentUser } from "@/actions/auth";
 import { getLang, en, ru } from "@/i18n";
+import { polls as mockPolls } from "@/data/forums";
 
 export default async function PollPage({ params }: { params: Promise<{ id: string }> }) {
   const { id } = await params;
+
+  const mockItem = mockPolls.find(p => p.id === id);
+  if (mockItem) {
+    return <ClientPoll poll={mockItem} authorName={mockItem.author} authorAvatar={mockItem.avatar} isAdmin={false} currentUserId={undefined} lang="en" />;
+  }
+
   const [poll, user, lang] = await Promise.all([
     db.select().from(polls).where(eq(polls.id, parseInt(id))).get(),
     getCurrentUser(),
