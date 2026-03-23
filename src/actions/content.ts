@@ -161,11 +161,9 @@ export async function getTrivias() {
   return db.select().from(trivias).orderBy(desc(trivias.createdAt)).all();
 }
 
-// eslint-disable-next-line @typescript-eslint/no-explicit-any
 type AnyTable = any;
 
 // Admin delete
-// eslint-disable-next-line @typescript-eslint/no-explicit-any
 export async function deleteContent(type: string, id: number) {
   await requireAdmin();
   const tableMap: Record<string, AnyTable> = { discussions, polls, articles, reviews, longreads, brackets, tests, trivias };

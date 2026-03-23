@@ -279,7 +279,7 @@ export function ClientTrivia({ title, category, totalQuestions }: ClientTriviaPr
     setAnswers(questions.map(() => null));
     setShowFeedback(false);
     setPhase("playing");
-  }, [questions.length]);
+  }, [questions]);
 
   const correctCount = answers.reduce<number>((sum, ans, i) => (ans === questions[i].correct ? sum + 1 : sum), 0);
   const percentage = questions.length > 0 ? Math.round((correctCount / questions.length) * 100) : 0;
