@@ -1,10 +1,15 @@
 "use client";
 
 import { useState, useCallback, useEffect, useMemo } from "react";
+import { useRouter } from "next/navigation";
+import { deleteContent } from "@/actions/content";
+import { EditModal } from "@/components/ui/EditModal";
 
 interface ClientBracketProps {
   items: string[];
   title: string;
+  bracketId: number;
+  isAdmin: boolean;
 }
 
 function shuffle<T>(arr: T[]): T[] {
@@ -27,8 +32,10 @@ function getTotalRounds(itemCount: number): number {
   return Math.ceil(Math.log2(itemCount));
 }
 
-export function ClientBracket({ items, title }: ClientBracketProps) {
-  const [rounds, setRounds] = useState<string[][]>(() => [shuffle(items)]);
+export function ClientBracket({ items, title, bracketId, isAdmin }: ClientBracketProps) {
+  const router = useRouter();
+  const [deleting, setDeleting] = useState(false);
+  const [rounds, setRounds] = useState<string[][]>(() => [shuffle(items)])
   const [currentRound, setCurrentRound] = useState(0);
   const [picks, setPicks] = useState<Set<number>>(new Set());
   const [pairWinners, setPairWinners] = useState<Map<number, string>>(new Map());
@@ -310,6 +317,25 @@ export function ClientBracket({ items, title }: ClientBracketProps) {
           </div>
         )}
       </div>
+
+      {isAdmin && (
+        <div className="relative z-10 max-w-4xl mx-auto px-6 pb-8">
+          <div className="flex items-center gap-4 pt-4 border-t border-neutral-800/30">
+            <span className="text-[9px] tracking-[0.2em] uppercase text-neutral-600">Admin</span>
+            <EditModal type="brackets" id={bracketId} accentColor="#fbbf24" fields={[
+              { name: "title", label: "Title", type: "text", value: title },
+              { name: "category", label: "Category", type: "text", value: "" },
+              { name: "preview", label: "Preview", type: "textarea", value: "" },
+              { name: "participants", label: "Participants", type: "number", value: items.length },
+            ]} />
+            <button onClick={() => {
+              if (!confirm("Are you sure you want to delete this bracket?")) return;
+              setDeleting(true);
+              deleteContent("brackets", bracketId).then(() => router.push("/quizzes/brackets"));
+            }} disabled={deleting} className="text-[10px] tracking-[0.15em] uppercase text-red-400/50 hover:text-red-400 transition-colors">{deleting ? "Deleting..." : "Delete"}</button>
+          </div>
+        </div>
+      )}
 
       <style jsx global>{`
         @keyframes fadeInUp {

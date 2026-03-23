@@ -2,6 +2,9 @@
 
 import { useState, useCallback } from "react";
 import Link from "next/link";
+import { useRouter } from "next/navigation";
+import { deleteContent } from "@/actions/content";
+import { EditModal } from "@/components/ui/EditModal";
 
 interface Answer {
   text: string;
@@ -273,11 +276,15 @@ interface ClientTestProps {
   title: string;
   category: string;
   results: string[];
+  testId: number;
+  isAdmin: boolean;
 }
 
 type Phase = "playing" | "results";
 
-export function ClientTest({ title, category, results }: ClientTestProps) {
+export function ClientTest({ title, category, results, testId, isAdmin }: ClientTestProps) {
+  const router = useRouter();
+  const [deleting, setDeleting] = useState(false);
   const allQuestions = getQuestionsForCategory(category);
   const questions = allQuestions;
 
@@ -395,6 +402,23 @@ export function ClientTest({ title, category, results }: ClientTestProps) {
               Try Again
             </button>
           </div>
+
+          {isAdmin && (
+            <div className="flex items-center gap-4 mt-8 pt-4 border-t border-neutral-800/30">
+              <span className="text-[9px] tracking-[0.2em] uppercase text-neutral-600">Admin</span>
+              <EditModal type="tests" id={testId} accentColor="#fbbf24" fields={[
+                { name: "title", label: "Title", type: "text", value: title },
+                { name: "category", label: "Category", type: "text", value: category },
+                { name: "preview", label: "Preview", type: "textarea", value: "" },
+                { name: "questionsCount", label: "Questions Count", type: "number", value: questions.length },
+              ]} />
+              <button onClick={() => {
+                if (!confirm("Are you sure you want to delete this test?")) return;
+                setDeleting(true);
+                deleteContent("tests", testId).then(() => router.push("/quizzes/tests"));
+              }} disabled={deleting} className="text-[10px] tracking-[0.15em] uppercase text-red-400/50 hover:text-red-400 transition-colors">{deleting ? "Deleting..." : "Delete"}</button>
+            </div>
+          )}
         </div>
       </main>
     );
@@ -478,6 +502,23 @@ export function ClientTest({ title, category, results }: ClientTestProps) {
             })}
           </div>
         </div>
+
+        {isAdmin && (
+          <div className="flex items-center gap-4 mt-8 pt-4 border-t border-neutral-800/30">
+            <span className="text-[9px] tracking-[0.2em] uppercase text-neutral-600">Admin</span>
+            <EditModal type="tests" id={testId} accentColor="#fbbf24" fields={[
+              { name: "title", label: "Title", type: "text", value: title },
+              { name: "category", label: "Category", type: "text", value: category },
+              { name: "preview", label: "Preview", type: "textarea", value: "" },
+              { name: "questionsCount", label: "Questions Count", type: "number", value: questions.length },
+            ]} />
+            <button onClick={() => {
+              if (!confirm("Are you sure you want to delete this test?")) return;
+              setDeleting(true);
+              deleteContent("tests", testId).then(() => router.push("/quizzes/tests"));
+            }} disabled={deleting} className="text-[10px] tracking-[0.15em] uppercase text-red-400/50 hover:text-red-400 transition-colors">{deleting ? "Deleting..." : "Delete"}</button>
+          </div>
+        )}
       </div>
     </main>
   );

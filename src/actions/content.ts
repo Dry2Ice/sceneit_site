@@ -163,6 +163,17 @@ export async function getTrivias() {
 
 type AnyTable = any;
 
+// Admin edit
+export async function editContent(type: string, id: number, data: Record<string, unknown>) {
+  await requireAdmin();
+  const tableMap: Record<string, AnyTable> = { discussions, polls, articles, reviews, longreads, brackets, tests, trivias };
+  const table = tableMap[type];
+  if (!table) throw new Error("Invalid type");
+  await db.update(table).set(data).where(eq(table.id, id));
+  revalidatePath("/");
+  return { success: true };
+}
+
 // Admin delete
 export async function deleteContent(type: string, id: number) {
   await requireAdmin();

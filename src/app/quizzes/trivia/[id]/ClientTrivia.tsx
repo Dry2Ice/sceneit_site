@@ -2,6 +2,9 @@
 
 import { useState, useCallback } from "react";
 import Link from "next/link";
+import { useRouter } from "next/navigation";
+import { deleteContent } from "@/actions/content";
+import { EditModal } from "@/components/ui/EditModal";
 
 interface Question {
   question: string;
@@ -236,11 +239,15 @@ interface ClientTriviaProps {
   title: string;
   category: string;
   totalQuestions: number;
+  triviaId: number;
+  isAdmin: boolean;
 }
 
 type Phase = "playing" | "results";
 
-export function ClientTrivia({ title, category, totalQuestions }: ClientTriviaProps) {
+export function ClientTrivia({ title, category, totalQuestions, triviaId, isAdmin }: ClientTriviaProps) {
+  const router = useRouter();
+  const [deleting, setDeleting] = useState(false);
   const allQuestions = getQuestionsForCategory(category);
   const questions = allQuestions.slice(0, Math.min(totalQuestions, allQuestions.length));
 
@@ -380,6 +387,23 @@ export function ClientTrivia({ title, category, totalQuestions }: ClientTriviaPr
               Try Again
             </button>
           </div>
+
+          {isAdmin && (
+            <div className="flex items-center gap-4 mt-8 pt-4 border-t border-neutral-800/30">
+              <span className="text-[9px] tracking-[0.2em] uppercase text-neutral-600">Admin</span>
+              <EditModal type="trivias" id={triviaId} accentColor="#fbbf24" fields={[
+                { name: "title", label: "Title", type: "text", value: title },
+                { name: "category", label: "Category", type: "text", value: category },
+                { name: "preview", label: "Preview", type: "textarea", value: "" },
+                { name: "questionsCount", label: "Questions Count", type: "number", value: totalQuestions },
+              ]} />
+              <button onClick={() => {
+                if (!confirm("Are you sure you want to delete this trivia?")) return;
+                setDeleting(true);
+                deleteContent("trivias", triviaId).then(() => router.push("/quizzes/trivia"));
+              }} disabled={deleting} className="text-[10px] tracking-[0.15em] uppercase text-red-400/50 hover:text-red-400 transition-colors">{deleting ? "Deleting..." : "Delete"}</button>
+            </div>
+          )}
         </div>
       </main>
     );
@@ -471,6 +495,23 @@ export function ClientTrivia({ title, category, totalQuestions }: ClientTriviaPr
             })}
           </div>
         </div>
+
+        {isAdmin && (
+          <div className="flex items-center gap-4 mt-8 pt-4 border-t border-neutral-800/30">
+            <span className="text-[9px] tracking-[0.2em] uppercase text-neutral-600">Admin</span>
+            <EditModal type="trivias" id={triviaId} accentColor="#fbbf24" fields={[
+              { name: "title", label: "Title", type: "text", value: title },
+              { name: "category", label: "Category", type: "text", value: category },
+              { name: "preview", label: "Preview", type: "textarea", value: "" },
+              { name: "questionsCount", label: "Questions Count", type: "number", value: totalQuestions },
+            ]} />
+            <button onClick={() => {
+              if (!confirm("Are you sure you want to delete this trivia?")) return;
+              setDeleting(true);
+              deleteContent("trivias", triviaId).then(() => router.push("/quizzes/trivia"));
+            }} disabled={deleting} className="text-[10px] tracking-[0.15em] uppercase text-red-400/50 hover:text-red-400 transition-colors">{deleting ? "Deleting..." : "Delete"}</button>
+          </div>
+        )}
       </div>
     </main>
   );
