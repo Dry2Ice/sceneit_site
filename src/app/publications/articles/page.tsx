@@ -8,6 +8,7 @@ export default async function Page() {
   return (
     <ArticlesPage
       t={{
+        lang,
         home: t.nav.home,
         section: t.news.news,
         title: t.news.news,

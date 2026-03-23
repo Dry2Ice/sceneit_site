@@ -7,6 +7,7 @@ import type { Trivia } from "@/data/buddy";
 
 interface PageProps {
   t: {
+    lang: string;
     home: string;
     section: string;
     title: string;
@@ -139,7 +140,7 @@ export function TriviaPage({ t }: PageProps) {
                   </div>
 
                   <div className="flex items-center gap-4 text-[10px] text-neutral-600">
-                    <span>{formatDate(trivia.date)}</span>
+                    <span>{formatDate(trivia.date, t.lang)}</span>
                     <span className="opacity-30">·</span>
                     <span>{trivia.totalPlayed.toLocaleString()} {t.played}</span>
                   </div>

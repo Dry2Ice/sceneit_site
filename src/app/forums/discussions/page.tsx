@@ -8,6 +8,7 @@ export default async function Page() {
   return (
     <DiscussionsPage
       t={{
+        lang,
         home: t.nav.home,
         tagline: t.forums.tagline,
         title: t.forums.discussions,

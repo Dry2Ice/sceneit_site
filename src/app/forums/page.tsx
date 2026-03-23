@@ -113,7 +113,7 @@ export default async function ForumsPage() {
               <div className="flex items-center gap-3 text-[10px] text-neutral-600">
                 <span>{d.author}</span>
                 <span className="opacity-30">·</span>
-                <span>{formatDate(d.date)}</span>
+                <span>{formatDate(d.date, lang)}</span>
                 <span className="opacity-30">·</span>
                 <span>{d.likes} {t.forums.likes}</span>
               </div>
@@ -135,7 +135,7 @@ export default async function ForumsPage() {
               <div className="flex items-center gap-3 text-[10px] text-neutral-600">
                 <span>{d.author}</span>
                 <span className="opacity-30">·</span>
-                <span>{formatDate(d.date)}</span>
+                <span>{formatDate(d.date, lang)}</span>
                 <span className="opacity-30">·</span>
                 <span>{d.replies} {t.forums.replies}</span>
               </div>

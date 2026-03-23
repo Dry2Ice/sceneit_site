@@ -8,6 +8,7 @@ export default async function Page() {
   return (
     <LongreadsPage
       t={{
+        lang,
         home: t.nav.home,
         section: t.news.longreads,
         title: t.news.longreads,

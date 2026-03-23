@@ -305,13 +305,15 @@ export function getThisWeekPolls(): Poll[] {
   return polls.filter((p) => new Date(p.date).getTime() > weekAgo);
 }
 
-export function formatDate(dateStr: string): string {
+export function formatDate(dateStr: string, lang: string = "en"): string {
+  const isRu = lang === "ru";
   const diff = now - new Date(dateStr).getTime();
   const hours = Math.floor(diff / 3600000);
-  if (hours < 1) return "just now";
-  if (hours < 24) return `${hours}h ago`;
+  if (hours < 1) return isRu ? "только что" : "just now";
+  if (hours < 24) return isRu ? `${hours}ч назад` : `${hours}h ago`;
   const days = Math.floor(hours / 24);
-  if (days === 1) return "yesterday";
-  if (days < 7) return `${days}d ago`;
-  return `${Math.floor(days / 7)}w ago`;
+  if (days === 1) return isRu ? "вчера" : "yesterday";
+  if (days < 7) return isRu ? `${days}д назад` : `${days}d ago`;
+  const weeks = Math.floor(days / 7);
+  return isRu ? `${weeks}н назад` : `${weeks}w ago`;
 }

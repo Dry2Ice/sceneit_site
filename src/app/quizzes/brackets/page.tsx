@@ -8,6 +8,7 @@ export default async function Page() {
   return (
     <BracketsPage
       t={{
+        lang,
         home: t.nav.home,
         section: t.quizzes.brackets,
         title: t.quizzes.brackets,

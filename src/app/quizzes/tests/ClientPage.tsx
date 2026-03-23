@@ -7,6 +7,7 @@ import type { Test } from "@/data/buddy";
 
 interface PageProps {
   t: {
+    lang: string;
     home: string;
     section: string;
     title: string;
@@ -138,7 +139,7 @@ export function TestsPage({ t }: PageProps) {
                     {test.results.length > 4 && <span className="px-2 py-0.5 text-[9px] text-neutral-600">+{test.results.length - 4} {t.more}</span>}
                   </div>
                   <div className="flex items-center gap-4 text-[10px] text-neutral-600">
-                    <span>{formatDate(test.date)}</span>
+                    <span>{formatDate(test.date, t.lang)}</span>
                     <span className="opacity-30">·</span>
                     <span>{test.totalPlayed.toLocaleString()} {t.played}</span>
                   </div>

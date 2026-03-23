@@ -7,6 +7,7 @@ import type { Longread } from "@/data/flickfeed";
 
 interface PageProps {
   t: {
+    lang: string;
     home: string;
     section: string;
     title: string;
@@ -131,7 +132,7 @@ export function LongreadsPage({ t }: PageProps) {
                   <div className="flex items-center gap-4 text-[10px] text-neutral-600">
                     <span>{l.author}</span>
                     <span className="opacity-30">·</span>
-                    <span>{formatDate(l.date)}</span>
+                    <span>{formatDate(l.date, t.lang)}</span>
                     <span className="opacity-30">·</span>
                     <span>{l.likes} {t.likes ?? "likes"}</span>
                     <span className="opacity-30">·</span>

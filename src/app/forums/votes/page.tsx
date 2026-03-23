@@ -8,6 +8,7 @@ export default async function Page() {
   return (
     <VotesPage
       t={{
+        lang,
         home: t.nav.home,
         tagline: t.forums.tagline,
         title: t.forums.votesPolls,

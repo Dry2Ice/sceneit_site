@@ -7,6 +7,7 @@ import type { Bracket } from "@/data/buddy";
 
 interface PageProps {
   t: {
+    lang: string;
     home: string;
     section: string;
     title: string;
@@ -128,7 +129,7 @@ export function BracketsPage({ t }: PageProps) {
                   <h3 className="text-sm sm:text-base font-semibold text-white/90 mb-1.5 group-hover:text-amber-300 transition-colors">{b.title}</h3>
                   <p className="text-neutral-500 text-xs sm:text-sm leading-relaxed line-clamp-2 mb-3">{b.preview}</p>
                   <div className="flex items-center gap-4 text-[10px] text-neutral-600">
-                    <span>{formatDate(b.date)}</span>
+                    <span>{formatDate(b.date, t.lang)}</span>
                     <span className="opacity-30">·</span>
                     <span>{b.totalPlayed.toLocaleString()} {t.played}</span>
                   </div>

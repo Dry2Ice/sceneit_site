@@ -8,6 +8,7 @@ export default async function Page() {
   return (
     <TriviaPage
       t={{
+        lang,
         home: t.nav.home,
         section: t.quizzes.trivia,
         title: t.quizzes.trivia,

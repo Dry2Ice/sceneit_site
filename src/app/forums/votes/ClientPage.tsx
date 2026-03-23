@@ -7,6 +7,7 @@ import type { Poll } from "@/data/forums";
 
 interface VotesPageProps {
   t: {
+    lang: string;
     home: string;
     tagline: string;
     title: string;
@@ -227,7 +228,7 @@ export function VotesPage({ t }: VotesPageProps) {
                     <div className="flex items-center gap-3 text-[10px] text-neutral-600 mb-4">
                       <span>{p.author}</span>
                       <span className="opacity-30">·</span>
-                      <span>{formatDate(p.date)}</span>
+                      <span>{formatDate(p.date, t.lang)}</span>
                       <span className="opacity-30">·</span>
                       <span>{p.totalVotes.toLocaleString()} {t.votes}</span>
                     </div>

@@ -7,6 +7,7 @@ import type { Article } from "@/data/flickfeed";
 
 interface PageProps {
   t: {
+    lang: string;
     home: string;
     section: string;
     title: string;
@@ -126,7 +127,7 @@ export function ArticlesPage({ t }: PageProps) {
                   <div className="flex items-center gap-4 text-[10px] text-neutral-600">
                     <span>{a.author}</span>
                     <span className="opacity-30">·</span>
-                    <span>{formatDate(a.date)}</span>
+                    <span>{formatDate(a.date, t.lang)}</span>
                     <span className="opacity-30">·</span>
                     <span>{a.likes} {t.likes ?? "likes"}</span>
                     <span className="opacity-30">·</span>

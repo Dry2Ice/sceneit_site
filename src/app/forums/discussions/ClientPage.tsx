@@ -7,6 +7,7 @@ import type { Discussion } from "@/data/forums";
 
 interface DiscussionsPageProps {
   t: {
+    lang: string;
     home: string;
     tagline: string;
     title: string;
@@ -210,7 +211,7 @@ export function DiscussionsPage({ t }: DiscussionsPageProps) {
                   <div className="flex items-center gap-4 text-[10px] text-neutral-600">
                     <span>{d.author}</span>
                     <span className="opacity-30">·</span>
-                    <span>{formatDate(d.date)}</span>
+                    <span>{formatDate(d.date, t.lang)}</span>
                     <span className="opacity-30">·</span>
                     <span className="flex items-center gap-1">
                       <svg className="w-3 h-3" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={1.5}>

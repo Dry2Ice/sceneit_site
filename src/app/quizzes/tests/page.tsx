@@ -8,6 +8,7 @@ export default async function Page() {
   return (
     <TestsPage
       t={{
+        lang,
         home: t.nav.home,
         section: t.quizzes.tests,
         title: t.quizzes.tests,

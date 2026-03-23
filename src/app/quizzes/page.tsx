@@ -100,7 +100,7 @@ export default async function QuizzesPage() {
               <h4 className="text-sm font-semibold text-white/90 mb-2 line-clamp-2">{b.title}</h4>
               <p className="text-xs text-neutral-500 line-clamp-2 mb-3">{b.preview}</p>
               <div className="flex items-center gap-3 text-[10px] text-neutral-600">
-                <span>{formatDate(b.date)}</span><span className="opacity-30">·</span><span>{b.totalPlayed.toLocaleString()} {t.quizzes.played}</span>
+                <span>{formatDate(b.date, lang)}</span><span className="opacity-30">·</span><span>{b.totalPlayed.toLocaleString()} {t.quizzes.played}</span>
               </div>
             </div>
           ))}
@@ -130,7 +130,7 @@ export default async function QuizzesPage() {
               <h4 className="text-sm font-semibold text-white/90 mb-2 line-clamp-2">{item.title}</h4>
               <p className="text-xs text-neutral-500 line-clamp-2 mb-3">{item.preview}</p>
               <div className="flex items-center gap-3 text-[10px] text-neutral-600">
-                <span>{formatDate(item.date)}</span><span className="opacity-30">·</span><span>{item.totalPlayed.toLocaleString()} {t.quizzes.played}</span>
+                <span>{formatDate(item.date, lang)}</span><span className="opacity-30">·</span><span>{item.totalPlayed.toLocaleString()} {t.quizzes.played}</span>
               </div>
             </div>
           ))}
@@ -160,7 +160,7 @@ export default async function QuizzesPage() {
               <h4 className="text-sm font-semibold text-white/90 mb-2 line-clamp-2">{item.title}</h4>
               <p className="text-xs text-neutral-500 line-clamp-2 mb-3">{item.preview}</p>
               <div className="flex items-center gap-3 text-[10px] text-neutral-600">
-                <span>{formatDate(item.date)}</span><span className="opacity-30">·</span><span>{item.totalPlayed.toLocaleString()} {t.quizzes.played}</span>
+                <span>{formatDate(item.date, lang)}</span><span className="opacity-30">·</span><span>{item.totalPlayed.toLocaleString()} {t.quizzes.played}</span>
               </div>
             </div>
           ))}

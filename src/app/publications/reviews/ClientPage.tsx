@@ -7,6 +7,7 @@ import type { Review } from "@/data/flickfeed";
 
 interface PageProps {
   t: {
+    lang: string;
     home: string;
     section: string;
     title: string;
@@ -147,7 +148,7 @@ export function ReviewsPage({ t }: PageProps) {
                   <div className="flex items-center gap-4 text-[10px] text-neutral-600">
                     <span>{r.author}</span>
                     <span className="opacity-30">·</span>
-                    <span>{formatDate(r.date)}</span>
+                    <span>{formatDate(r.date, t.lang)}</span>
                     <span className="opacity-30">·</span>
                     <span>{r.likes} {t.likes ?? "likes"}</span>
                     <span className="opacity-30">·</span>
