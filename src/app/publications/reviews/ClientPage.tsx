@@ -128,35 +128,37 @@ export function ReviewsPage({ t }: PageProps) {
 
         <div className="space-y-3">
           {filtered.map((r, i) => (
-            <div key={r.id} className="group relative bg-white/[0.02] border border-neutral-800/30 rounded-xl p-5 sm:p-6 transition-all duration-500 hover:bg-white/[0.04] hover:border-rose-500/15" style={{ animation: `fadeInUp 0.5s ${i * 0.05}s ease-out both` }}>
-              {r.hot && <HotBadge />}
-              <div className="flex gap-4">
-                <div className="shrink-0 w-10 h-10 rounded-lg bg-rose-500/10 border border-rose-500/15 flex items-center justify-center">
-                  <svg className="w-4 h-4 text-rose-400" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={1.5}>
-                    <path strokeLinecap="round" strokeLinejoin="round" d="M11.48 3.499a.562.562 0 011.04 0l2.125 5.111a.563.563 0 00.475.345l5.518.442c.499.04.701.663.321.988l-4.204 3.602a.563.563 0 00-.182.557l1.285 5.385a.562.562 0 01-.84.61l-4.725-2.885a.563.563 0 00-.586 0L6.982 20.54a.562.562 0 01-.84-.61l1.285-5.386a.562.562 0 00-.182-.557l-4.204-3.602a.563.563 0 01.321-.988l5.518-.442a.563.563 0 00.475-.345L11.48 3.5z" />
-                  </svg>
-                </div>
-                <div className="flex-1 min-w-0">
-                  <div className="flex items-center gap-2 mb-1">
-                    <span className="text-[9px] tracking-[0.2em] uppercase text-rose-400/50">{r.genre}</span>
-                    <span className="text-[9px] text-neutral-700">·</span>
-                    <span className="text-[9px] tracking-[0.1em] uppercase text-neutral-500">{r.film} ({r.year})</span>
+            <Link key={r.id} href={`/publications/reviews/${r.id}`} className="block">
+              <div className="group relative bg-white/[0.02] border border-neutral-800/30 rounded-xl p-5 sm:p-6 transition-all duration-500 hover:bg-white/[0.04] hover:border-rose-500/15" style={{ animation: `fadeInUp 0.5s ${i * 0.05}s ease-out both` }}>
+                {r.hot && <HotBadge />}
+                <div className="flex gap-4">
+                  <div className="shrink-0 w-10 h-10 rounded-lg bg-rose-500/10 border border-rose-500/15 flex items-center justify-center">
+                    <svg className="w-4 h-4 text-rose-400" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={1.5}>
+                      <path strokeLinecap="round" strokeLinejoin="round" d="M11.48 3.499a.562.562 0 011.04 0l2.125 5.111a.563.563 0 00.475.345l5.518.442c.499.04.701.663.321.988l-4.204 3.602a.563.563 0 00-.182.557l1.285 5.385a.562.562 0 01-.84.61l-4.725-2.885a.563.563 0 00-.586 0L6.982 20.54a.562.562 0 01-.84-.61l1.285-5.386a.562.562 0 00-.182-.557l-4.204-3.602a.563.563 0 01.321-.988l5.518-.442a.563.563 0 00.475-.345L11.48 3.5z" />
+                    </svg>
                   </div>
-                  <h3 className="text-sm sm:text-base font-semibold text-white/90 mb-1.5 group-hover:text-rose-300 transition-colors">{r.title}</h3>
-                  <div className="mb-2"><StarRating rating={r.rating} /></div>
-                  <p className="text-neutral-500 text-xs sm:text-sm leading-relaxed line-clamp-2 mb-3">{r.preview}</p>
-                  <div className="flex items-center gap-4 text-[10px] text-neutral-600">
-                    <span>{r.author}</span>
-                    <span className="opacity-30">·</span>
-                    <span>{formatDate(r.date, t.lang)}</span>
-                    <span className="opacity-30">·</span>
-                    <span>{r.likes} {t.likes ?? "likes"}</span>
-                    <span className="opacity-30">·</span>
-                    <span>{r.comments} {t.comments ?? "comments"}</span>
+                  <div className="flex-1 min-w-0">
+                    <div className="flex items-center gap-2 mb-1">
+                      <span className="text-[9px] tracking-[0.2em] uppercase text-rose-400/50">{r.genre}</span>
+                      <span className="text-[9px] text-neutral-700">·</span>
+                      <span className="text-[9px] tracking-[0.1em] uppercase text-neutral-500">{r.film} ({r.year})</span>
+                    </div>
+                    <h3 className="text-sm sm:text-base font-semibold text-white/90 mb-1.5 group-hover:text-rose-300 transition-colors">{r.title}</h3>
+                    <div className="mb-2"><StarRating rating={r.rating} /></div>
+                    <p className="text-neutral-500 text-xs sm:text-sm leading-relaxed line-clamp-2 mb-3">{r.preview}</p>
+                    <div className="flex items-center gap-4 text-[10px] text-neutral-600">
+                      <span>{r.author}</span>
+                      <span className="opacity-30">·</span>
+                      <span>{formatDate(r.date, t.lang)}</span>
+                      <span className="opacity-30">·</span>
+                      <span>{r.likes} {t.likes ?? "likes"}</span>
+                      <span className="opacity-30">·</span>
+                      <span>{r.comments} {t.comments ?? "comments"}</span>
+                    </div>
                   </div>
                 </div>
               </div>
-            </div>
+            </Link>
           ))}
         </div>
 

@@ -103,21 +103,22 @@ export default async function ForumsPage() {
         <SectionHeader title={t.forums.popularDiscussions} href="/forums/discussions" viewAll={t.nav.viewAll} />
         <div className="grid grid-cols-1 sm:grid-cols-2 gap-3 mb-12">
           {popularDiscussions.map((d) => (
-            <div
-              key={d.id}
-              className="bg-white/[0.02] border border-neutral-800/30 rounded-xl p-5 transition-all duration-500 hover:bg-white/[0.04] hover:border-violet-500/15"
-            >
-              <span className="text-[9px] tracking-[0.2em] uppercase text-violet-400/40 block mb-1.5">{d.category}</span>
-              <h4 className="text-sm font-semibold text-white/90 mb-2 line-clamp-2">{d.title}</h4>
-              <p className="text-xs text-neutral-500 line-clamp-2 mb-3">{d.preview}</p>
-              <div className="flex items-center gap-3 text-[10px] text-neutral-600">
-                <span>{d.author}</span>
-                <span className="opacity-30">·</span>
-                <span>{formatDate(d.date, lang)}</span>
-                <span className="opacity-30">·</span>
-                <span>{d.likes} {t.forums.likes}</span>
+            <Link key={d.id} href={`/forums/discussions/${d.id}`} className="block">
+              <div
+                className="bg-white/[0.02] border border-neutral-800/30 rounded-xl p-5 transition-all duration-500 hover:bg-white/[0.04] hover:border-violet-500/15"
+              >
+                <span className="text-[9px] tracking-[0.2em] uppercase text-violet-400/40 block mb-1.5">{d.category}</span>
+                <h4 className="text-sm font-semibold text-white/90 mb-2 line-clamp-2">{d.title}</h4>
+                <p className="text-xs text-neutral-500 line-clamp-2 mb-3">{d.preview}</p>
+                <div className="flex items-center gap-3 text-[10px] text-neutral-600">
+                  <span>{d.author}</span>
+                  <span className="opacity-30">·</span>
+                  <span>{formatDate(d.date, lang)}</span>
+                  <span className="opacity-30">·</span>
+                  <span>{d.likes} {t.forums.likes}</span>
+                </div>
               </div>
-            </div>
+            </Link>
           ))}
         </div>
 
@@ -125,21 +126,22 @@ export default async function ForumsPage() {
         <SectionHeader title={t.forums.newestDiscussions} href="/forums/discussions" viewAll={t.nav.viewAll} />
         <div className="grid grid-cols-1 sm:grid-cols-2 gap-3 mb-12">
           {newestDiscussions.map((d) => (
-            <div
-              key={d.id}
-              className="bg-white/[0.02] border border-neutral-800/30 rounded-xl p-5 transition-all duration-500 hover:bg-white/[0.04] hover:border-violet-500/15"
-            >
-              <span className="text-[9px] tracking-[0.2em] uppercase text-violet-400/40 block mb-1.5">{d.category}</span>
-              <h4 className="text-sm font-semibold text-white/90 mb-2 line-clamp-2">{d.title}</h4>
-              <p className="text-xs text-neutral-500 line-clamp-2 mb-3">{d.preview}</p>
-              <div className="flex items-center gap-3 text-[10px] text-neutral-600">
-                <span>{d.author}</span>
-                <span className="opacity-30">·</span>
-                <span>{formatDate(d.date, lang)}</span>
-                <span className="opacity-30">·</span>
-                <span>{d.replies} {t.forums.replies}</span>
+            <Link key={d.id} href={`/forums/discussions/${d.id}`} className="block">
+              <div
+                className="bg-white/[0.02] border border-neutral-800/30 rounded-xl p-5 transition-all duration-500 hover:bg-white/[0.04] hover:border-violet-500/15"
+              >
+                <span className="text-[9px] tracking-[0.2em] uppercase text-violet-400/40 block mb-1.5">{d.category}</span>
+                <h4 className="text-sm font-semibold text-white/90 mb-2 line-clamp-2">{d.title}</h4>
+                <p className="text-xs text-neutral-500 line-clamp-2 mb-3">{d.preview}</p>
+                <div className="flex items-center gap-3 text-[10px] text-neutral-600">
+                  <span>{d.author}</span>
+                  <span className="opacity-30">·</span>
+                  <span>{formatDate(d.date, lang)}</span>
+                  <span className="opacity-30">·</span>
+                  <span>{d.replies} {t.forums.replies}</span>
+                </div>
               </div>
-            </div>
+            </Link>
           ))}
         </div>
 
@@ -149,34 +151,35 @@ export default async function ForumsPage() {
           {popularPolls.map((p) => {
             const top = p.options.reduce((a, b) => (a.votes > b.votes ? a : b));
             return (
-              <div
-                key={p.id}
-                className="bg-white/[0.02] border border-neutral-800/30 rounded-xl p-5 transition-all duration-500 hover:bg-white/[0.04] hover:border-violet-500/15"
-              >
-                <span className="text-[9px] tracking-[0.2em] uppercase text-violet-400/40 block mb-1.5">{p.category}</span>
-                <h4 className="text-sm font-semibold text-white/90 mb-2">{p.title}</h4>
-                <div className="space-y-1.5 mb-3">
-                  {p.options.slice(0, 3).map((opt, j) => {
-                    const pct = Math.round((opt.votes / p.totalVotes) * 100);
-                    return (
-                      <div key={j}>
-                        <div className="flex items-center justify-between mb-0.5">
-                          <span className="text-[11px] text-neutral-400">{opt.label}</span>
-                          <span className="text-[10px] text-neutral-600">{pct}%</span>
+              <Link key={p.id} href={`/forums/votes/${p.id}`} className="block">
+                <div
+                  className="bg-white/[0.02] border border-neutral-800/30 rounded-xl p-5 transition-all duration-500 hover:bg-white/[0.04] hover:border-violet-500/15"
+                >
+                  <span className="text-[9px] tracking-[0.2em] uppercase text-violet-400/40 block mb-1.5">{p.category}</span>
+                  <h4 className="text-sm font-semibold text-white/90 mb-2">{p.title}</h4>
+                  <div className="space-y-1.5 mb-3">
+                    {p.options.slice(0, 3).map((opt, j) => {
+                      const pct = Math.round((opt.votes / p.totalVotes) * 100);
+                      return (
+                        <div key={j}>
+                          <div className="flex items-center justify-between mb-0.5">
+                            <span className="text-[11px] text-neutral-400">{opt.label}</span>
+                            <span className="text-[10px] text-neutral-600">{pct}%</span>
+                          </div>
+                          <div className="h-1 bg-white/[0.04] rounded-full overflow-hidden">
+                            <div className="h-full rounded-full bg-violet-500/40" style={{ width: `${pct}%` }} />
+                          </div>
                         </div>
-                        <div className="h-1 bg-white/[0.04] rounded-full overflow-hidden">
-                          <div className="h-full rounded-full bg-violet-500/40" style={{ width: `${pct}%` }} />
-                        </div>
-                      </div>
-                    );
-                  })}
+                      );
+                    })}
+                  </div>
+                  <div className="flex items-center gap-3 text-[10px] text-neutral-600">
+                    <span>{p.totalVotes.toLocaleString()} {t.forums.votes}</span>
+                    <span className="opacity-30">·</span>
+                    <span>{t.forums.leading}: {top.label}</span>
+                  </div>
                 </div>
-                <div className="flex items-center gap-3 text-[10px] text-neutral-600">
-                  <span>{p.totalVotes.toLocaleString()} {t.forums.votes}</span>
-                  <span className="opacity-30">·</span>
-                  <span>{t.forums.leading}: {top.label}</span>
-                </div>
-              </div>
+              </Link>
             );
           })}
         </div>
@@ -187,34 +190,35 @@ export default async function ForumsPage() {
           {newestPolls.map((p) => {
             const top = p.options.reduce((a, b) => (a.votes > b.votes ? a : b));
             return (
-              <div
-                key={p.id}
-                className="bg-white/[0.02] border border-neutral-800/30 rounded-xl p-5 transition-all duration-500 hover:bg-white/[0.04] hover:border-violet-500/15"
-              >
-                <span className="text-[9px] tracking-[0.2em] uppercase text-violet-400/40 block mb-1.5">{p.category}</span>
-                <h4 className="text-sm font-semibold text-white/90 mb-2">{p.title}</h4>
-                <div className="space-y-1.5 mb-3">
-                  {p.options.slice(0, 3).map((opt, j) => {
-                    const pct = Math.round((opt.votes / p.totalVotes) * 100);
-                    return (
-                      <div key={j}>
-                        <div className="flex items-center justify-between mb-0.5">
-                          <span className="text-[11px] text-neutral-400">{opt.label}</span>
-                          <span className="text-[10px] text-neutral-600">{pct}%</span>
+              <Link key={p.id} href={`/forums/votes/${p.id}`} className="block">
+                <div
+                  className="bg-white/[0.02] border border-neutral-800/30 rounded-xl p-5 transition-all duration-500 hover:bg-white/[0.04] hover:border-violet-500/15"
+                >
+                  <span className="text-[9px] tracking-[0.2em] uppercase text-violet-400/40 block mb-1.5">{p.category}</span>
+                  <h4 className="text-sm font-semibold text-white/90 mb-2">{p.title}</h4>
+                  <div className="space-y-1.5 mb-3">
+                    {p.options.slice(0, 3).map((opt, j) => {
+                      const pct = Math.round((opt.votes / p.totalVotes) * 100);
+                      return (
+                        <div key={j}>
+                          <div className="flex items-center justify-between mb-0.5">
+                            <span className="text-[11px] text-neutral-400">{opt.label}</span>
+                            <span className="text-[10px] text-neutral-600">{pct}%</span>
+                          </div>
+                          <div className="h-1 bg-white/[0.04] rounded-full overflow-hidden">
+                            <div className="h-full rounded-full bg-violet-500/40" style={{ width: `${pct}%` }} />
+                          </div>
                         </div>
-                        <div className="h-1 bg-white/[0.04] rounded-full overflow-hidden">
-                          <div className="h-full rounded-full bg-violet-500/40" style={{ width: `${pct}%` }} />
-                        </div>
-                      </div>
-                    );
-                  })}
+                      );
+                    })}
+                  </div>
+                  <div className="flex items-center gap-3 text-[10px] text-neutral-600">
+                    <span>{p.totalVotes.toLocaleString()} {t.forums.votes}</span>
+                    <span className="opacity-30">·</span>
+                    <span>{t.forums.leading}: {top.label}</span>
+                  </div>
                 </div>
-                <div className="flex items-center gap-3 text-[10px] text-neutral-600">
-                  <span>{p.totalVotes.toLocaleString()} {t.forums.votes}</span>
-                  <span className="opacity-30">·</span>
-                  <span>{t.forums.leading}: {top.label}</span>
-                </div>
-              </div>
+              </Link>
             );
           })}
         </div>

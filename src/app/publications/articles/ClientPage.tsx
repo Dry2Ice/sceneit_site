@@ -112,30 +112,32 @@ export function ArticlesPage({ t }: PageProps) {
 
         <div className="space-y-3">
           {filtered.map((a, i) => (
-            <div key={a.id} className="group relative bg-white/[0.02] border border-neutral-800/30 rounded-xl p-5 sm:p-6 transition-all duration-500 hover:bg-white/[0.04] hover:border-rose-500/15" style={{ animation: `fadeInUp 0.5s ${i * 0.05}s ease-out both` }}>
-              {a.hot && <HotBadge />}
-              <div className="flex gap-4">
-                <div className="shrink-0 w-10 h-10 rounded-lg bg-rose-500/10 border border-rose-500/15 flex items-center justify-center">
-                  <svg className="w-4 h-4 text-rose-400" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={1.5}>
-                    <path strokeLinecap="round" strokeLinejoin="round" d="M12 7.5h1.5m-1.5 3h1.5m-7.5 3h7.5m-7.5 3h7.5m3-9h3.375c.621 0 1.125.504 1.125 1.125V18a2.25 2.25 0 01-2.25 2.25M16.5 7.5V18a2.25 2.25 0 002.25 2.25M16.5 7.5V4.875c0-.621-.504-1.125-1.125-1.125H4.125C3.504 3.75 3 4.254 3 4.875V18a2.25 2.25 0 002.25 2.25h13.5M6 7.5h3v3H6v-3z" />
-                  </svg>
-                </div>
-                <div className="flex-1 min-w-0">
-                  <span className="text-[9px] tracking-[0.2em] uppercase text-rose-400/50 mb-1 block">{a.category}</span>
-                  <h3 className="text-sm sm:text-base font-semibold text-white/90 mb-1.5 group-hover:text-rose-300 transition-colors">{a.title}</h3>
-                  <p className="text-neutral-500 text-xs sm:text-sm leading-relaxed line-clamp-2 mb-3">{a.preview}</p>
-                  <div className="flex items-center gap-4 text-[10px] text-neutral-600">
-                    <span>{a.author}</span>
-                    <span className="opacity-30">·</span>
-                    <span>{formatDate(a.date, t.lang)}</span>
-                    <span className="opacity-30">·</span>
-                    <span>{a.likes} {t.likes ?? "likes"}</span>
-                    <span className="opacity-30">·</span>
-                    <span>{a.comments} {t.comments ?? "comments"}</span>
+            <Link key={a.id} href={`/publications/articles/${a.id}`} className="block">
+              <div className="group relative bg-white/[0.02] border border-neutral-800/30 rounded-xl p-5 sm:p-6 transition-all duration-500 hover:bg-white/[0.04] hover:border-rose-500/15" style={{ animation: `fadeInUp 0.5s ${i * 0.05}s ease-out both` }}>
+                {a.hot && <HotBadge />}
+                <div className="flex gap-4">
+                  <div className="shrink-0 w-10 h-10 rounded-lg bg-rose-500/10 border border-rose-500/15 flex items-center justify-center">
+                    <svg className="w-4 h-4 text-rose-400" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={1.5}>
+                      <path strokeLinecap="round" strokeLinejoin="round" d="M12 7.5h1.5m-1.5 3h1.5m-7.5 3h7.5m-7.5 3h7.5m3-9h3.375c.621 0 1.125.504 1.125 1.125V18a2.25 2.25 0 01-2.25 2.25M16.5 7.5V18a2.25 2.25 0 002.25 2.25M16.5 7.5V4.875c0-.621-.504-1.125-1.125-1.125H4.125C3.504 3.75 3 4.254 3 4.875V18a2.25 2.25 0 002.25 2.25h13.5M6 7.5h3v3H6v-3z" />
+                    </svg>
+                  </div>
+                  <div className="flex-1 min-w-0">
+                    <span className="text-[9px] tracking-[0.2em] uppercase text-rose-400/50 mb-1 block">{a.category}</span>
+                    <h3 className="text-sm sm:text-base font-semibold text-white/90 mb-1.5 group-hover:text-rose-300 transition-colors">{a.title}</h3>
+                    <p className="text-neutral-500 text-xs sm:text-sm leading-relaxed line-clamp-2 mb-3">{a.preview}</p>
+                    <div className="flex items-center gap-4 text-[10px] text-neutral-600">
+                      <span>{a.author}</span>
+                      <span className="opacity-30">·</span>
+                      <span>{formatDate(a.date, t.lang)}</span>
+                      <span className="opacity-30">·</span>
+                      <span>{a.likes} {t.likes ?? "likes"}</span>
+                      <span className="opacity-30">·</span>
+                      <span>{a.comments} {t.comments ?? "comments"}</span>
+                    </div>
                   </div>
                 </div>
               </div>
-            </div>
+            </Link>
           ))}
         </div>
 

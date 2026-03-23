@@ -113,34 +113,36 @@ export function LongreadsPage({ t }: PageProps) {
 
         <div className="space-y-3">
           {filtered.map((l, i) => (
-            <div key={l.id} className="group relative bg-white/[0.02] border border-neutral-800/30 rounded-xl p-5 sm:p-6 transition-all duration-500 hover:bg-white/[0.04] hover:border-rose-500/15" style={{ animation: `fadeInUp 0.5s ${i * 0.05}s ease-out both` }}>
-              {l.hot && <HotBadge />}
-              <div className="flex gap-4">
-                <div className="shrink-0 w-10 h-10 rounded-lg bg-rose-500/10 border border-rose-500/15 flex items-center justify-center">
-                  <svg className="w-4 h-4 text-rose-400" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={1.5}>
-                    <path strokeLinecap="round" strokeLinejoin="round" d="M12 6.042A8.967 8.967 0 006 3.75c-1.052 0-2.062.18-3 .512v14.25A8.987 8.987 0 016 18c2.305 0 4.408.867 6 2.292m0-14.25a8.966 8.966 0 016-2.292c1.052 0 2.062.18 3 .512v14.25A8.987 8.987 0 0018 18a8.967 8.967 0 00-6 2.292m0-14.25v14.25" />
-                  </svg>
-                </div>
-                <div className="flex-1 min-w-0">
-                  <div className="flex items-center gap-2 mb-1">
-                    <span className="text-[9px] tracking-[0.2em] uppercase text-rose-400/50">{l.category}</span>
-                    <span className="text-[9px] text-neutral-700">·</span>
-                    <span className="text-[9px] tracking-[0.1em] uppercase text-neutral-500">{l.readTime} {t.minRead ?? "min read"}</span>
+            <Link key={l.id} href={`/publications/longreads/${l.id}`} className="block">
+              <div className="group relative bg-white/[0.02] border border-neutral-800/30 rounded-xl p-5 sm:p-6 transition-all duration-500 hover:bg-white/[0.04] hover:border-rose-500/15" style={{ animation: `fadeInUp 0.5s ${i * 0.05}s ease-out both` }}>
+                {l.hot && <HotBadge />}
+                <div className="flex gap-4">
+                  <div className="shrink-0 w-10 h-10 rounded-lg bg-rose-500/10 border border-rose-500/15 flex items-center justify-center">
+                    <svg className="w-4 h-4 text-rose-400" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={1.5}>
+                      <path strokeLinecap="round" strokeLinejoin="round" d="M12 6.042A8.967 8.967 0 006 3.75c-1.052 0-2.062.18-3 .512v14.25A8.987 8.987 0 016 18c2.305 0 4.408.867 6 2.292m0-14.25a8.966 8.966 0 016-2.292c1.052 0 2.062.18 3 .512v14.25A8.987 8.987 0 0018 18a8.967 8.967 0 00-6 2.292m0-14.25v14.25" />
+                    </svg>
                   </div>
-                  <h3 className="text-sm sm:text-base font-semibold text-white/90 mb-1.5 group-hover:text-rose-300 transition-colors">{l.title}</h3>
-                  <p className="text-neutral-500 text-xs sm:text-sm leading-relaxed line-clamp-3 mb-3">{l.preview}</p>
-                  <div className="flex items-center gap-4 text-[10px] text-neutral-600">
-                    <span>{l.author}</span>
-                    <span className="opacity-30">·</span>
-                    <span>{formatDate(l.date, t.lang)}</span>
-                    <span className="opacity-30">·</span>
-                    <span>{l.likes} {t.likes ?? "likes"}</span>
-                    <span className="opacity-30">·</span>
-                    <span>{l.comments} {t.comments ?? "comments"}</span>
+                  <div className="flex-1 min-w-0">
+                    <div className="flex items-center gap-2 mb-1">
+                      <span className="text-[9px] tracking-[0.2em] uppercase text-rose-400/50">{l.category}</span>
+                      <span className="text-[9px] text-neutral-700">·</span>
+                      <span className="text-[9px] tracking-[0.1em] uppercase text-neutral-500">{l.readTime} {t.minRead ?? "min read"}</span>
+                    </div>
+                    <h3 className="text-sm sm:text-base font-semibold text-white/90 mb-1.5 group-hover:text-rose-300 transition-colors">{l.title}</h3>
+                    <p className="text-neutral-500 text-xs sm:text-sm leading-relaxed line-clamp-3 mb-3">{l.preview}</p>
+                    <div className="flex items-center gap-4 text-[10px] text-neutral-600">
+                      <span>{l.author}</span>
+                      <span className="opacity-30">·</span>
+                      <span>{formatDate(l.date, t.lang)}</span>
+                      <span className="opacity-30">·</span>
+                      <span>{l.likes} {t.likes ?? "likes"}</span>
+                      <span className="opacity-30">·</span>
+                      <span>{l.comments} {t.comments ?? "comments"}</span>
+                    </div>
                   </div>
                 </div>
               </div>
-            </div>
+            </Link>
           ))}
         </div>
 

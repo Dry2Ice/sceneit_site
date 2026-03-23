@@ -80,14 +80,16 @@ export default async function QuizzesPage() {
         <SectionHeader title={t.quizzes.popularBrackets} href="/quizzes/brackets" viewAll={t.nav.viewAll} />
         <div className="grid grid-cols-1 sm:grid-cols-2 gap-3 mb-12">
           {popularBrackets.map((b) => (
-            <div key={b.id} className="bg-white/[0.02] border border-neutral-800/30 rounded-xl p-5 transition-all duration-500 hover:bg-white/[0.04] hover:border-amber-500/15">
-              <span className="text-[9px] tracking-[0.2em] uppercase text-amber-400/40 block mb-1.5">{b.category}</span>
-              <h4 className="text-sm font-semibold text-white/90 mb-2 line-clamp-2">{b.title}</h4>
-              <p className="text-xs text-neutral-500 line-clamp-2 mb-3">{b.preview}</p>
-              <div className="flex items-center gap-3 text-[10px] text-neutral-600">
-                <span>{b.participants} {t.quizzes.entries}</span><span className="opacity-30">·</span><span>{b.totalPlayed.toLocaleString()} {t.quizzes.played}</span>
+            <Link key={b.id} href={`/quizzes/brackets/${b.id}`} className="block">
+              <div className="bg-white/[0.02] border border-neutral-800/30 rounded-xl p-5 transition-all duration-500 hover:bg-white/[0.04] hover:border-amber-500/15">
+                <span className="text-[9px] tracking-[0.2em] uppercase text-amber-400/40 block mb-1.5">{b.category}</span>
+                <h4 className="text-sm font-semibold text-white/90 mb-2 line-clamp-2">{b.title}</h4>
+                <p className="text-xs text-neutral-500 line-clamp-2 mb-3">{b.preview}</p>
+                <div className="flex items-center gap-3 text-[10px] text-neutral-600">
+                  <span>{b.participants} {t.quizzes.entries}</span><span className="opacity-30">·</span><span>{b.totalPlayed.toLocaleString()} {t.quizzes.played}</span>
+                </div>
               </div>
-            </div>
+            </Link>
           ))}
         </div>
 
@@ -95,14 +97,16 @@ export default async function QuizzesPage() {
         <SectionHeader title={t.quizzes.newestBrackets} href="/quizzes/brackets" viewAll={t.nav.viewAll} />
         <div className="grid grid-cols-1 sm:grid-cols-2 gap-3 mb-12">
           {newestBrackets.map((b) => (
-            <div key={b.id} className="bg-white/[0.02] border border-neutral-800/30 rounded-xl p-5 transition-all duration-500 hover:bg-white/[0.04] hover:border-amber-500/15">
-              <span className="text-[9px] tracking-[0.2em] uppercase text-amber-400/40 block mb-1.5">{b.category}</span>
-              <h4 className="text-sm font-semibold text-white/90 mb-2 line-clamp-2">{b.title}</h4>
-              <p className="text-xs text-neutral-500 line-clamp-2 mb-3">{b.preview}</p>
-              <div className="flex items-center gap-3 text-[10px] text-neutral-600">
-                <span>{formatDate(b.date, lang)}</span><span className="opacity-30">·</span><span>{b.totalPlayed.toLocaleString()} {t.quizzes.played}</span>
+            <Link key={b.id} href={`/quizzes/brackets/${b.id}`} className="block">
+              <div className="bg-white/[0.02] border border-neutral-800/30 rounded-xl p-5 transition-all duration-500 hover:bg-white/[0.04] hover:border-amber-500/15">
+                <span className="text-[9px] tracking-[0.2em] uppercase text-amber-400/40 block mb-1.5">{b.category}</span>
+                <h4 className="text-sm font-semibold text-white/90 mb-2 line-clamp-2">{b.title}</h4>
+                <p className="text-xs text-neutral-500 line-clamp-2 mb-3">{b.preview}</p>
+                <div className="flex items-center gap-3 text-[10px] text-neutral-600">
+                  <span>{formatDate(b.date, lang)}</span><span className="opacity-30">·</span><span>{b.totalPlayed.toLocaleString()} {t.quizzes.played}</span>
+                </div>
               </div>
-            </div>
+            </Link>
           ))}
         </div>
 
@@ -110,14 +114,16 @@ export default async function QuizzesPage() {
         <SectionHeader title={t.quizzes.popularTests} href="/quizzes/tests" viewAll={t.nav.viewAll} />
         <div className="grid grid-cols-1 sm:grid-cols-2 gap-3 mb-12">
           {popularTests.map((item) => (
-            <div key={item.id} className="bg-white/[0.02] border border-neutral-800/30 rounded-xl p-5 transition-all duration-500 hover:bg-white/[0.04] hover:border-amber-500/15">
-              <span className="text-[9px] tracking-[0.2em] uppercase text-amber-400/40 block mb-1.5">{item.category}</span>
-              <h4 className="text-sm font-semibold text-white/90 mb-2 line-clamp-2">{item.title}</h4>
-              <p className="text-xs text-neutral-500 line-clamp-2 mb-3">{item.preview}</p>
-              <div className="flex items-center gap-3 text-[10px] text-neutral-600">
-                <span>{item.questionsCount} {t.quizzes.questions}</span><span className="opacity-30">·</span><span>{item.totalPlayed.toLocaleString()} {t.quizzes.played}</span>
+            <Link key={item.id} href={`/quizzes/tests/${item.id}`} className="block">
+              <div className="bg-white/[0.02] border border-neutral-800/30 rounded-xl p-5 transition-all duration-500 hover:bg-white/[0.04] hover:border-amber-500/15">
+                <span className="text-[9px] tracking-[0.2em] uppercase text-amber-400/40 block mb-1.5">{item.category}</span>
+                <h4 className="text-sm font-semibold text-white/90 mb-2 line-clamp-2">{item.title}</h4>
+                <p className="text-xs text-neutral-500 line-clamp-2 mb-3">{item.preview}</p>
+                <div className="flex items-center gap-3 text-[10px] text-neutral-600">
+                  <span>{item.questionsCount} {t.quizzes.questions}</span><span className="opacity-30">·</span><span>{item.totalPlayed.toLocaleString()} {t.quizzes.played}</span>
+                </div>
               </div>
-            </div>
+            </Link>
           ))}
         </div>
 
@@ -125,14 +131,16 @@ export default async function QuizzesPage() {
         <SectionHeader title={t.quizzes.newestTests} href="/quizzes/tests" viewAll={t.nav.viewAll} />
         <div className="grid grid-cols-1 sm:grid-cols-2 gap-3 mb-12">
           {newestTests.map((item) => (
-            <div key={item.id} className="bg-white/[0.02] border border-neutral-800/30 rounded-xl p-5 transition-all duration-500 hover:bg-white/[0.04] hover:border-amber-500/15">
-              <span className="text-[9px] tracking-[0.2em] uppercase text-amber-400/40 block mb-1.5">{item.category}</span>
-              <h4 className="text-sm font-semibold text-white/90 mb-2 line-clamp-2">{item.title}</h4>
-              <p className="text-xs text-neutral-500 line-clamp-2 mb-3">{item.preview}</p>
-              <div className="flex items-center gap-3 text-[10px] text-neutral-600">
-                <span>{formatDate(item.date, lang)}</span><span className="opacity-30">·</span><span>{item.totalPlayed.toLocaleString()} {t.quizzes.played}</span>
+            <Link key={item.id} href={`/quizzes/tests/${item.id}`} className="block">
+              <div className="bg-white/[0.02] border border-neutral-800/30 rounded-xl p-5 transition-all duration-500 hover:bg-white/[0.04] hover:border-amber-500/15">
+                <span className="text-[9px] tracking-[0.2em] uppercase text-amber-400/40 block mb-1.5">{item.category}</span>
+                <h4 className="text-sm font-semibold text-white/90 mb-2 line-clamp-2">{item.title}</h4>
+                <p className="text-xs text-neutral-500 line-clamp-2 mb-3">{item.preview}</p>
+                <div className="flex items-center gap-3 text-[10px] text-neutral-600">
+                  <span>{formatDate(item.date, lang)}</span><span className="opacity-30">·</span><span>{item.totalPlayed.toLocaleString()} {t.quizzes.played}</span>
+                </div>
               </div>
-            </div>
+            </Link>
           ))}
         </div>
 
@@ -140,14 +148,16 @@ export default async function QuizzesPage() {
         <SectionHeader title={t.quizzes.popularTrivia} href="/quizzes/trivia" viewAll={t.nav.viewAll} />
         <div className="grid grid-cols-1 sm:grid-cols-2 gap-3 mb-12">
           {popularTrivias.map((item) => (
-            <div key={item.id} className="bg-white/[0.02] border border-neutral-800/30 rounded-xl p-5 transition-all duration-500 hover:bg-white/[0.04] hover:border-amber-500/15">
-              <span className="text-[9px] tracking-[0.2em] uppercase text-amber-400/40 block mb-1.5">{item.category}</span>
-              <h4 className="text-sm font-semibold text-white/90 mb-2 line-clamp-2">{item.title}</h4>
-              <p className="text-xs text-neutral-500 line-clamp-2 mb-3">{item.preview}</p>
-              <div className="flex items-center gap-3 text-[10px] text-neutral-600">
-                <span>{item.questionsCount} {t.quizzes.questions}</span><span className="opacity-30">·</span><span>{`${t.quizzes.avgScore}:`}{item.avgScore}%</span>
+            <Link key={item.id} href={`/quizzes/trivia/${item.id}`} className="block">
+              <div className="bg-white/[0.02] border border-neutral-800/30 rounded-xl p-5 transition-all duration-500 hover:bg-white/[0.04] hover:border-amber-500/15">
+                <span className="text-[9px] tracking-[0.2em] uppercase text-amber-400/40 block mb-1.5">{item.category}</span>
+                <h4 className="text-sm font-semibold text-white/90 mb-2 line-clamp-2">{item.title}</h4>
+                <p className="text-xs text-neutral-500 line-clamp-2 mb-3">{item.preview}</p>
+                <div className="flex items-center gap-3 text-[10px] text-neutral-600">
+                  <span>{item.questionsCount} {t.quizzes.questions}</span><span className="opacity-30">·</span><span>{`${t.quizzes.avgScore}:`}{item.avgScore}%</span>
+                </div>
               </div>
-            </div>
+            </Link>
           ))}
         </div>
 
@@ -155,14 +165,16 @@ export default async function QuizzesPage() {
         <SectionHeader title={t.quizzes.newestTrivia} href="/quizzes/trivia" viewAll={t.nav.viewAll} />
         <div className="grid grid-cols-1 sm:grid-cols-2 gap-3 mb-12">
           {newestTrivias.map((item) => (
-            <div key={item.id} className="bg-white/[0.02] border border-neutral-800/30 rounded-xl p-5 transition-all duration-500 hover:bg-white/[0.04] hover:border-amber-500/15">
-              <span className="text-[9px] tracking-[0.2em] uppercase text-amber-400/40 block mb-1.5">{item.category}</span>
-              <h4 className="text-sm font-semibold text-white/90 mb-2 line-clamp-2">{item.title}</h4>
-              <p className="text-xs text-neutral-500 line-clamp-2 mb-3">{item.preview}</p>
-              <div className="flex items-center gap-3 text-[10px] text-neutral-600">
-                <span>{formatDate(item.date, lang)}</span><span className="opacity-30">·</span><span>{item.totalPlayed.toLocaleString()} {t.quizzes.played}</span>
+            <Link key={item.id} href={`/quizzes/trivia/${item.id}`} className="block">
+              <div className="bg-white/[0.02] border border-neutral-800/30 rounded-xl p-5 transition-all duration-500 hover:bg-white/[0.04] hover:border-amber-500/15">
+                <span className="text-[9px] tracking-[0.2em] uppercase text-amber-400/40 block mb-1.5">{item.category}</span>
+                <h4 className="text-sm font-semibold text-white/90 mb-2 line-clamp-2">{item.title}</h4>
+                <p className="text-xs text-neutral-500 line-clamp-2 mb-3">{item.preview}</p>
+                <div className="flex items-center gap-3 text-[10px] text-neutral-600">
+                  <span>{formatDate(item.date, lang)}</span><span className="opacity-30">·</span><span>{item.totalPlayed.toLocaleString()} {t.quizzes.played}</span>
+                </div>
               </div>
-            </div>
+            </Link>
           ))}
         </div>
       </div>

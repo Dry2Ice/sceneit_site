@@ -172,63 +172,64 @@ export function DiscussionsPage({ t }: DiscussionsPageProps) {
         {/* Discussion list */}
         <div className="space-y-3">
           {filtered.map((d, i) => (
-            <div
-              key={d.id}
-              className="group relative bg-white/[0.02] border border-neutral-800/30 rounded-xl p-5 sm:p-6 transition-all duration-500 hover:bg-white/[0.04] hover:border-violet-500/15"
-              style={{ animation: `fadeInUp 0.5s ${i * 0.05}s ease-out both` }}
-            >
-              {/* Hot badge */}
-              {d.hot && (
-                <div className="absolute top-4 right-4 flex items-center gap-1.5 px-2 py-0.5 rounded-full bg-orange-500/10 border border-orange-500/20">
-                  <div className="w-1 h-1 rounded-full bg-orange-400 animate-pulse" />
-                  <span className="text-[8px] tracking-[0.15em] uppercase text-orange-400">{t.hot}</span>
-                </div>
-              )}
+            <Link key={d.id} href={`/forums/discussions/${d.id}`} className="block">
+              <div
+                className="group relative bg-white/[0.02] border border-neutral-800/30 rounded-xl p-5 sm:p-6 transition-all duration-500 hover:bg-white/[0.04] hover:border-violet-500/15"
+                style={{ animation: `fadeInUp 0.5s ${i * 0.05}s ease-out both` }}
+              >
+                {/* Hot badge */}
+                {d.hot && (
+                  <div className="absolute top-4 right-4 flex items-center gap-1.5 px-2 py-0.5 rounded-full bg-orange-500/10 border border-orange-500/20">
+                    <div className="w-1 h-1 rounded-full bg-orange-400 animate-pulse" />
+                    <span className="text-[8px] tracking-[0.15em] uppercase text-orange-400">{t.hot}</span>
+                  </div>
+                )}
 
-              <div className="flex gap-4">
-                {/* Avatar */}
-                <div className="shrink-0 w-10 h-10 rounded-lg bg-violet-500/10 border border-violet-500/15 flex items-center justify-center">
-                  <span className="text-[10px] font-bold text-violet-400">{d.avatar}</span>
-                </div>
+                <div className="flex gap-4">
+                  {/* Avatar */}
+                  <div className="shrink-0 w-10 h-10 rounded-lg bg-violet-500/10 border border-violet-500/15 flex items-center justify-center">
+                    <span className="text-[10px] font-bold text-violet-400">{d.avatar}</span>
+                  </div>
 
-                <div className="flex-1 min-w-0">
-                  {/* Category */}
-                  <span className="text-[9px] tracking-[0.2em] uppercase text-violet-400/50 mb-1 block">
-                    {d.category}
-                  </span>
-
-                  {/* Title */}
-                  <h3 className="text-sm sm:text-base font-semibold text-white/90 mb-1.5 group-hover:text-violet-300 transition-colors">
-                    {d.title}
-                  </h3>
-
-                  {/* Preview */}
-                  <p className="text-neutral-500 text-xs sm:text-sm leading-relaxed line-clamp-2 mb-3">
-                    {d.preview}
-                  </p>
-
-                  {/* Meta */}
-                  <div className="flex items-center gap-4 text-[10px] text-neutral-600">
-                    <span>{d.author}</span>
-                    <span className="opacity-30">·</span>
-                    <span>{formatDate(d.date, t.lang)}</span>
-                    <span className="opacity-30">·</span>
-                    <span className="flex items-center gap-1">
-                      <svg className="w-3 h-3" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={1.5}>
-                        <path strokeLinecap="round" strokeLinejoin="round" d="M21 11.25v8.25a1.5 1.5 0 01-1.5 1.5H5.25a1.5 1.5 0 01-1.5-1.5v-8.25M12 4.875A2.625 2.625 0 109.375 7.5H12m0-2.625V7.5m0-2.625A2.625 2.625 0 1114.625 7.5H12m0 0V21m-8.625-9.75h18c.621 0 1.125-.504 1.125-1.125v-1.5c0-.621-.504-1.125-1.125-1.125h-18c-.621 0-1.125.504-1.125 1.125v1.5c0 .621.504 1.125 1.125 1.125z" />
-                      </svg>
-                      {d.likes} {t.likes}
+                  <div className="flex-1 min-w-0">
+                    {/* Category */}
+                    <span className="text-[9px] tracking-[0.2em] uppercase text-violet-400/50 mb-1 block">
+                      {d.category}
                     </span>
-                    <span className="flex items-center gap-1">
-                      <svg className="w-3 h-3" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={1.5}>
-                        <path strokeLinecap="round" strokeLinejoin="round" d="M12 20.25c4.97 0 9-3.694 9-8.25s-4.03-8.25-9-8.25S3 7.444 3 12c0 2.104.859 4.023 2.273 5.48.432.447.74 1.04.586 1.641a4.483 4.483 0 01-.923 1.785A5.969 5.969 0 006 21c1.282 0 2.47-.402 3.445-1.087.81.22 1.668.337 2.555.337z" />
-                      </svg>
-                      {d.replies} {t.comments}
-                    </span>
+
+                    {/* Title */}
+                    <h3 className="text-sm sm:text-base font-semibold text-white/90 mb-1.5 group-hover:text-violet-300 transition-colors">
+                      {d.title}
+                    </h3>
+
+                    {/* Preview */}
+                    <p className="text-neutral-500 text-xs sm:text-sm leading-relaxed line-clamp-2 mb-3">
+                      {d.preview}
+                    </p>
+
+                    {/* Meta */}
+                    <div className="flex items-center gap-4 text-[10px] text-neutral-600">
+                      <span>{d.author}</span>
+                      <span className="opacity-30">·</span>
+                      <span>{formatDate(d.date, t.lang)}</span>
+                      <span className="opacity-30">·</span>
+                      <span className="flex items-center gap-1">
+                        <svg className="w-3 h-3" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={1.5}>
+                          <path strokeLinecap="round" strokeLinejoin="round" d="M21 11.25v8.25a1.5 1.5 0 01-1.5 1.5H5.25a1.5 1.5 0 01-1.5-1.5v-8.25M12 4.875A2.625 2.625 0 109.375 7.5H12m0-2.625V7.5m0-2.625A2.625 2.625 0 1114.625 7.5H12m0 0V21m-8.625-9.75h18c.621 0 1.125-.504 1.125-1.125v-1.5c0-.621-.504-1.125-1.125-1.125h-18c-.621 0-1.125.504-1.125 1.125v1.5c0 .621.504 1.125 1.125 1.125z" />
+                        </svg>
+                        {d.likes} {t.likes}
+                      </span>
+                      <span className="flex items-center gap-1">
+                        <svg className="w-3 h-3" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={1.5}>
+                          <path strokeLinecap="round" strokeLinejoin="round" d="M12 20.25c4.97 0 9-3.694 9-8.25s-4.03-8.25-9-8.25S3 7.444 3 12c0 2.104.859 4.023 2.273 5.48.432.447.74 1.04.586 1.641a4.483 4.483 0 01-.923 1.785A5.969 5.969 0 006 21c1.282 0 2.47-.402 3.445-1.087.81.22 1.668.337 2.555.337z" />
+                        </svg>
+                        {d.replies} {t.comments}
+                      </span>
+                    </div>
                   </div>
                 </div>
               </div>
-            </div>
+            </Link>
           ))}
         </div>
 

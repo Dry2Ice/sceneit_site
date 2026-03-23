@@ -192,64 +192,65 @@ export function VotesPage({ t }: VotesPageProps) {
           {filtered.map((p, i) => {
             const topOption = p.options.reduce((a, b) => (a.votes > b.votes ? a : b));
             return (
-              <div
-                key={p.id}
-                className="group relative bg-white/[0.02] border border-neutral-800/30 rounded-xl p-5 sm:p-6 transition-all duration-500 hover:bg-white/[0.04] hover:border-violet-500/15"
-                style={{ animation: `fadeInUp 0.5s ${i * 0.05}s ease-out both` }}
-              >
-                {/* Hot badge */}
-                {p.hot && (
-                  <div className="absolute top-4 right-4 flex items-center gap-1.5 px-2 py-0.5 rounded-full bg-orange-500/10 border border-orange-500/20">
-                    <div className="w-1 h-1 rounded-full bg-orange-400 animate-pulse" />
-                    <span className="text-[8px] tracking-[0.15em] uppercase text-orange-400">{t.hot}</span>
-                  </div>
-                )}
-
-                <div className="flex gap-4">
-                  {/* Avatar */}
-                  <div className="shrink-0 w-10 h-10 rounded-lg bg-violet-500/10 border border-violet-500/15 flex items-center justify-center">
-                    <svg className="w-4 h-4 text-violet-400" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={1.5}>
-                      <path strokeLinecap="round" strokeLinejoin="round" d="M10.5 6h9.75M10.5 6a1.5 1.5 0 11-3 0m3 0a1.5 1.5 0 10-3 0M3.75 6H7.5m3 12h9.75m-9.75 0a1.5 1.5 0 01-3 0m3 0a1.5 1.5 0 00-3 0m-3.75 0H7.5m9-6h3.75m-3.75 0a1.5 1.5 0 01-3 0m3 0a1.5 1.5 0 00-3 0m-9.75 0h9.75" />
-                    </svg>
-                  </div>
-
-                  <div className="flex-1 min-w-0">
-                    {/* Category */}
-                    <span className="text-[9px] tracking-[0.2em] uppercase text-violet-400/50 mb-1 block">
-                      {p.category}
-                    </span>
-
-                    {/* Title */}
-                    <h3 className="text-sm sm:text-base font-semibold text-white/90 mb-1 group-hover:text-violet-300 transition-colors">
-                      {p.title}
-                    </h3>
-
-                    {/* Meta */}
-                    <div className="flex items-center gap-3 text-[10px] text-neutral-600 mb-4">
-                      <span>{p.author}</span>
-                      <span className="opacity-30">·</span>
-                      <span>{formatDate(p.date, t.lang)}</span>
-                      <span className="opacity-30">·</span>
-                      <span>{p.totalVotes.toLocaleString()} {t.votes}</span>
+              <Link key={p.id} href={`/forums/votes/${p.id}`} className="block">
+                <div
+                  className="group relative bg-white/[0.02] border border-neutral-800/30 rounded-xl p-5 sm:p-6 transition-all duration-500 hover:bg-white/[0.04] hover:border-violet-500/15"
+                  style={{ animation: `fadeInUp 0.5s ${i * 0.05}s ease-out both` }}
+                >
+                  {/* Hot badge */}
+                  {p.hot && (
+                    <div className="absolute top-4 right-4 flex items-center gap-1.5 px-2 py-0.5 rounded-full bg-orange-500/10 border border-orange-500/20">
+                      <div className="w-1 h-1 rounded-full bg-orange-400 animate-pulse" />
+                      <span className="text-[8px] tracking-[0.15em] uppercase text-orange-400">{t.hot}</span>
                     </div>
+                  )}
 
-                    {/* Poll bars */}
-                    <div className="space-y-2.5">
-                      {p.options.map((opt, j) => (
-                        <PollBar key={j} option={opt} total={p.totalVotes} />
-                      ))}
-                    </div>
-
-                    {/* Winner indicator */}
-                    <div className="mt-3 flex items-center gap-1.5 text-[10px] text-violet-400/60">
-                      <svg className="w-3 h-3" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
-                        <path strokeLinecap="round" strokeLinejoin="round" d="M16.5 18.75h-9m9 0a3 3 0 013 3h-15a3 3 0 013-3m9 0v-3.375c0-.621-.503-1.125-1.125-1.125h-.871M7.5 18.75v-3.375c0-.621.504-1.125 1.125-1.125h.872m5.007 0H9.497m5.007 0a7.454 7.454 0 01-.982-3.172M9.497 14.25a7.454 7.454 0 00.981-3.172M5.25 4.236c-.982.143-1.954.317-2.916.52A6.003 6.003 0 007.73 9.728M5.25 4.236V4.5c0 2.108.966 3.99 2.48 5.228M5.25 4.236V2.721C7.456 2.41 9.71 2.25 12 2.25c2.291 0 4.545.16 6.75.47v1.516M18.75 4.236c.982.143 1.954.317 2.916.52A6.003 6.003 0 0016.27 9.728M18.75 4.236V4.5c0 2.108-.966 3.99-2.48 5.228m0 0a6.003 6.003 0 01-3.77 1.522m0 0a6.003 6.003 0 01-3.77-1.522" />
+                  <div className="flex gap-4">
+                    {/* Avatar */}
+                    <div className="shrink-0 w-10 h-10 rounded-lg bg-violet-500/10 border border-violet-500/15 flex items-center justify-center">
+                      <svg className="w-4 h-4 text-violet-400" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={1.5}>
+                        <path strokeLinecap="round" strokeLinejoin="round" d="M10.5 6h9.75M10.5 6a1.5 1.5 0 11-3 0m3 0a1.5 1.5 0 10-3 0M3.75 6H7.5m3 12h9.75m-9.75 0a1.5 1.5 0 01-3 0m3 0a1.5 1.5 0 00-3 0m-3.75 0H7.5m9-6h3.75m-3.75 0a1.5 1.5 0 01-3 0m3 0a1.5 1.5 0 00-3 0m-9.75 0h9.75" />
                       </svg>
-                      {t.leading}: {topOption.label} ({Math.round((topOption.votes / p.totalVotes) * 100)}%)
+                    </div>
+
+                    <div className="flex-1 min-w-0">
+                      {/* Category */}
+                      <span className="text-[9px] tracking-[0.2em] uppercase text-violet-400/50 mb-1 block">
+                        {p.category}
+                      </span>
+
+                      {/* Title */}
+                      <h3 className="text-sm sm:text-base font-semibold text-white/90 mb-1 group-hover:text-violet-300 transition-colors">
+                        {p.title}
+                      </h3>
+
+                      {/* Meta */}
+                      <div className="flex items-center gap-3 text-[10px] text-neutral-600 mb-4">
+                        <span>{p.author}</span>
+                        <span className="opacity-30">·</span>
+                        <span>{formatDate(p.date, t.lang)}</span>
+                        <span className="opacity-30">·</span>
+                        <span>{p.totalVotes.toLocaleString()} {t.votes}</span>
+                      </div>
+
+                      {/* Poll bars */}
+                      <div className="space-y-2.5">
+                        {p.options.map((opt, j) => (
+                          <PollBar key={j} option={opt} total={p.totalVotes} />
+                        ))}
+                      </div>
+
+                      {/* Winner indicator */}
+                      <div className="mt-3 flex items-center gap-1.5 text-[10px] text-violet-400/60">
+                        <svg className="w-3 h-3" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
+                          <path strokeLinecap="round" strokeLinejoin="round" d="M16.5 18.75h-9m9 0a3 3 0 013 3h-15a3 3 0 013-3m9 0v-3.375c0-.621-.503-1.125-1.125-1.125h-.871M7.5 18.75v-3.375c0-.621.504-1.125 1.125-1.125h.872m5.007 0H9.497m5.007 0a7.454 7.454 0 01-.982-3.172M9.497 14.25a7.454 7.454 0 00.981-3.172M5.25 4.236c-.982.143-1.954.317-2.916.52A6.003 6.003 0 007.73 9.728M5.25 4.236V4.5c0 2.108.966 3.99 2.48 5.228M5.25 4.236V2.721C7.456 2.41 9.71 2.25 12 2.25c2.291 0 4.545.16 6.75.47v1.516M18.75 4.236c.982.143 1.954.317 2.916.52A6.003 6.003 0 0016.27 9.728M18.75 4.236V4.5c0 2.108-.966 3.99-2.48 5.228m0 0a6.003 6.003 0 01-3.77 1.522m0 0a6.003 6.003 0 01-3.77-1.522" />
+                        </svg>
+                        {t.leading}: {topOption.label} ({Math.round((topOption.votes / p.totalVotes) * 100)}%)
+                      </div>
                     </div>
                   </div>
                 </div>
-              </div>
+              </Link>
             );
           })}
         </div>
